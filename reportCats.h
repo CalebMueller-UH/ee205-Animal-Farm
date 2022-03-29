@@ -14,7 +14,7 @@
 #include "catDatabase.h"
 #include "validate.h"
 
-void printCat(const size_t index);
+void printCat(const NumCats index);
 
 void printAllCats();
 

@@ -11,13 +11,13 @@
 #include "updateCats.h"
 #include "config.h"
 
-bool fixCat(const size_t index)
+bool fixCat(const NumCats index)
 {
     cats[index].isFixed = true;
     return true;
 }
 
-bool updateCatName(const size_t index, const char *newName)
+bool updateCatName(const NumCats index, const char *newName)
 {
     if (nameIsValid(newName))
     {
@@ -27,7 +27,7 @@ bool updateCatName(const size_t index, const char *newName)
     return false;
 }
 
-bool updateCatWeight(const size_t index, const float newWeight)
+bool updateCatWeight(const NumCats index, const Weight newWeight)
 {
     if (weightIsValid(newWeight))
     {
@@ -37,7 +37,7 @@ bool updateCatWeight(const size_t index, const float newWeight)
     return false;
 }
 
-bool updateCatCollar1(const size_t index, const enum Color newColor)
+bool updateCatCollar1(const NumCats index, const enum Color newColor)
 {
     if (!indexIsValid(index))
     {
@@ -55,7 +55,7 @@ bool updateCatCollar1(const size_t index, const enum Color newColor)
     return true;
 }
 
-bool updateCatCollar2(const size_t index, const enum Color newColor)
+bool updateCatCollar2(const NumCats index, const enum Color newColor)
 {
     if (!indexIsValid(index))
     {
@@ -73,7 +73,7 @@ bool updateCatCollar2(const size_t index, const enum Color newColor)
     return true;
 }
 
-bool updateLicense(const size_t index, const unsigned long long int newLicense)
+bool updateLicense(const NumCats index, const unsigned long long int newLicense)
 {
     if (!indexIsValid(index))
     {

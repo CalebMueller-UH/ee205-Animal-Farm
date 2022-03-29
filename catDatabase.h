@@ -22,7 +22,11 @@
 #define MAX_NAME_LEN 50
 #define MAX_CAT_WEIGHT 1000
 
-extern size_t currentNumberOfCats;
+typedef float Weight;
+
+typedef size_t NumCats;
+
+extern NumCats currentNumberOfCats;
 
 enum Gender
 {
@@ -57,7 +61,7 @@ struct Cat
     char name[MAX_NAME_LEN];
     enum Gender gender;
     enum Breed breed;
-    float weight;
+    Weight weight;
     bool isFixed;
     enum Color collarColor1;
     enum Color collarColor2;

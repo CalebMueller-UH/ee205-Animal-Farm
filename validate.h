@@ -19,9 +19,9 @@
 
 bool nameIsValid(const char *name);
 
-bool weightIsValid(const float weight);
+bool weightIsValid(const Weight weight);
 
-bool indexIsValid(const size_t index);
+bool indexIsValid(const NumCats index);
 
 bool collarColorsAreValid(const enum Color collar1, const enum Color collar2);
 

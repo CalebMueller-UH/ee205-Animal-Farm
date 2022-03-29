@@ -14,7 +14,7 @@
 bool nameIsValid(const char *name)
 {
     // Check to see if name is unique
-    for (size_t i = 0; i < currentNumberOfCats; ++i)
+    for (NumCats i = 0; i < currentNumberOfCats; ++i)
     {
         if (strcmp(cats[i].name, name) == 0)
         {
@@ -45,7 +45,7 @@ bool nameIsValid(const char *name)
     return true;
 }
 
-bool weightIsValid(const float weight)
+bool weightIsValid(const Weight weight)
 {
     if (weight > 0 && weight < MAX_CAT_WEIGHT)
     {
@@ -55,7 +55,7 @@ bool weightIsValid(const float weight)
     return false; // weight is invalid
 }
 
-bool indexIsValid(const size_t index)
+bool indexIsValid(const NumCats index)
 {
     if (index >= currentNumberOfCats)
     {
@@ -76,7 +76,7 @@ bool collarColorsAreValid(const enum Color testCollar1, const enum Color testCol
     }
 
     // Ensure there are no duplicate cat collars (the combination of collarColor1 and collarColor2)
-    for (size_t i = 0; i < currentNumberOfCats; ++i)
+    for (NumCats i = 0; i < currentNumberOfCats; ++i)
     {
         enum Color compareCollar1 = cats[i].collarColor1;
         enum Color compareCollar2 = cats[i].collarColor2;
@@ -95,7 +95,7 @@ bool collarColorsAreValid(const enum Color testCollar1, const enum Color testCol
 
 bool licenseIsValid(const unsigned long long licenseNum)
 {
-    for (size_t i = 0; i < currentNumberOfCats; ++i)
+    for (NumCats i = 0; i < currentNumberOfCats; ++i)
     {
         if (cats[i].license == licenseNum)
         {

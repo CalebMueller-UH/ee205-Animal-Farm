@@ -16,6 +16,6 @@
 
 void deleteAllCats();
 
-int deleteCat(const size_t index);
+int deleteCat(const NumCats index);
 
 #endif //EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_DELETECATS_H

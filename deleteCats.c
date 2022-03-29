@@ -17,7 +17,7 @@ void deleteAllCats()
     initializeDatabase();
 }
 
-int deleteCat(const size_t index)
+int deleteCat(const NumCats index)
 {
     if (indexIsValid(index) == false)
     {

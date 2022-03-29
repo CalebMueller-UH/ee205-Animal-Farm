@@ -15,7 +15,7 @@ int addCat(const char *name,
            const enum Gender gender,
            const enum Breed breed,
            const bool isFixed,
-           const float weight,
+           const Weight weight,
            const enum Color collarColor1,
            const enum Color collarColor2,
            const unsigned long long license)
@@ -66,7 +66,7 @@ int addCat(const char *name,
         return BAD_CAT;
     }
 
-    size_t newCatIndex = currentNumberOfCats;
+    NumCats newCatIndex = currentNumberOfCats;
     currentNumberOfCats++;
 
     // addCat parameters are valid

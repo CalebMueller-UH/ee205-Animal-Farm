@@ -12,7 +12,7 @@
 
 #include "config.h"
 
-size_t currentNumberOfCats = 0;
+NumCats currentNumberOfCats = 0;
 
 struct Cat cats[MAX_CATS];
 

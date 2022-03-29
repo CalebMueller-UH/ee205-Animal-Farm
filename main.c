@@ -115,11 +115,11 @@ int main(void)
     // Test addCat details
     fprintf(stderr, "\nTesting addCat index return\n");
     fprintf(stderr, "Before adding \"Oscar\" the cat; currentNumberOfCats = %lu\n", currentNumberOfCats);
-    size_t oscarIndex = addCat("Oscar", UNKNOWN_GENDER, SHORTHAIR, false, 1.1, BLUE, RED, 111);
+    NumCats oscarIndex = addCat("Oscar", UNKNOWN_GENDER, SHORTHAIR, false, 1.1, BLUE, RED, 111);
     fprintf(stderr, "\"Oscar\" the cats database index = %lu\n", oscarIndex);
     fprintf(stderr, "After adding \"Oscar\" the cat; currentNumberOfCats = %lu\n", currentNumberOfCats);
 
-    assert(oscarIndex != (size_t)BAD_CAT);
+    assert(oscarIndex != (NumCats)BAD_CAT);
     assert(oscarIndex < MAX_CATS);
     assert((int)oscarIndex == findCat("Oscar"));
 

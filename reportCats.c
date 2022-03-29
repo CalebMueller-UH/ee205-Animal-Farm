@@ -11,7 +11,7 @@
 #include "reportCats.h"
 #include "config.h"
 
-void printCat(const size_t index)
+void printCat(const NumCats index)
 {
     if (indexIsValid(index) == true)
     {
@@ -30,7 +30,7 @@ void printCat(const size_t index)
 
 void printAllCats()
 {
-    for (size_t index = 0; index < currentNumberOfCats; ++index)
+    for (NumCats index = 0; index < currentNumberOfCats; ++index)
     {
         printCat(index);
     }
@@ -38,7 +38,7 @@ void printAllCats()
 
 int findCat(const char *name)
 {
-    for (size_t i = 0; i < currentNumberOfCats; ++i)
+    for (NumCats i = 0; i < currentNumberOfCats; ++i)
     {
         if (strcmp(name, cats[i].name) == 0)
         {
