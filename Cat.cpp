@@ -10,6 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include "Cat.h"
 
+
 const char *Cat::getName() const {
     return _name;
 }
@@ -34,7 +35,7 @@ void Cat::setName(const char *name) {
     strcpy(_name, name);
 }
 
-void Cat::setCatFixed(bool catFixed) {
+void Cat::fixCat(bool catFixed) {
     _catFixed = catFixed;
 }
 
@@ -65,7 +66,7 @@ Cat::Cat(const char *name, Gender gender, Breed breed, Weight weight) :
     if (strlen(name) > MAX_NAME_LEN) {
 #ifdef DEBUG_ENABLE
         {
-            fprintf(stderr, "%s Error: invalid name entry, the name %s is too long", PROG_NAME, *name);
+            fprintf(stderr, "%s Error: invalid name entry, the name %s is too long", PROGRAM_NAME, *name);
         }
 #endif
     }
@@ -100,7 +101,7 @@ bool Cat::validate() const {
     if (strcmp(_name, nullptr) == 0) {
 #ifdef DEBUG_ENABLE
         {
-            fprintf(stderr, "%s Error: invalid name entry, member name set to nullptr", PROG_NAME);
+            fprintf(stderr, "%s Error: invalid name entry, member name set to nullptr", PROGRAM_NAME);
         }
 #endif
         return false;
@@ -109,7 +110,7 @@ bool Cat::validate() const {
     if (strcmp(_name, "") == 0) {
 #ifdef DEBUG_ENABLE
         {
-            fprintf(stderr, "%s Error: invalid name entry, member name is empty", PROG_NAME);
+            fprintf(stderr, "%s Error: invalid name entry, member name is empty", PROGRAM_NAME);
         }
 #endif
         return false;
@@ -117,6 +118,11 @@ bool Cat::validate() const {
 
 
     return true;
+}
+
+void Cat::zeroize()
+{
+    memset(this, 0, sizeof(Cat));
 }
 
 

@@ -14,8 +14,10 @@
 #include "catDatabase.h"
 #include "validate.h"
 
+/*
 void deleteAllCats();
 
 int deleteCat(const NumCats index);
 
+*/
 #endif //EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_DELETECATS_H

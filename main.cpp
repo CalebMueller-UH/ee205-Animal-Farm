@@ -27,6 +27,7 @@
 
 int main(void)
 {
+    /*
     printf("\nStarting Animal Farm 1\n");
     printf("....................................................................\n\n\n");
 
@@ -186,6 +187,8 @@ int main(void)
 #endif
     printf("\n\n....................................................................\n");
     printf("Done with Animal Farm 1\n\n");
+
+     */
 
     return 0;
 }

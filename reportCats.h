@@ -14,10 +14,14 @@
 #include "catDatabase.h"
 #include "validate.h"
 
+/*
 void printCat(const NumCats index);
 
 void printAllCats();
 
 int findCat(const char *name);
 
+*/
+
 #endif //EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_REPORTCATS_H
+

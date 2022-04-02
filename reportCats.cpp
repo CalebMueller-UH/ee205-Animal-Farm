@@ -11,6 +11,7 @@
 #include "reportCats.h"
 #include "config.h"
 
+/*
 void printCat(const NumCats index)
 {
     if (indexIsValid(index) == true)
@@ -49,3 +50,4 @@ int findCat(const char *name)
     return BAD_CAT;
 }
 
+*/

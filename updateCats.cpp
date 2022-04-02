@@ -11,6 +11,7 @@
 #include "updateCats.h"
 #include "config.h"
 
+/*
 bool fixCat(const NumCats index)
 {
     cats[index].isFixed = true;
@@ -89,3 +90,4 @@ bool updateLicense(const NumCats index, const unsigned long long int newLicense)
     return true;
 }
 
+*/

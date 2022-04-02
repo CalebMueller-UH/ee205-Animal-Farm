@@ -14,6 +14,7 @@
 #include "catDatabase.h"
 #include "validate.h"
 
+/*
 int addCat(const char *name,
            const enum Gender gender,
            const enum Breed breed,
@@ -23,4 +24,7 @@ int addCat(const char *name,
            const enum Color collarColor2,
            const unsigned long long license);
 
+
+*/
 #endif //EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_ADDCATS_H
+

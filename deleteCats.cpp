@@ -12,6 +12,7 @@
 #include "catDatabase.h"
 #include "config.h"
 
+/*
 void deleteAllCats()
 {
     initializeDatabase();
@@ -34,3 +35,4 @@ int deleteCat(const NumCats index)
     return 1;
 }
 
+*/

@@ -12,6 +12,7 @@
 
 #include "config.h"
 
+/*
 NumCats currentNumberOfCats = 0;
 
 struct Cat cats[MAX_CATS];
@@ -80,3 +81,5 @@ char *colorLiteral(const enum Color color)
             return "\0";
     }
 }
+
+ */

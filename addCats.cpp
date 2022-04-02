@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include "addCats.h"
 #include "config.h"
-
+/*
 int addCat(const char *name,
            const enum Gender gender,
            const enum Breed breed,
@@ -78,6 +78,8 @@ int addCat(const char *name,
     cats[newCatIndex].collarColor1 = collarColor1;
     cats[newCatIndex].collarColor2 = collarColor2;
     cats[newCatIndex].license = license;
+
     return newCatIndex;
 }
 
+*/

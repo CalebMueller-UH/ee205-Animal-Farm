@@ -11,6 +11,7 @@
 #include "validate.h"
 #include "config.h"
 
+/*
 bool nameIsValid(const char *name)
 {
     // Check to see if name is unique
@@ -106,3 +107,4 @@ bool licenseIsValid(const unsigned long long licenseNum)
     return true; // license is valid
 }
 
+*/

@@ -17,6 +17,7 @@
 #include "addCats.h"
 #include "validate.h"
 
+/*
 bool fixCat(const NumCats index);
 
 bool updateCatName(const NumCats index, const char *newName);
@@ -29,4 +30,5 @@ bool updateCatCollar2(const NumCats index, const enum Color newColor);
 
 bool updateLicense(const NumCats index, const unsigned long long int newLicense);
 
+*/
 #endif //EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_UPDATECATS_H

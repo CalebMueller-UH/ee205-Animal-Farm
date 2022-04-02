@@ -60,42 +60,46 @@ protected:            /////////////// Protected Member Variables ///////////////
         Weight _weight; ///< Weight of cat: =-1 if unknown, 0 < _weight < MAX_CAT_WEIGHT
 
 public:            /////////////// Public Member Variables ///////////////
-        Cat *_next; /// Pointer to next cat for single linked list
+        Cat *_next; ///< Pointer to next cat for single linked list
+                    /// This pointer is temporary to animal farm 2
+                    /// @todo fix public next pointer in future versions
 
 public:            /////////////// Getters ///////////////
-        const char *getName() const;
+        const char *getName() const; ///< Get cats name
 
-        Gender getGender() const;
+        Gender getGender() const; ///< Get cats gender
 
-        Breed getBreed() const;
+        Breed getBreed() const; ///< Get cats breed
 
-        bool isCatFixed() const;
+        bool isCatFixed() const; ///< Returns true if cat is fixed
 
-        Weight getWeight() const;
+        Weight getWeight() const; ///< Get cats weight
 
 public:            /////////////// Public Setters //////////////////
-        void setName(const char *name);
+        void setName(const char *name); ///< Set cat name
 
-        void setCatFixed(bool catFixed);
+        void fixCat(bool catFixed); ///< set catFixed to true
 
-        void setWeight(Weight weight);
+        void setWeight(Weight weight); ///< Set cat weight
 
 protected:            /////////////// Protected Setters ///////////////
-        void setGender(Gender gender);
+        void setGender(Gender gender); ///< Set cat gender
 
-        void setBreed(Breed breed);
+        void setBreed(Breed breed); ///< Set cat breed
 
 public:            /////////////// Constructors & Destructors //////////////////
-        Cat();
+        Cat(); ///< Creates a cat with default member values
 
-        Cat(const char *name, Gender gender = UNKNOWN_GENDER, Breed breed = UNKNOWN_BREED, Weight weight = UNKNOWN_WEIGHT);
+        Cat(const char *name, Gender gender = UNKNOWN_GENDER, Breed breed = UNKNOWN_BREED, Weight weight = UNKNOWN_WEIGHT);  ///< Creates a cat with user defined member values
 
-        virtual ~Cat();
+        virtual ~Cat();  ///< Destructor zeroizes member data prior to blipping
 
 public:            /////////////// Public Methods //////////////////
-        bool print() const noexcept;
+        bool print() const noexcept; ///< Prints cat information
 
-        bool validate() const;
+        bool validate() const; ///< Checks the validity of cat member data fields
+
+        void zeroize(); ///< Sets member data to zero
 }; // End of Cat class
 
 

@@ -17,6 +17,7 @@
 
 #include "catDatabase.h"
 
+/*
 bool nameIsValid(const char *name);
 
 bool weightIsValid(const Weight weight);
@@ -26,5 +27,7 @@ bool indexIsValid(const NumCats index);
 bool collarColorsAreValid(const enum Color collar1, const enum Color collar2);
 
 bool licenseIsValid(const unsigned long long licenseNum);
+
+ */
 
 #endif //EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_VALIDATE_H

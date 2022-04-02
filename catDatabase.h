@@ -18,6 +18,7 @@
 #include <time.h> //For Birthday
 #include <locale.h>
 
+/*
 #define MAX_CATS 1024
 #define MAX_NAME_LEN 50
 #define MAX_CAT_WEIGHT 1000
@@ -77,5 +78,5 @@ char *genderLiteral(const enum Gender gender);
 char *breedLiteral(const enum Breed breed);
 
 char *colorLiteral(const enum Color color);
-
+*/
 #endif //EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_CATDATABASE_H
