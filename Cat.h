@@ -85,9 +85,17 @@ public:            /////////////// Constructors & Destructors //////////////////
 public:            /////////////// Public Methods //////////////////
         bool print() const noexcept; ///< Prints cat information
 
-        bool validate() const; ///< Checks the validity of cat member data fields
+        bool validate() const noexcept; ///< Checks the validity of cat member data fields
 
         void zeroize(); ///< Sets member data to zero
+
+public:            /////////////// Validation Methods //////////////////
+        bool nameIsValid(const char* testName) const;
+        bool genderIsValid(const enum Gender testGender) const;
+        bool breedIsValid(const enum Breed testBreed) const;
+        bool weightIsValid(const Weight testWeight) const;
+
+
 }; // End of Cat class
 
 

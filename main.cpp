@@ -8,13 +8,14 @@
 /// @author Caleb Mueller <mc61@hawaii.edu>
 /// @date   16_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
-
+#include <iostream> // For cout
+#include <exception> // For try/catch blocks
+#include <cstdlib> // For EXIT_SUCCESS and EXIT_FAILURE
 #include <assert.h> // For assert()
-#include <stdio.h>
-#include <stdlib.h> // For EXIT_SUCCESS and EXIT_FAILURE
 #include <string.h>
 
 #include "config.h"
+#include "Cat.h"
 #include "catDatabase.h"
 #include "addCats.h"
 #include "reportCats.h"
@@ -27,6 +28,46 @@
 
 int main(void)
 {
+    std::cout << "Starting Animal Farm 2" << std::endl;
+
+    // Test routine
+#ifdef DEBUG_ENABLE
+    {
+        using namespace std;
+        cout << "Beginning Animal Farm Test Routine..." << endl;
+
+        // Constructing a cat with default constructor and checking for proper default member variable assignment
+        Cat defaultCat = Cat();
+        assert(strcmp(defaultCat.getName(), "") == 0);
+        assert(defaultCat.getName() != nullptr);
+        assert(defaultCat.getGender() == UNKNOWN_GENDER);
+        assert(defaultCat.getBreed() == UNKNOWN_BREED);
+        assert(defaultCat.isCatFixed() == false);
+        assert(defaultCat.validate() == false);
+
+        defaultCat.validate();
+
+        // Attempting to assign _name to nullptr
+        try
+        {
+            defaultCat.setName(nullptr);
+            assert(false);
+        } catch(const std::exception &e)
+        {
+            cout << "Error Detected" << endl;
+        }
+
+        // Attempting to assign _name to empty string ("")
+        try
+        {
+            defaultCat.setName("a");
+            assert(false);
+        } catch(exception const &e){}
+
+    }
+#endif
+    // End of Test routine
+
     /*
     printf("\nStarting Animal Farm 1\n");
     printf("....................................................................\n\n\n");

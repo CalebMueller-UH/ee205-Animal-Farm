@@ -11,44 +11,66 @@
 #include "Cat.h"
 
 
-const char *Cat::getName() const {
+const char *Cat::getName() const
+{
     return _name;
 }
 
-Gender Cat::getGender() const {
+Gender Cat::getGender() const
+{
     return _gender;
 }
 
-Breed Cat::getBreed() const {
+Breed Cat::getBreed() const
+{
     return _breed;
 }
 
-bool Cat::isCatFixed() const {
+bool Cat::isCatFixed() const
+{
     return _catFixed;
 }
 
-Weight Cat::getWeight() const {
+Weight Cat::getWeight() const
+{
     return _weight;
 }
 
-void Cat::setName(const char *name) {
+void Cat::setName(const char *name)
+{
+    if(nameIsValid(name))
+    {
     strcpy(_name, name);
+    }
 }
 
-void Cat::fixCat(bool catFixed) {
+void Cat::fixCat(bool catFixed)
+{
     _catFixed = catFixed;
 }
 
-void Cat::setWeight(Weight weight) {
+void Cat::setWeight(Weight weight)
+{
+    if(weightIsValid(weight))
+    {
     _weight = weight;
+    }
 }
 
-void Cat::setGender(Gender gender) {
+void Cat::setGender(Gender gender)
+{
+    if(genderIsValid(gender))
+    {
     _gender = gender;
+    }
 }
 
-void Cat::setBreed(Breed breed) {
+void Cat::setBreed(Breed breed)
+{
+    if(breedIsValid(breed))
+    {
     _breed = breed;
+    }
 }
 
 /// Default Cat constructor initializes member variables to default values given in spec document
@@ -64,15 +86,6 @@ Cat::Cat() :
 Cat::Cat(const char *name, Gender gender, Breed breed, Weight weight) :
         _gender(gender), _breed(breed), _weight(weight)
 {
-
-    if (strlen(name) > MAX_NAME_LEN) {
-#ifdef DEBUG_ENABLE
-        {
-            fprintf(stderr, "%s Constructor Error: invalid name entry, the name %s is greater than the configured max name length", PROGRAM_NAME, *name);
-        }
-#endif
-    }
-
     strcpy(_name, name);
     _next = nullptr;
 } // End of paramaterized constructor
@@ -101,77 +114,95 @@ FORMAT_LINE("Cat", "weight") << getWeight() << endl;
 return true;
 } // End of print()
 
-/// @returns true if all member variables are valid, and
-/// false if any of the member variables are invalid.
-bool Cat::validate() const {
-    bool isValid = true;
-
-    // Validate Name
-    // Name must not be nullptr, must not be empty, and must be shorter than MAX_NAME_LEN (checked in constructor before being assigned)
-    if (strcmp(_name, nullptr) == 0)
-    {
-#ifdef DEBUG_ENABLE
-            fprintf(stderr, "%s Validate Error: invalid name entry, member name set to nullptr", PROGRAM_NAME);
-#endif
-        isValid = false;
-    }
-    if (strcmp(_name, "") == 0)
-    {
-#ifdef DEBUG_ENABLE
-            fprintf(stderr, "%s Validate Error: invalid name entry, member name is empty", PROGRAM_NAME);
-#endif
-        isValid = false;
-    }
-
-    // Validate Gender
-    // Gender must not be UNKNOWN_GENDER
-    if(_gender == UNKNOWN_GENDER)
-    {
-#ifdef DEBUG_ENABLE
-        fprintf(stderr, "%s Validate Error: invalid gender entry for %s Cat, gender must be known",
-                PROGRAM_NAME, _name);
-#endif
-        isValid = false;
-    }
-
-    // Validate Breed
-    // Breed must not be UNKNOWN_BREED
-    if(_breed == UNKNOWN_BREED)
-    {
-#ifdef DEBUG_ENABLE
-        fprintf(stderr, "%s Validate Error: invalid breed entry for %s Cat, breed must be known",
-                PROGRAM_NAME, _name);
-#endif
-        isValid = false;
-    }
-
-    // Validate Weight
-    // Weight must be greater than 0 and less than MAX_CAT_WEIGHT
-    if(_weight <= 0)
-    {
-#ifdef DEBUG_ENABLE
-        fprintf(stderr, "%s Validate Error: weight entry for %s Cat, weight must be greater than 0",
-                PROGRAM_NAME, _name);
-#endif
-        isValid = false;
-    }
-
-    if(_weight > MAX_CAT_WEIGHT)
-    {
-#ifdef DEBUG_ENABLE
-        fprintf(stderr, "%s Validate Error: weight entry for %s Cat, weight must be less than max cat weight",
-                PROGRAM_NAME, _name);
-#endif
-        isValid = false;
-    }
-
-    return isValid;
-} // End of validate()
-
 void Cat::zeroize()
 {
     memset(this, 0, sizeof(Cat));
 } // End of zeroize()
+
+/// @returns true if all member variables are valid, and
+/// false if any of the member variables are invalid.
+bool Cat::validate() const noexcept
+{
+    try
+    {
+        // Validate Name
+        nameIsValid(_name);
+        // Validate Gender
+        genderIsValid(_gender);
+        // Validate Breed
+        breedIsValid(_breed);
+        // Validate Weight
+        weightIsValid(_weight);
+    } catch(exception const& e)
+    {
+        std::cout << e.what() << std::endl;
+        return false;
+    }
+    return true; // Cat member variables are valid
+} // End of validate()
+
+
+bool Cat::nameIsValid(const char* testName) const
+{
+    if (strcmp(testName, nullptr) == 0)
+    {
+        throw invalid_argument(PROGRAM_NAME " Name Validation Error: name is set to NULL");
+    }
+
+    if (strcmp(testName, "") == 0)
+    {
+        throw length_error(PROGRAM_NAME " Name Validation Error: name is empty");
+    }
+
+    if (strlen(testName) > MAX_NAME_LEN)
+    {
+        throw length_error(PROGRAM_NAME " Name Validation Error: name is too long");
+    }
+    return true;  // name is valid
+} // End of nameIsValid()
+
+
+bool Cat::genderIsValid(const enum Gender testGender) const
+{
+    // Gender must not be UNKNOWN_GENDER
+    if(testGender == UNKNOWN_GENDER)
+    {
+        throw invalid_argument(PROGRAM_NAME " Gender Validation Error: Gender must not be set to UNKNOWN_GENDER");
+    }
+
+    return true; // gender is valid
+}
+
+bool Cat::breedIsValid(const enum Breed testBreed) const
+{
+    // Breed must not be UNKNOWN_BREED
+    if(testBreed == UNKNOWN_BREED)
+    {
+        throw invalid_argument(PROGRAM_NAME " Breed Validation Error: Breed must not be set to UNKNOWN_BREED");
+    }
+
+    return true; // breed is valid
+}
+
+bool Cat::weightIsValid(const Weight testWeight) const
+{
+    if(testWeight == UNKNOWN_WEIGHT)
+    {
+        throw invalid_argument( PROGRAM_NAME " Weight Validation Error: Weight is set to UNKNOWN_WEIGHT");
+    }
+
+    if(testWeight <=0)
+    {
+        throw invalid_argument( PROGRAM_NAME " Weight Validation Error: Weight must be greater than 0");
+    }
+
+    if(testWeight > MAX_CAT_WEIGHT)
+    {
+        throw invalid_argument( PROGRAM_NAME " Weight Validation Error: Weight must be less than MAX_CAT_WEIGHT");
+    }
+
+    return true; // weight is valid
+}
 
 
 const char *genderLiteral(const enum Gender gender)
