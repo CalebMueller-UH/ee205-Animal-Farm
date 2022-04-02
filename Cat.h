@@ -52,14 +52,17 @@ enum Breed {
 typedef float Weight;
 
 class Cat {
-        public:            /////////////// Public Member Variables ///////////////
-        char _name[MAX_NAME_LEN]; /// Name of Cat -- Must not be an empty value, must be less than MAX_CAT_NAME
-        enum Gender _gender;
-        enum Breed _breed;
-        bool _catFixed;
-        Weight _weight;
+protected:            /////////////// Protected Member Variables ///////////////
+        char _name[MAX_NAME_LEN]; ///< Name of cat
+        enum Gender _gender; ///< Gender of cat
+        enum Breed _breed; ///< Breed of cat
+        bool _catFixed; ///< True if cat is spayed/neutered
+        Weight _weight; ///< Weight of cat: =-1 if unknown, 0 < _weight < MAX_CAT_WEIGHT
 
-        public:            /////////////// Public Getter Methods ///////////////
+public:            /////////////// Public Member Variables ///////////////
+        Cat *_next; /// Pointer to next cat for single linked list
+
+public:            /////////////// Getters ///////////////
         const char *getName() const;
 
         Gender getGender() const;
@@ -70,28 +73,26 @@ class Cat {
 
         Weight getWeight() const;
 
-        Cat *_next; /// Pointer to next cat for single linked list
-
-        public:            /////////////// Public Setter Methods //////////////////
+public:            /////////////// Public Setters //////////////////
         void setName(const char *name);
 
         void setCatFixed(bool catFixed);
 
         void setWeight(Weight weight);
 
-        protected:            /////////////// Protected Setter Methods ///////////////
+protected:            /////////////// Protected Setters ///////////////
         void setGender(Gender gender);
 
         void setBreed(Breed breed);
 
-        public:            /////////////// Constructors & Destructors //////////////////
+public:            /////////////// Constructors & Destructors //////////////////
         Cat();
 
         Cat(const char *name, Gender gender = UNKNOWN_GENDER, Breed breed = UNKNOWN_BREED, Weight weight = UNKNOWN_WEIGHT);
 
         virtual ~Cat();
 
-        public:            /////////////// Public Methods //////////////////
+public:            /////////////// Public Methods //////////////////
         bool print() const noexcept;
 
         bool validate() const;
