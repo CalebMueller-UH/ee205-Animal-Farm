@@ -22,7 +22,7 @@
 #include "updateCats.h"
 #include "deleteCats.h"
 
-#define MAX_NAME1 "1234567890123456789012345678901234567890123456789"
+#define MAX_NAME1 "123456789012345678901234567890"
 #define MAX_NAME2 "DIFFERENT 123456789012345678901234567890123456789"
 #define ILLEGAL_NAME "12345678901234567890123456789012345678901234567890"
 
@@ -37,6 +37,7 @@ int main(void)
         cout << "Beginning Animal Farm Test Routine..." << endl;
 
         // Constructing a cat with default constructor and checking for proper default member variable assignment
+        cout << "Test 1..." << endl;
         Cat defaultCat = Cat();
         assert(strcmp(defaultCat.getName(), "") == 0);
         assert(defaultCat.getName() != nullptr);
@@ -45,24 +46,52 @@ int main(void)
         assert(defaultCat.isCatFixed() == false);
         assert(defaultCat.validate() == false);
 
-        defaultCat.validate();
-
-        // Attempting to assign _name to nullptr
-        try
-        {
+        // >>>>>>>>>>>>>>>>>>>>>>>>>  Name Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        // Attempting to set _name to nullptr
+        try {
+        cout << "Test 2..." << endl;
             defaultCat.setName(nullptr);
             assert(false);
-        } catch(const std::exception &e)
-        {
-            cout << "Error Detected" << endl;
+        } catch(const std::exception &e){
+            cout << e.what() << endl;
         }
 
-        // Attempting to assign _name to empty string ("")
-        try
-        {
-            defaultCat.setName("a");
+        // Attempting to set _name to empty string ("")
+        cout << "Test 3..." << endl;
+        try {
+            defaultCat.setName("");
             assert(false);
-        } catch(exception const &e){}
+        } catch(const std::exception &e){
+            cout << e.what() << endl;
+        }
+
+        // Attempting to set name to lower valid boundary condition
+        cout << "Test 4...";
+        defaultCat.setName("D");
+        assert(strcmp(defaultCat.getName(), "D") == 0);
+        cout << "pass." << endl;
+
+        // Attempting to set name to upper valid boundary condition
+        cout << "Test 5...";
+        defaultCat.setName(MAX_NAME1);
+        assert(strcmp(defaultCat.getName(), MAX_NAME1) == 0);
+        cout << "pass." << endl;
+
+        // Attempting to set name to too long of a name
+        cout << "Test 6..." << endl;
+        try {
+            defaultCat.setName(ILLEGAL_NAME);
+            assert(strcmp(defaultCat.getName(), ILLEGAL_NAME) != 0);
+        } catch(const std::exception &e){
+            cout << e.what() << endl;
+        }
+
+        // >>>>>>>>>>>>>>>>>>>>>>>>>  Gender Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        cout << "Test 7...";
+        enum Gender oldGender = defaultCat.getGender();
+        defaultCat.setGender(MALE);
+        assert(defaultCat.getGender() != oldGender);
+        cout << "pass." << endl;
 
     }
 #endif

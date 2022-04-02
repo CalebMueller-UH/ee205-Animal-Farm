@@ -39,9 +39,7 @@ Weight Cat::getWeight() const
 void Cat::setName(const char *name)
 {
     if(nameIsValid(name))
-    {
-    strcpy(_name, name);
-    }
+        strcpy(_name, name);
 }
 
 void Cat::fixCat(bool catFixed)
@@ -133,7 +131,8 @@ bool Cat::validate() const noexcept
         breedIsValid(_breed);
         // Validate Weight
         weightIsValid(_weight);
-    } catch(exception const& e)
+    }
+    catch(const std::exception& e)
     {
         std::cout << e.what() << std::endl;
         return false;
@@ -144,12 +143,12 @@ bool Cat::validate() const noexcept
 
 bool Cat::nameIsValid(const char* testName) const
 {
-    if (strcmp(testName, nullptr) == 0)
+    if (testName == nullptr)
     {
         throw invalid_argument(PROGRAM_NAME " Name Validation Error: name is set to NULL");
     }
 
-    if (strcmp(testName, "") == 0)
+    if (strlen(testName) <= 0)
     {
         throw length_error(PROGRAM_NAME " Name Validation Error: name is empty");
     }

@@ -14,6 +14,7 @@
 
 #include <iomanip> // For print() formatting
 #include <iostream> // For cout
+#include <exception>  // For try/catch blocks
 
 #include <assert.h> // For assert
 #include <string.h> // For working with C style strings
@@ -71,6 +72,7 @@ public:            /////////////// Public Setters //////////////////
         void setWeight(Weight weight); ///< Set cat weight
 
 protected:            /////////////// Protected Setters ///////////////
+public: ////// @todo Once administrative setter object is implemented change these back to Protected!!
         void setGender(Gender gender); ///< Set cat gender
 
         void setBreed(Breed breed); ///< Set cat breed
