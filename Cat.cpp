@@ -42,9 +42,9 @@ void Cat::setName(const char *name)
         strcpy(_name, name);
 }
 
-void Cat::fixCat(bool catFixed)
+void Cat::fixCat()
 {
-    _catFixed = catFixed;
+    _catFixed = true;
 }
 
 void Cat::setWeight(Weight weight)
@@ -96,18 +96,19 @@ Cat::~Cat()
 /// @returns true if everything worked correctly. false if something goes wrong
 bool Cat::print() const noexcept
 {
+    assert(validate());
 
-assert(validate());
-
-cout << setw(80) << setfill('=') << "" << endl;
-cout << setfill(' ');
-cout << left;
-cout << boolalpha;
-FORMAT_LINE("Cat", "name") << getName() << endl;
-FORMAT_LINE("Cat", "gender") << genderLiteral(getGender()) << endl;
-FORMAT_LINE("Cat", "breed") << breedLiteral(getBreed()) << endl;
-FORMAT_LINE("Cat", "isFixed") << isCatFixed() << endl;
-FORMAT_LINE("Cat", "weight") << getWeight() << endl;
+    using namespace std;
+    cout << endl;
+    cout << setw(80) << setfill('=') << "" << endl;
+    cout << setfill(' ');
+    cout << left;
+    cout << boolalpha;
+    FORMAT_LINE("Cat", "name") << getName() << endl;
+    FORMAT_LINE("Cat", "gender") << genderLiteral(getGender()) << endl;
+    FORMAT_LINE("Cat", "breed") << breedLiteral(getBreed()) << endl;
+    FORMAT_LINE("Cat", "isFixed") << isCatFixed() << endl;
+    FORMAT_LINE("Cat", "weight") << getWeight() << endl;
 
 return true;
 } // End of print()

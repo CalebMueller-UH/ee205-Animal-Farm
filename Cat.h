@@ -67,7 +67,7 @@ public:            /////////////// Getters ///////////////
 public:            /////////////// Public Setters //////////////////
         void setName(const char *name); ///< Set cat name
 
-        void fixCat(bool catFixed); ///< set catFixed to true
+        void fixCat(); ///< set catFixed to true
 
         void setWeight(Weight weight); ///< Set cat weight
 
