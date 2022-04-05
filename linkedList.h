@@ -41,5 +41,7 @@ void deleteAllCats();
 /// @brief Prints all of the Cat objects found in the linked list
 void printAllCats();
 
+Cat* findCatByName(const char* name);
+
 
 #endif //EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_LINKEDLIST_H

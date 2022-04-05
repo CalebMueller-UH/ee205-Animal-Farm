@@ -92,6 +92,7 @@ bool deleteCat(Cat *deleteThisCat)
 
 void deleteAllCats()
 {
+    validateDatabase();
     Cat *currCat = catListHead;
 
     while(catListHead != nullptr)
@@ -100,6 +101,7 @@ void deleteAllCats()
         catListHead = currCat->_next;
         delete currCat;
     }
+    validateDatabase();
 } // End of deleteAllCats()
 
 void printAllCats()
@@ -112,4 +114,20 @@ void printAllCats()
         currCat = currCat->_next;
     }
 } // End of printAllCats()
+
+Cat* findCatByName(const char* testName)
+{
+    Cat *currCat = catListHead;
+
+    while(currCat != nullptr)
+    {
+        if(strcmp(currCat->getName(), testName) == 0)
+        {
+            return currCat;
+        }
+        currCat = currCat->_next;
+    }
+    return nullptr;
+} // End of findCatByName
+
 
