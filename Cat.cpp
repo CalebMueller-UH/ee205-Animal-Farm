@@ -50,25 +50,45 @@ void Cat::fixCat()
 
 void Cat::setWeight(Weight weight)
 {
-    if(weightIsValid(weight))
+    try
     {
-    _weight = weight;
+        if(weightIsValid(weight))
+        {
+            _weight = (Weight)(weight);
+        }
+    }catch(const std::exception &e){
+        cout << e.what() << endl;
     }
+
 }
 
 void Cat::setGender(Gender gender)
 {
-    if(genderIsValid(gender))
+    try
     {
-    _gender = gender;
+        this->genderIsValid(gender);
+    } catch (const std::exception &e){
+        cout << e.what() << endl;
+        return;
+    }
+    if(gender != UNKNOWN_GENDER && _gender == UNKNOWN_GENDER)
+    {
+        _gender = gender;
     }
 }
 
 void Cat::setBreed(Breed breed)
 {
-    if(breedIsValid(breed))
+    try
     {
-    _breed = breed;
+        this->breedIsValid(breed);
+    }catch(const std::exception &e){
+        cout << e.what() << endl;
+        return;
+    }
+    if(breed != UNKNOWN_BREED && _breed == UNKNOWN_BREED)
+    {
+        _breed = breed;
     }
 }
 
@@ -171,7 +191,6 @@ bool Cat::genderIsValid(const enum Gender testGender) const
     {
         throw invalid_argument(PROGRAM_NAME " Gender Validation Error: Gender must not be set to UNKNOWN_GENDER");
     }
-
     return true; // gender is valid
 }
 

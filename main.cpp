@@ -25,7 +25,6 @@ int main() {
     std::cout << "Starting " << PROGRAM_NAME << std::endl;
     std::cout << "==================================================\n" << endl;
 
-
     // Test routine
 #ifdef DEBUG_ENABLE
     {
@@ -37,11 +36,10 @@ int main() {
         assert(defaultCat->getName() != nullptr);
         assert(defaultCat->getGender() == UNKNOWN_GENDER);
         assert(defaultCat->getBreed() == UNKNOWN_BREED);
-        assert(defaultCat->isCatFixed() == false);
-        assert(defaultCat->validate() == false);
+        assert(!defaultCat->isCatFixed());
+        assert(!defaultCat->validate());
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  Name Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        //
         try {
             cout << "Test 2: \n\tAttempting to set _name to nullptr...";
             defaultCat->setName(nullptr);
@@ -51,7 +49,7 @@ int main() {
         }
 
         //
-        cout << "Test 3: \n\tAttempting to set _name to empty string (\"\")...";
+        cout << "Test 3: \n\tAttempting to set _name to empty string (\"\")...\n";
         try {
             defaultCat->setName("");
             assert(false);
@@ -66,15 +64,15 @@ int main() {
         cout << " pass." << endl;
 
         //
-        cout << "Test 5: \n\tAttempting to set name to a name with MAX_NAME_LEN...";
+        cout << "Test 5: \n\tAttempting to set name to a name with (MAX_NAME_LEN -1)...";
         char MAX_NAME1[MAX_NAME_LEN];
-        memset(MAX_NAME1, 'A', MAX_NAME_LEN);
+        memset(MAX_NAME1, 'A', MAX_NAME_LEN-1);
         defaultCat->setName(MAX_NAME1);
         assert(strcmp(defaultCat->getName(), MAX_NAME1) == 0);
         cout << " pass." << endl;
 
         //
-        cout << "Test 6: \n\tTesting setName() with too long of a name...";
+        cout << "Test 6: \n\tTesting setName() with too long of a name...\n";
         try {
             char ILLEGAL_NAME[MAX_NAME_LEN + 1];
             memset(ILLEGAL_NAME, 'A', MAX_NAME_LEN+1);
@@ -87,31 +85,29 @@ int main() {
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setGender() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         // @todo Change test once administrative management object is implemented
         cout << "Test 7: \n\tTesting setGender...";
-        enum Gender oldGender = defaultCat->getGender();
-        enum Gender newGender = MALE;
-        defaultCat->setGender(newGender);
-        assert(defaultCat->getGender() != oldGender);
-        assert(defaultCat->getGender() == newGender);
+        defaultCat->setGender(MALE);
+        assert(defaultCat->getGender() == MALE);
+        defaultCat->setGender(FEMALE);
+        assert(defaultCat->getGender() != FEMALE);
         cout << " pass." << endl;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setBreed() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         // @todo Change test once administrative management object is implemented
         cout << "Test 8: \n\tTesting setBreed()...";
-        enum Breed oldBreed = defaultCat->getBreed();
-        enum Breed newBreed = MANX;
-        defaultCat->setBreed(newBreed);
-        assert(defaultCat->getBreed() != oldBreed);
-        assert(defaultCat->getBreed() == newBreed);
+        defaultCat->setBreed(MANX);
+        assert(defaultCat->getBreed() != UNKNOWN_BREED);
+        defaultCat->setBreed(SHORTHAIR);
+        assert(defaultCat->getBreed() != SHORTHAIR);
         cout << " pass." << endl;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  fixCat() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         cout << "Test 9: \n\tTesting fixCat()...";
+        assert(!defaultCat->isCatFixed());
         defaultCat->fixCat();
-        assert(defaultCat->isCatFixed() == true);
+        assert(defaultCat->isCatFixed());
         cout << " pass." << endl;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setWeight Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
         cout << "Test 10: \n\tAttempting to set _weight to an invalid value less than 0...";
         try {
             defaultCat->setWeight(-5.0);
@@ -119,7 +115,7 @@ int main() {
             cout << e.what() << endl;
         }
 
-
+        //
         cout << "Test 11: \n\tAttempting to set _weight to an invalid value of 0...";
         try {
             defaultCat->setWeight(0.0);
@@ -127,7 +123,7 @@ int main() {
             cout << e.what() << endl;
         }
 
-
+        //
         cout << "Test 12: \n\tAttempting to set _weight to an invalid value greater than MAX_CAT_WEIGHT...";
         try {
             defaultCat->setWeight(MAX_CAT_WEIGHT + 1.0);
@@ -135,9 +131,11 @@ int main() {
             cout << e.what() << endl;
         }
 
+        //
         cout << "Test 13: \n\tAttempting to set _weight to a valid decimal value...";
-        defaultCat->setWeight(3.14159);
-        assert(defaultCat->getWeight() == (Weight) 3.14159);
+        defaultCat->setWeight(1/(float)1024);
+        cout << defaultCat->getWeight() << endl;
+        assert(defaultCat->getWeight() ==  1/(float)1024);
         cout << " pass." << endl;
 
         // All member variables have been assigned valid entries
@@ -146,7 +144,7 @@ int main() {
         assert(defaultCat->validate());
         defaultCat->print();
 
-
+        //
         cout << "\nTest 15: \n\tTesting zeroize() for destructor to see if parameter fields properly set to specified values...";
         defaultCat->zeroize();
         char zeroName[MAX_NAME_LEN];
@@ -154,7 +152,7 @@ int main() {
         assert(strcmp(defaultCat->getName(), zeroName) == 0);
         assert(defaultCat->getGender() == UNKNOWN_GENDER);
         assert(defaultCat->getBreed() == UNKNOWN_BREED);
-        assert(defaultCat->isCatFixed() == false);
+        assert(!defaultCat->isCatFixed());
         assert(defaultCat->getWeight() == UNKNOWN_WEIGHT);
         cout << " pass." << endl;
 
@@ -192,6 +190,7 @@ int main() {
         //
         cout << "Test 20: \n\tTesting deleteCat...";
         assert(deleteCat(dynamo));
+        assert(!deleteCat(dynamo));
         cout << " pass." << endl;
 
         //
@@ -224,25 +223,23 @@ int main() {
         assert(findCatByName("Mario") == nullptr);
         cout << " pass." << endl;
 
+        // genderLiteral testing
+        assert(strcmp(genderLiteral(UNKNOWN_GENDER), "UNKNOWN_GENDER") == 0);
+        assert(strcmp(genderLiteral(MALE), "MALE") == 0);
+        assert(strcmp(genderLiteral(FEMALE), "FEMALE") == 0);
 
-
-
-
-
-
-
-
-
-
-
+        // breedLiteral testing
+        assert(strcmp(breedLiteral(UNKNOWN_BREED), "UNKNOWN_BREED") == 0);
+        assert(strcmp(breedLiteral(MAINE_COON), "MAINE_COON") == 0);
+        assert(strcmp(breedLiteral(MANX), "MANX") == 0);
+        assert(strcmp(breedLiteral(SHORTHAIR), "SHORTHAIR") == 0);
+        assert(strcmp(breedLiteral(PERSIAN), "PERSIAN") == 0);
+        assert(strcmp(breedLiteral(SPHYNX), "SPHYNX") == 0);
     }
 #endif
     // End of Test routine
 
-
-
     // Release Code
-
     Cat *loki = new Cat("Loki",  MALE,  PERSIAN,  1.0);
     Cat *milo = new Cat("Milo",  FEMALE,  MANX,  1.1);
     Cat *bella = new Cat("Bella",  FEMALE,  MAINE_COON,  1.2);
@@ -260,35 +257,10 @@ int main() {
     printAllCats();
     deleteAllCats();
     printAllCats();
-
     // End of Release Code
 
     std::cout << "\n==================================================" << endl;
     std::cout << "Done with " << PROGRAM_NAME << std::endl;
-
-    /*
-    // genderLiteral testing
-    assert(strcmp(genderLiteral(UNKNOWN_GENDER), "UNKNOWN_GENDER") == 0);
-    assert(strcmp(genderLiteral(MALE), "MALE") == 0);
-    assert(strcmp(genderLiteral(FEMALE), "FEMALE") == 0);
-
-    // breedLiteral testing
-    assert(strcmp(breedLiteral(UNKNOWN_BREED), "UNKNOWN_BREED") == 0);
-    assert(strcmp(breedLiteral(MAINE_COON), "MAINE_COON") == 0);
-    assert(strcmp(breedLiteral(MANX), "MANX") == 0);
-    assert(strcmp(breedLiteral(SHORTHAIR), "SHORTHAIR") == 0);
-    assert(strcmp(breedLiteral(PERSIAN), "PERSIAN") == 0);
-    assert(strcmp(breedLiteral(SPHYNX), "SPHYNX") == 0);
-
-    // colorLiteral testing
-    assert(strcmp(colorLiteral(UNASSIGNED), "UNASSIGNED") == 0);
-    assert(strcmp(colorLiteral(BLACK), "BLACK") == 0);
-    assert(strcmp(colorLiteral(WHITE), "WHITE") == 0);
-    assert(strcmp(colorLiteral(RED), "RED") == 0);
-    assert(strcmp(colorLiteral(BLUE), "BLUE") == 0);
-    assert(strcmp(colorLiteral(GREEN), "GREEN") == 0);
-    assert(strcmp(colorLiteral(PINK), "PINK") == 0);
-     */
 
     return 0;
 }
