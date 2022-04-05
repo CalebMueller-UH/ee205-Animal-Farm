@@ -17,14 +17,7 @@
 #include "config.h"
 #include "Cat.h"
 #include "catDatabase.h"
-#include "addCats.h"
-#include "reportCats.h"
-#include "updateCats.h"
-#include "deleteCats.h"
-
-#define MAX_NAME1 "123456789012345678901234567890"
-#define MAX_NAME2 "DIFFERENT 123456789012345678901234567890123456789"
-#define ILLEGAL_NAME "12345678901234567890123456789012345678901234567890"
+#include "linkedList.h"
 
 using namespace std;
 

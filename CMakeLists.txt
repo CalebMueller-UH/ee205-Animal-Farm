@@ -10,6 +10,7 @@ add_executable(
         catDatabase.h catDatabase.cpp
         config.h
         deleteCats.h deleteCats.cpp
+        linkedList.h linkedList.cpp
         reportCats.h reportCats.cpp
         updateCats.h updateCats.cpp
         validate.h validate.cpp )
