@@ -22,14 +22,13 @@
 using namespace std;
 
 int main() {
-    std::cout << "Starting Animal Farm 2" << std::endl;
+    std::cout << "Starting " << PROGRAM_NAME << std::endl;
+    std::cout << "==================================================\n" << endl;
+
 
     // Test routine
 #ifdef DEBUG_ENABLE
     {
-
-        cout << "Beginning Animal Farm Test Routine..." << endl;
-
         //
         cout << "Test 1: \n\tConstructing a cat with default constructor and checking for\n\t"
                 "proper default member variable assignment...\n";
@@ -234,9 +233,14 @@ int main() {
 
 
 
+
+
     }
 #endif
     // End of Test routine
+
+    std::cout << "\n==================================================" << endl;
+    std::cout << "Done with " << PROGRAM_NAME << std::endl;
 
     /*
     printf("\nStarting Animal Farm 1\n");
