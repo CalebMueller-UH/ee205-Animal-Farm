@@ -56,7 +56,11 @@ bool validateDatabase()
     Cat *currCat = catListHead;
     while(currCat != nullptr)
     {
-        currCat->validate();
+        cout << "Validating " << currCat->getName() << endl;
+        if(!currCat->validate())
+        {
+            return false;
+        }
         currCat = currCat->_next;
     }
     return true;

@@ -177,6 +177,18 @@ int main() {
             cout << e.what() << endl;
         }
 
+        cout << "Test 19: \n\tTesting validateDatabase()...";
+        assert(validateDatabase());
+        cout << " pass." << endl;
+
+        cout << "Test 20: \n\tAttempting to validateDatabase() after manually setting a parameter to an invalid value...\n";
+        dynamo->zeroize();
+        try {
+            assert(!validateDatabase());
+        }catch(const std::exception &e){
+            cout << e.what() << endl;
+        }
+
 
 
 
