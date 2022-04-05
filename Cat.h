@@ -3,13 +3,13 @@
 /// @brief  ee205-Animal-Farm - EE 205 - Spr 2022
 ///
 /// @file Cat.h
-/// @version 1.0
+/// @version 2.0
 ///
 /// @author Caleb Mueller <mc61@hawaii.edu>
 /// @date   02_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
-#ifndef EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_CAT_H
-#define EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_CAT_H
+#ifndef EE205_ANIMAL_FARM_CAT_H
+#define EE205_ANIMAL_FARM_CAT_H
 
 
 #include <iomanip> // For print() formatting
@@ -113,4 +113,4 @@ const char *genderLiteral(const enum Gender gender);
 /// Returns a character literal for use in communicating the breed of a cat to the user
 const char *breedLiteral(const enum Breed breed);
 
-#endif //EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_CAT_H
+#endif //EE205_ANIMAL_FARM_CAT_H
