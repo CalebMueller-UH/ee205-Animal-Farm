@@ -31,17 +31,6 @@ bool addCat(Cat* newCat)
     return true;
 }
 
-
-/// @return True if successful, else False
-/// @throws logic_error if newCat is already in database
-bool addCat(const char *name, Gender gender, Breed breed, Weight weight)
-{
-    Cat* aNewCat = new Cat(name, gender, breed, weight);
-
-    bool addWasSuccessful = addCat(aNewCat);
-    return addWasSuccessful;
-}
-
 bool catIsInDatabase(Cat *tCat)
 {
     Cat* curCat = catListHead;
@@ -61,7 +50,6 @@ bool validateDatabase()
     Cat *currCat = catListHead;
     while(currCat != nullptr)
     {
-        cout << "Validating " << currCat->getName() << endl;
         if(!currCat->validate())
         {
             return false;
@@ -98,5 +86,16 @@ bool deleteCat(Cat *deleteThisCat)
         currCat = currCat->_next;
     }
     return false; // Was not able to find specified Cat object to delete
+} // End of deleteCat()
+
+void printAllCats()
+{
+    Cat *currCat = catListHead;
+
+    while(currCat != nullptr)
+    {
+        currCat->print();
+        currCat = currCat->_next;
+    }
 }
 

@@ -30,7 +30,6 @@ int main() {
 
         cout << "Beginning Animal Farm Test Routine..." << endl;
 
-        /*
         //
         cout << "Test 1: \n\tConstructing a cat with default constructor and checking for\n\t"
                 "proper default member variable assignment...\n";
@@ -69,6 +68,8 @@ int main() {
 
         //
         cout << "Test 5: \n\tAttempting to set name to a name with MAX_NAME_LEN...";
+        char MAX_NAME1[MAX_NAME_LEN];
+        memset(MAX_NAME1, 'A', MAX_NAME_LEN);
         defaultCat->setName(MAX_NAME1);
         assert(strcmp(defaultCat->getName(), MAX_NAME1) == 0);
         cout << " pass." << endl;
@@ -76,6 +77,8 @@ int main() {
         //
         cout << "Test 6: \n\tTesting setName() with too long of a name...";
         try {
+            char ILLEGAL_NAME[MAX_NAME_LEN + 1];
+            memset(ILLEGAL_NAME, 'A', MAX_NAME_LEN+1);
             defaultCat->setName(ILLEGAL_NAME);
             assert(strcmp(defaultCat->getName(), ILLEGAL_NAME) != 0);
         } catch (const std::exception &e) {
@@ -156,18 +159,14 @@ int main() {
         assert(defaultCat->getWeight() == UNKNOWN_WEIGHT);
         cout << " pass." << endl;
 
-        */
-
-        cout << "Test 16: \n\tTesting explicit addCat with explicitly provided parameters...";
-        assert(addCat("Sprinkles", FEMALE, SHORTHAIR, 8.2));
-        cout << " pass." << endl;
-
-        cout << "Test 17: \n\tTesting implicit addCat by passing in an already existing dynamic Cat object...";
+        //
+        cout << "Test 16: \n\tTesting implicit addCat by passing in an already existing dynamic Cat object...";
         Cat *dynamo = new Cat("Dynamo", MALE, PERSIAN, 6.00);
         assert(addCat(dynamo));
         cout << " pass." << endl;
 
-        cout << "Test 18: \n\tAttempting to add the same dynamic Cat object again; this should throw an error...\n";
+        //
+        cout << "Test 17: \n\tAttempting to add the same dynamic Cat object again; this should throw an error...\n";
         try
         {
             assert(!addCat(dynamo));
@@ -177,17 +176,35 @@ int main() {
             cout << e.what() << endl;
         }
 
-        cout << "Test 19: \n\tTesting validateDatabase()...";
+        //
+        cout << "Test 18: \n\tTesting validateDatabase()...";
         assert(validateDatabase());
         cout << " pass." << endl;
 
-        cout << "Test 20: \n\tAttempting to validateDatabase() after manually setting a parameter to an invalid value...\n";
+        //
+        cout << "Test 19: \n\tAttempting to validateDatabase() after manually setting a parameter to an invalid value...\n";
         dynamo->zeroize();
         try {
             assert(!validateDatabase());
         }catch(const std::exception &e){
             cout << e.what() << endl;
         }
+
+        //
+        cout << "Test 20: \n\tTesting deleteCat...";
+        assert(deleteCat(dynamo));
+        cout << " pass." << endl;
+
+        //
+        cout << "Test 21: \n\tTesting printAllCats(), by iterating over some added cats..." << endl;
+        Cat *a = new Cat("A", MALE, MAINE_COON, 5);
+        Cat *b = new Cat("B", MALE, MAINE_COON, 5);
+        Cat *c = new Cat("C", MALE, MAINE_COON, 5);
+        addCat(a);
+        addCat(b);
+        addCat(c);
+        printAllCats();
+
 
 
 

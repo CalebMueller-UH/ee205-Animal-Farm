@@ -97,7 +97,6 @@ bool Cat::print() const noexcept
     assert(validate());
 
     using namespace std;
-    cout << endl;
     cout << setw(80) << setfill('=') << "" << endl;
     cout << setfill(' ');
     cout << left;
