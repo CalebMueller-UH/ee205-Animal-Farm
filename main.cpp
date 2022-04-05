@@ -41,7 +41,7 @@ int main() {
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  Name Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         try {
-            cout << "Test 2: \n\tAttempting to set _name to nullptr...";
+            cout << "Test 2: \n\tAttempting to set _name to nullptr...\n";
             defaultCat->setName(nullptr);
             assert(false);
         } catch (const std::exception &e) {
@@ -134,13 +134,12 @@ int main() {
         //
         cout << "Test 13: \n\tAttempting to set _weight to a valid decimal value...";
         defaultCat->setWeight(1/(float)1024);
-        cout << defaultCat->getWeight() << endl;
         assert(defaultCat->getWeight() ==  1/(float)1024);
         cout << " pass." << endl;
 
         // All member variables have been assigned valid entries
         // validate() should now yield success
-        cout << "Test 14: \n\tprint()";
+        cout << "Test 14: \n\tTesting print() method of Cat class\n";
         assert(defaultCat->validate());
         defaultCat->print();
 
@@ -195,12 +194,13 @@ int main() {
 
         //
         cout << "Test 21: \n\tTesting printAllCats(), by iterating over some added cats..." << endl;
-        Cat *a = new Cat("A", MALE, MAINE_COON, 5);
-        Cat *b = new Cat("B", MALE, MAINE_COON, 5);
-        Cat *c = new Cat("C", MALE, MAINE_COON, 5);
-        addCat(a);
-        addCat(b);
-        addCat(c);
+        {
+            Cat *a = new Cat("A", MALE, MAINE_COON, 5);
+            Cat *b = new Cat("B", MALE, MAINE_COON, 5);
+            Cat *c = new Cat("C", MALE, MAINE_COON, 5);
+            addCat(a);
+            addCat(b);
+            addCat(c);
         printAllCats();
 
         //
@@ -214,14 +214,18 @@ int main() {
         printAllCats();
         assert(catListHead == nullptr);
         cout << " pass." << endl;
+        }
 
-        //
-        cout << "Test 24: \n\tTesting findCatByName...";
-        Cat *z = new Cat("Z", MALE, MAINE_COON, 5);
-        addCat(z);
-        assert(findCatByName("Z") == z);
-        assert(findCatByName("Mario") == nullptr);
-        cout << " pass." << endl;
+        {
+            //
+            cout << "Test 24: \n\tTesting findCatByName...";
+            Cat *z = new Cat("Z", MALE, MAINE_COON, 5);
+            addCat(z);
+            assert(findCatByName("Z") == z);
+            assert(findCatByName("Mario") == nullptr);
+            cout << " pass." << endl;
+            deleteAllCats();
+        }
 
         // genderLiteral testing
         assert(strcmp(genderLiteral(UNKNOWN_GENDER), "UNKNOWN_GENDER") == 0);
