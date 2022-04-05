@@ -61,6 +61,7 @@ bool validateDatabase()
 
 bool deleteCat(Cat *deleteThisCat)
 {
+    validateDatabase();
     Cat *prevCat = nullptr;
     Cat *currCat = catListHead;
 
@@ -80,6 +81,7 @@ bool deleteCat(Cat *deleteThisCat)
             // Splice out and delete
             prevCat->_next = currCat->_next;
             delete currCat;
+            validateDatabase();
             return true;
         }
         prevCat = currCat;
@@ -87,6 +89,18 @@ bool deleteCat(Cat *deleteThisCat)
     }
     return false; // Was not able to find specified Cat object to delete
 } // End of deleteCat()
+
+void deleteAllCats()
+{
+    Cat *currCat = catListHead;
+
+    while(catListHead != nullptr)
+    {
+        currCat = catListHead;
+        catListHead = currCat->_next;
+        delete currCat;
+    }
+} // End of deleteAllCats()
 
 void printAllCats()
 {
@@ -97,5 +111,5 @@ void printAllCats()
         currCat->print();
         currCat = currCat->_next;
     }
-}
+} // End of printAllCats()
 

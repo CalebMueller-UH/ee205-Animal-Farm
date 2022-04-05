@@ -205,6 +205,11 @@ int main() {
         addCat(c);
         printAllCats();
 
+        //
+        cout << "Test 22: \n\tTesting deleteCat again on the b object and verifying that it has been propertly removed...";
+        assert(deleteCat(b));
+        printAllCats();
+
 
 
 

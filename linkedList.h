@@ -34,6 +34,10 @@ bool validateDatabase();
 /// @returns true if operation was successful, else false
 bool deleteCat(Cat *deleteThisCat);
 
+/// @brief Deletes all cats within the linked list
+
+void deleteAllCats();
+
 /// @brief Prints all of the Cat objects found in the linked list
 void printAllCats();
 
