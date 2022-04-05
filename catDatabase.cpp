@@ -12,74 +12,47 @@
 
 #include "config.h"
 
-/*
-NumCats currentNumberOfCats = 0;
+/// Head pointer for linked list of cats
+Cat *catListHead = nullptr;
 
-struct Cat cats[MAX_CATS];
-
-void initializeDatabase()
+/// @return True if successful, else False
+/// @throws logic_error if newCat is already in database
+bool addCat(Cat* newCat)
 {
-    currentNumberOfCats = 0;
-    memset(&cats, 0, sizeof(cats));
-}
+    assert(newCat != nullptr);
+    newCat ->validate();
 
-char *genderLiteral(const enum Gender gender)
-{
-    switch (gender)
+    /*
+    if(catIsInDatabase(newCat))
     {
-        case (UNKNOWN_GENDER):
-            return "UNKNOWN_GENDER";
-        case (MALE):
-            return "MALE";
-        case (FEMALE):
-            return "FEMALE";
-        default:
-            return "\0"; //
+        throw logic_error( PROGRAM_NAME ": Cat is already in database!");
     }
+    */
+    return true;
 }
 
-char *breedLiteral(const enum Breed breed)
+
+/// @return True if successful, else False
+/// @throws logic_error if newCat is already in database
+bool addCat(const char *name, Gender gender, Breed breed, Weight weight)
 {
-    switch (breed)
-    {
-        case (UNKNOWN_BREED):
-            return "UNKNOWN_BREED";
-        case (MAINE_COON):
-            return "MAINE_COON";
-        case (MANX):
-            return "MANX";
-        case (SHORTHAIR):
-            return "SHORTHAIR";
-        case (PERSIAN):
-            return "PERSIAN";
-        case (SPHYNX):
-            return "SPHYNX";
-        default:
-            return "\0";
-    }
+    Cat* aNewCat = new Cat(name, gender, breed, weight);
+
+    bool addWasSuccessful = addCat(aNewCat);
+    return addWasSuccessful;
 }
 
-char *colorLiteral(const enum Color color)
+bool catIsInDatabase(Cat *tCat)
 {
-    switch (color)
+    Cat* curCat = catListHead;
+    while(curCat != nullptr)
     {
-        case (UNASSIGNED):
-            return "UNASSIGNED";
-        case (BLACK):
-            return "BLACK";
-        case (WHITE):
-            return "WHITE";
-        case (RED):
-            return "RED";
-        case (BLUE):
-            return "BLUE";
-        case (GREEN):
-            return "GREEN";
-        case (PINK):
-            return "PINK";
-        default:
-            return "\0";
+        if(tCat == curCat)
+        {
+            return false; // Duplicate found, cat already exists in database
+        }
+        curCat = curCat->_next;
     }
+    return true;
 }
 
- */

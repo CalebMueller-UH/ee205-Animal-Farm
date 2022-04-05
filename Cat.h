@@ -23,7 +23,7 @@
 
 using namespace std;
 
-#define EMPTY_NAME ""
+
 
 enum Gender {
     UNKNOWN_GENDER,

@@ -70,13 +70,13 @@ int main(void) {
         cout << "Test 4: \n\tAttempting to set name to lower valid boundary condition...";
         defaultCat->setName("D");
         assert(strcmp(defaultCat->getName(), "D") == 0);
-        cout << "pass." << endl;
+        cout << " pass." << endl;
 
         //
         cout << "Test 5: \n\tAttempting to set name to a name with MAX_NAME_LEN...";
         defaultCat->setName(MAX_NAME1);
         assert(strcmp(defaultCat->getName(), MAX_NAME1) == 0);
-        cout << "pass." << endl;
+        cout << " pass." << endl;
 
         //
         cout << "Test 6: \n\tTesting setName() with too long of a name...";
@@ -95,7 +95,7 @@ int main(void) {
         defaultCat->setGender(newGender);
         assert(defaultCat->getGender() != oldGender);
         assert(defaultCat->getGender() == newGender);
-        cout << "pass." << endl;
+        cout << " pass." << endl;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setBreed() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         // @todo Change test once administrative management object is implemented
@@ -105,13 +105,13 @@ int main(void) {
         defaultCat->setBreed(newBreed);
         assert(defaultCat->getBreed() != oldBreed);
         assert(defaultCat->getBreed() == newBreed);
-        cout << "pass." << endl;
+        cout << " pass." << endl;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  fixCat() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         cout << "Test 9: \n\tTesting fixCat()...";
         defaultCat->fixCat();
         assert(defaultCat->isCatFixed() == true);
-        cout << "pass." << endl;
+        cout << " pass." << endl;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setWeight Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -150,7 +150,7 @@ int main(void) {
         defaultCat->print();
 
 
-        cout << "\nTest 15: \n\tTesting destructor to see if parameter fields properly zeroize...";
+        cout << "\nTest 15: \n\tTesting zeroize() for destructor to see if parameter fields properly set to specified values...";
         defaultCat->zeroize();
         char zeroName[MAX_NAME_LEN];
         memset(zeroName, '0', MAX_NAME_LEN);

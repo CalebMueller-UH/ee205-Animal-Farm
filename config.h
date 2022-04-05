@@ -15,16 +15,18 @@
 
 #define PROGRAM_NAME "Animal Farm 2"
 
-#define BAD_CAT -1
+/// Default name given to a cat upon instantiation if not specified
+#define DEFAULT_NAME ""
 
 /// Maximum Name Length that a cat is allowed to have
 #define MAX_NAME_LEN 30
 
 /// Maximum Weight that a cat is allowed to have
-#define MAX_CAT_WEIGHT 1000.0
+#define MAX_CAT_WEIGHT 100.0
 
 /// Default weight of a cat before being assigned
 #define UNKNOWN_WEIGHT -1
+
 
 /// Format a line for printing the members of a class
 #define FORMAT_LINE(className, member) cout << setw(8) << (className) << setw(10) << (member) << setw(52)

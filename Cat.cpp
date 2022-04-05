@@ -10,7 +10,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include "Cat.h"
 
-
 const char *Cat::getName() const
 {
     return _name;
@@ -84,7 +83,7 @@ Cat::Cat(const char *name, Gender gender, Breed breed, Weight weight) :
 
 /// Default Cat constructor initializes member variables to default values given in spec document
 Cat::Cat() :
-        Cat{EMPTY_NAME ,UNKNOWN_GENDER, UNKNOWN_BREED, UNKNOWN_WEIGHT}{
+        Cat{DEFAULT_NAME ,UNKNOWN_GENDER, UNKNOWN_BREED, UNKNOWN_WEIGHT}{
 } // End of default constructor
 
 Cat::~Cat()

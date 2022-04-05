@@ -12,71 +12,20 @@
 #define EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_CATDATABASE_H
 
 #include <stdio.h>
-#include <stdbool.h>
+#include <exception>  // For try/catch blocks
+#include <assert.h> // For assert
 #include <string.h>
 
-#include <time.h> //For Birthday
-#include <locale.h>
+#include "Cat.h"
+#include "config.h"
 
-/*
-#define MAX_CATS 1024
-#define MAX_NAME_LEN 50
-#define MAX_CAT_WEIGHT 1000
+extern Cat *catListHead;
 
-typedef float Weight;
+bool addCat(Cat *newCat);
 
-typedef size_t NumCats;
+bool addCat(const char *name, Gender gender, Breed breed, Weight weight);
 
-extern NumCats currentNumberOfCats;
+bool catIsInDatabase(Cat *tCat);
 
-enum Gender
-{
-    UNKNOWN_GENDER,
-    MALE,
-    FEMALE
-};
 
-enum Breed
-{
-    UNKNOWN_BREED,
-    MAINE_COON,
-    MANX,
-    SHORTHAIR,
-    PERSIAN,
-    SPHYNX
-};
-
-enum Color
-{
-    UNASSIGNED,
-    BLACK,
-    WHITE,
-    RED,
-    BLUE,
-    GREEN,
-    PINK
-};
-
-struct Cat
-{
-    char name[MAX_NAME_LEN];
-    enum Gender gender;
-    enum Breed breed;
-    Weight weight;
-    bool isFixed;
-    enum Color collarColor1;
-    enum Color collarColor2;
-    unsigned long long license;
-};
-
-extern struct Cat cats[];
-
-extern void initializeDatabase();
-
-char *genderLiteral(const enum Gender gender);
-
-char *breedLiteral(const enum Breed breed);
-
-char *colorLiteral(const enum Color color);
-*/
 #endif //EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_CATDATABASE_H
