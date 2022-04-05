@@ -26,6 +26,8 @@ bool addCat(const char *name, Gender gender, Breed breed, Weight weight);
 
 bool catIsInDatabase(Cat *tCat);
 
-// validateDatabase()Iterate over every cat and call validate()
+/// @brief Iterates over every cat in the linked list and calls validate()
+/// @returns true if all members of the linked list are valid, else false
+bool validateDatabase();
 
 #endif //EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_LINKEDLIST_H

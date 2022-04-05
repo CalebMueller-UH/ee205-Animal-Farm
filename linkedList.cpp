@@ -50,3 +50,14 @@ bool catIsInDatabase(Cat *tCat)
     }
     return false;
 }
+
+bool validateDatabase()
+{
+    Cat *currCat = catListHead;
+    while(currCat != nullptr)
+    {
+        currCat->validate();
+        currCat = currCat->_next;
+    }
+    return true;
+}
