@@ -210,6 +210,14 @@ int main() {
         assert(deleteCat(b));
         printAllCats();
 
+        //
+        cout << "\nTest 23: \n\tTesting deleteAllCats()...";
+        deleteAllCats();
+        printAllCats();
+        assert(catListHead == nullptr);
+        cout << " pass." << endl;
+
+
 
 
 
