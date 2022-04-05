@@ -22,12 +22,12 @@ bool addCat(Cat* newCat)
     assert(newCat != nullptr);
     newCat ->validate();
 
-    /*
     if(catIsInDatabase(newCat))
     {
-        throw logic_error( PROGRAM_NAME ": Cat is already in database!");
+        throw logic_error( PROGRAM_NAME " addCat Error: Cat is already in database!");
     }
-    */
+    newCat->_next = catListHead;
+    catListHead = newCat;
     return true;
 }
 
@@ -49,10 +49,10 @@ bool catIsInDatabase(Cat *tCat)
     {
         if(tCat == curCat)
         {
-            return false; // Duplicate found, cat already exists in database
+            return true; // Duplicate found, cat already exists in database
         }
         curCat = curCat->_next;
     }
-    return true;
+    return false;
 }
 

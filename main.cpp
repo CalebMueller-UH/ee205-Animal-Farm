@@ -26,16 +26,18 @@
 #define MAX_NAME2 "DIFFERENT 123456789012345678901234567890123456789"
 #define ILLEGAL_NAME "12345678901234567890123456789012345678901234567890"
 
-int main(void) {
+using namespace std;
+
+int main() {
     std::cout << "Starting Animal Farm 2" << std::endl;
 
     // Test routine
 #ifdef DEBUG_ENABLE
     {
-        using namespace std;
 
         cout << "Beginning Animal Farm Test Routine..." << endl;
 
+        /*
         //
         cout << "Test 1: \n\tConstructing a cat with default constructor and checking for\n\t"
                 "proper default member variable assignment...\n";
@@ -160,6 +162,29 @@ int main(void) {
         assert(defaultCat->isCatFixed() == false);
         assert(defaultCat->getWeight() == UNKNOWN_WEIGHT);
         cout << " pass." << endl;
+
+        */
+
+        cout << "Test 16: \n\tTesting explicit addCat with explicitly provided parameters...";
+        assert(addCat("Sprinkles", FEMALE, SHORTHAIR, 8.2));
+        cout << " pass." << endl;
+
+        cout << "Test 17: \n\tTesting implicit addCat by passing in an already existing dynamic Cat object...";
+        Cat *dynamo = new Cat("Dynamo", MALE, PERSIAN, 6.00);
+        assert(addCat(dynamo));
+        cout << " pass." << endl;
+
+        cout << "Test 18: \n\tAttempting to add the same dynamic Cat object again; this should throw an error...\n";
+        try
+        {
+            assert(!addCat(dynamo));
+        }
+        catch(const std::exception &e)
+        {
+            cout << e.what() << endl;
+        }
+
+
 
 
 
