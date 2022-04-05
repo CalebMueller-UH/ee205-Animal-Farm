@@ -217,6 +217,14 @@ int main() {
         assert(catListHead == nullptr);
         cout << " pass." << endl;
 
+        //
+        cout << "Test 24: \n\tTesting findCatByName...";
+        Cat *z = new Cat("Z", MALE, MAINE_COON, 5);
+        addCat(z);
+        assert(findCatByName("Z") == z);
+        assert(findCatByName("Mario") == nullptr);
+        cout << " pass." << endl;
+
 
 
 
