@@ -14,6 +14,8 @@
 /// @throws logic_error if newCat is already in database
 bool addCat(Cat* newCat)
 {
+    validateDatabase();
+
     assert(newCat != nullptr);
     newCat ->validate();
 
@@ -21,8 +23,11 @@ bool addCat(Cat* newCat)
     {
         throw logic_error( PROGRAM_NAME " addCat Error: Cat is already in database!");
     }
+
     newCat->_next = catListHead;
     catListHead = newCat;
+
+    validateDatabase();
     return true;
 }
 
@@ -65,3 +70,33 @@ bool validateDatabase()
     }
     return true;
 }
+
+bool deleteCat(Cat *deleteThisCat)
+{
+    Cat *prevCat = nullptr;
+    Cat *currCat = catListHead;
+
+    while(currCat != nullptr)
+    {
+        if(currCat == deleteThisCat)
+        {
+            // Check for special case where deleteThisCat is the head item in the list
+            if(currCat->_next == nullptr && prevCat == nullptr)
+            {
+                catListHead = currCat->_next;
+                delete currCat;
+                return true; //
+            }
+
+            // Found the cat to be deleted, and isn't head of list
+            // Splice out and delete
+            prevCat->_next = currCat->_next;
+            delete currCat;
+            return true;
+        }
+        prevCat = currCat;
+        currCat = currCat->_next;
+    }
+    return false; // Was not able to find specified Cat object to delete
+}
+
