@@ -28,9 +28,10 @@ int main() {
     // Test routine
 #ifdef DEBUG_ENABLE
     {
+        int testNum = 0;
         //
-        cout << "Test 1: \n\tConstructing a cat with default constructor and checking for\n\t"
-                "proper default member variable assignment...\n";
+        cout << "\n>>Test " << testNum << ": \n\tConstructing a cat with default constructor and\n\t"
+                "checking for proper default member variable assignment...\n";
         Cat *defaultCat = new Cat();
         assert(strcmp(defaultCat->getName(), "") == 0);
         assert(defaultCat->getName() != nullptr);
@@ -41,7 +42,8 @@ int main() {
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  Name Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         try {
-            cout << "Test 2: \n\tAttempting to set _name to nullptr...\n";
+            testNum++;
+            cout << "\n>>Test " << testNum << ": \n\tAttempting to set _name to nullptr...\n";
             defaultCat->setName(nullptr);
             assert(false);
         } catch (const std::exception &e) {
@@ -49,7 +51,8 @@ int main() {
         }
 
         //
-        cout << "Test 3: \n\tAttempting to set _name to empty string (\"\")...\n";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tAttempting to set _name to empty string (\"\")...\n";
         try {
             defaultCat->setName("");
             assert(false);
@@ -58,13 +61,15 @@ int main() {
         }
 
         //
-        cout << "Test 4: \n\tAttempting to set name to lower valid boundary condition...";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tAttempting to set name to lower valid boundary condition...\n";
         defaultCat->setName("D");
         assert(strcmp(defaultCat->getName(), "D") == 0);
         cout << " pass." << endl;
 
         //
-        cout << "Test 5: \n\tAttempting to set name to a name with (MAX_NAME_LEN -1)...";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tAttempting to set name to a name with (MAX_NAME_LEN -1)...\n";
         char MAX_NAME1[MAX_NAME_LEN];
         memset(MAX_NAME1, 'A', MAX_NAME_LEN-1);
         defaultCat->setName(MAX_NAME1);
@@ -72,7 +77,8 @@ int main() {
         cout << " pass." << endl;
 
         //
-        cout << "Test 6: \n\tTesting setName() with too long of a name...\n";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tTesting setName() with too long of a name...\n";
         try {
             char ILLEGAL_NAME[MAX_NAME_LEN + 1];
             memset(ILLEGAL_NAME, 'A', MAX_NAME_LEN+1);
@@ -84,7 +90,8 @@ int main() {
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setGender() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         // @todo Change test once administrative management object is implemented
-        cout << "Test 7: \n\tTesting setGender...";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tTesting setGender...\n";
         defaultCat->setGender(MALE);
         assert(defaultCat->getGender() == MALE);
         defaultCat->setGender(FEMALE);
@@ -93,7 +100,8 @@ int main() {
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setBreed() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         // @todo Change test once administrative management object is implemented
-        cout << "Test 8: \n\tTesting setBreed()...";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tTesting setBreed()...\n";
         defaultCat->setBreed(MANX);
         assert(defaultCat->getBreed() != UNKNOWN_BREED);
         defaultCat->setBreed(SHORTHAIR);
@@ -101,14 +109,16 @@ int main() {
         cout << " pass." << endl;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  fixCat() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        cout << "Test 9: \n\tTesting fixCat()...";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tTesting fixCat()...\n";
         assert(!defaultCat->isCatFixed());
         defaultCat->fixCat();
         assert(defaultCat->isCatFixed());
         cout << " pass." << endl;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setWeight Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        cout << "Test 10: \n\tAttempting to set _weight to an invalid value less than 0...";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tAttempting to set _weight to an invalid value less than 0...\n";
         try {
             defaultCat->setWeight(-5.0);
         } catch (const std::exception &e) {
@@ -116,7 +126,8 @@ int main() {
         }
 
         //
-        cout << "Test 11: \n\tAttempting to set _weight to an invalid value of 0...";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tAttempting to set _weight to an invalid value of 0...\n";
         try {
             defaultCat->setWeight(0.0);
         } catch (const std::exception &e) {
@@ -124,7 +135,8 @@ int main() {
         }
 
         //
-        cout << "Test 12: \n\tAttempting to set _weight to an invalid value greater than MAX_CAT_WEIGHT...";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tAttempting to set _weight to an invalid value greater than MAX_CAT_WEIGHT...\n";
         try {
             defaultCat->setWeight(MAX_CAT_WEIGHT + 1.0);
         } catch (const std::exception &e) {
@@ -132,19 +144,22 @@ int main() {
         }
 
         //
-        cout << "Test 13: \n\tAttempting to set _weight to a valid decimal value...";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tAttempting to set _weight to a valid decimal value...\n";
         defaultCat->setWeight(1/(float)1024);
         assert(defaultCat->getWeight() ==  1/(float)1024);
         cout << " pass." << endl;
 
         // All member variables have been assigned valid entries
         // validate() should now yield success
-        cout << "Test 14: \n\tTesting print() method of Cat class\n";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tTesting print() method of Cat class\n";
         assert(defaultCat->validate());
         defaultCat->print();
 
         //
-        cout << "\nTest 15: \n\tTesting zeroize() for destructor to see if parameter fields properly set to specified values...";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tTesting zeroize() for destructor to see if parameter fields properly set to specified values...\n";
         defaultCat->zeroize();
         char zeroName[MAX_NAME_LEN];
         memset(zeroName, '0', MAX_NAME_LEN);
@@ -156,13 +171,15 @@ int main() {
         cout << " pass." << endl;
 
         //
-        cout << "Test 16: \n\tTesting implicit addCat by passing in an already existing dynamic Cat object...";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tTesting implicit addCat by passing in an already existing dynamic Cat object...\n";
         Cat *dynamo = new Cat("Dynamo", MALE, PERSIAN, 6.00);
         assert(addCat(dynamo));
         cout << " pass." << endl;
 
         //
-        cout << "Test 17: \n\tAttempting to add the same dynamic Cat object again; this should throw an error...\n";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tAttempting to add the same dynamic Cat object again; this should throw an error...\n";
         try
         {
             assert(!addCat(dynamo));
@@ -173,12 +190,14 @@ int main() {
         }
 
         //
-        cout << "Test 18: \n\tTesting validateDatabase()...";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tTesting validateDatabase()...\n";
         assert(validateDatabase());
         cout << " pass." << endl;
 
         //
-        cout << "Test 19: \n\tAttempting to validateDatabase() after manually setting a parameter to an invalid value...\n";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tAttempting to validateDatabase() after manually setting a parameter to an invalid value...\n";
         dynamo->zeroize();
         try {
             assert(!validateDatabase());
@@ -187,13 +206,15 @@ int main() {
         }
 
         //
-        cout << "Test 20: \n\tTesting deleteCat...";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tTesting deleteCat...\n";
         assert(deleteCat(dynamo));
         assert(!deleteCat(dynamo));
         cout << " pass." << endl;
 
         //
-        cout << "Test 21: \n\tTesting printAllCats(), by iterating over some added cats..." << endl;
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tTesting printAllCats(), by iterating over some added cats...\n";
         {
             Cat *a = new Cat("A", MALE, MAINE_COON, 5);
             Cat *b = new Cat("B", MALE, MAINE_COON, 5);
@@ -204,12 +225,14 @@ int main() {
         printAllCats();
 
         //
-        cout << "Test 22: \n\tTesting deleteCat again on the b object and verifying that it has been propertly removed...";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tTesting deleteCat again on the b object and verifying that it has been propertly removed...\n";
         assert(deleteCat(b));
         printAllCats();
 
         //
-        cout << "\nTest 23: \n\tTesting deleteAllCats()...";
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tTesting deleteAllCats()...";
         deleteAllCats();
         printAllCats();
         assert(catListHead == nullptr);
@@ -218,7 +241,8 @@ int main() {
 
         {
             //
-            cout << "Test 24: \n\tTesting findCatByName...";
+            testNum++;
+            cout << "\n>>Test " << testNum << ": \n\tTesting findCatByName...\n";
             Cat *z = new Cat("Z", MALE, MAINE_COON, 5);
             addCat(z);
             assert(findCatByName("Z") == z);
@@ -228,39 +252,53 @@ int main() {
         }
 
         // genderLiteral testing
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tTesting genderLiteral()...\n";
         assert(strcmp(genderLiteral(UNKNOWN_GENDER), "UNKNOWN_GENDER") == 0);
         assert(strcmp(genderLiteral(MALE), "MALE") == 0);
         assert(strcmp(genderLiteral(FEMALE), "FEMALE") == 0);
+        cout << " pass." << endl;
 
         // breedLiteral testing
+        testNum++;
+        cout << "\n>>Test " << testNum << ": \n\tTesting breedLiteral()...\n";
         assert(strcmp(breedLiteral(UNKNOWN_BREED), "UNKNOWN_BREED") == 0);
         assert(strcmp(breedLiteral(MAINE_COON), "MAINE_COON") == 0);
         assert(strcmp(breedLiteral(MANX), "MANX") == 0);
         assert(strcmp(breedLiteral(SHORTHAIR), "SHORTHAIR") == 0);
         assert(strcmp(breedLiteral(PERSIAN), "PERSIAN") == 0);
         assert(strcmp(breedLiteral(SPHYNX), "SPHYNX") == 0);
+        cout << " pass." << endl;
+
+        cout << "\nEnd of Testing Routine... All tests passed!" << endl;
     }
 #endif
     // End of Test routine
 
     // Release Code
-    Cat *loki = new Cat("Loki",  MALE,  PERSIAN,  1.0);
-    Cat *milo = new Cat("Milo",  FEMALE,  MANX,  1.1);
-    Cat *bella = new Cat("Bella",  FEMALE,  MAINE_COON,  1.2);
-    Cat *kali = new Cat("Kali",  FEMALE,  SHORTHAIR,  1.3);
-    Cat *trin = new Cat("Trin",  FEMALE,  MANX,  1.4);
-    Cat *chili = new Cat("Chili",  MALE,  SHORTHAIR,  1.5);
+    {
+        cout << "-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/" << endl;
+        cout << "\nBeginning Release Code..." << endl;
+        Cat *loki = new Cat("Loki", MALE, PERSIAN, 1.0);
+        Cat *milo = new Cat("Milo", FEMALE, MANX, 1.1);
+        Cat *bella = new Cat("Bella", FEMALE, MAINE_COON, 1.2);
+        Cat *kali = new Cat("Kali", FEMALE, SHORTHAIR, 1.3);
+        Cat *trin = new Cat("Trin", FEMALE, MANX, 1.4);
+        Cat *chili = new Cat("Chili", MALE, SHORTHAIR, 1.5);
 
-    addCat(loki);
-    addCat(milo);
-    addCat(bella);
-    addCat(kali);
-    addCat(trin);
-    addCat(chili);
+        addCat(loki);
+        addCat(milo);
+        addCat(bella);
+        addCat(kali);
+        addCat(trin);
+        addCat(chili);
 
-    printAllCats();
-    deleteAllCats();
-    printAllCats();
+        printAllCats();
+        deleteAllCats();
+        printAllCats();
+
+        cout << "End of Release Code..." << endl;
+    }
     // End of Release Code
 
     std::cout << "\n==================================================" << endl;
