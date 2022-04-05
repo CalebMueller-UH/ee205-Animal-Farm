@@ -21,12 +21,12 @@
 #define MAX_NAME_LEN 30
 
 /// Maximum Weight that a cat is allowed to have
-#define MAX_CAT_WEIGHT 1000
+#define MAX_CAT_WEIGHT 1000.0
 
 /// Default weight of a cat before being assigned
 #define UNKNOWN_WEIGHT -1
 
 /// Format a line for printing the members of a class
-#define FORMAT_LINE(className, member) cout << setw(8) << (className) << setw(20) << (member) << setw(52)
+#define FORMAT_LINE(className, member) cout << setw(8) << (className) << setw(10) << (member) << setw(52)
 
 #endif //EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_CONFIG_H

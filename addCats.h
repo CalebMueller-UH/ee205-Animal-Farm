@@ -6,25 +6,19 @@
 /// @version 1.0
 ///
 /// @author Caleb Mueller <mc61@hawaii.edu>
-/// @date   15_Mar_2022
+/// @date   02_APR_2022
 ///////////////////////////////////////////////////////////////////////////////
-#ifndef EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_ADDCATS_H
-#define EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_ADDCATS_H
+#ifndef EE205_ANIMAL_FARM_ADDCATS_H
+#define EE205_ANIMAL_FARM_ADDCATS_H
 
-#include "catDatabase.h"
-#include "validate.h"
+#include "Cat.h"
 
-/*
-int addCat(const char *name,
-           const enum Gender gender,
-           const enum Breed breed,
-           const bool isFixed,
-           const Weight weight,
-           const enum Color collarColor1,
-           const enum Color collarColor2,
-           const unsigned long long license);
+extern bool addCat( Cat* newCat );
 
+/// Insert a cat at the beginning of the database
+/// @todo Implement appendCat
+/// @todo Implement getLastMammal
+/// @todo Implement getFirstMammal
 
-*/
-#endif //EE205_LAB_08D_ANIMAL_FARM_1_TO_CLION_ADDCATS_H
+#endif //EE205_ANIMAL_FARM_ADDCATS_H
 

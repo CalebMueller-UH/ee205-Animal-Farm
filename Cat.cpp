@@ -33,13 +33,15 @@ bool Cat::isCatFixed() const
 
 Weight Cat::getWeight() const
 {
-    return _weight;
+    return (Weight)_weight;
 }
 
 void Cat::setName(const char *name)
 {
     if(nameIsValid(name))
+    {
         strcpy(_name, name);
+    }
 }
 
 void Cat::fixCat()
@@ -71,22 +73,19 @@ void Cat::setBreed(Breed breed)
     }
 }
 
-/// Default Cat constructor initializes member variables to default values given in spec document
-Cat::Cat() :
-        _gender(UNKNOWN_GENDER), _breed(UNKNOWN_BREED), _catFixed(false), _weight(UNKNOWN_WEIGHT)
-{
-    strcpy(_name, "");
-    _next = nullptr;
-} // End of default constructor
-
-/// Explicit Cat constructor initializes with user defined values, or
+///> Explicit Cat constructor initializes with user defined values
 /// If a specific field isn't given, will initialize to a default value
 Cat::Cat(const char *name, Gender gender, Breed breed, Weight weight) :
         _gender(gender), _breed(breed), _weight(weight)
 {
     strcpy(_name, name);
     _next = nullptr;
-} // End of paramaterized constructor
+} // End of explicit constructor
+
+/// Default Cat constructor initializes member variables to default values given in spec document
+Cat::Cat() :
+        Cat{EMPTY_NAME ,UNKNOWN_GENDER, UNKNOWN_BREED, UNKNOWN_WEIGHT}{
+} // End of default constructor
 
 Cat::~Cat()
 {
@@ -115,11 +114,16 @@ return true;
 
 void Cat::zeroize()
 {
-    memset(this, 0, sizeof(Cat));
+    char zeroName[MAX_NAME_LEN];
+    memset(zeroName, '0', MAX_NAME_LEN);
+    this->setName(zeroName);
+    this->_gender = UNKNOWN_GENDER;
+    this->_breed = UNKNOWN_BREED;
+    this->_catFixed = false;
+    this->_weight = UNKNOWN_WEIGHT;
 } // End of zeroize()
 
-/// @returns true if all member variables are valid, and
-/// false if any of the member variables are invalid.
+/// @returns true if all member variables are valid
 bool Cat::validate() const noexcept
 {
     try
@@ -141,7 +145,7 @@ bool Cat::validate() const noexcept
     return true; // Cat member variables are valid
 } // End of validate()
 
-
+/// @returns true if member variable _name is a valid entry
 bool Cat::nameIsValid(const char* testName) const
 {
     if (testName == nullptr)
@@ -161,7 +165,7 @@ bool Cat::nameIsValid(const char* testName) const
     return true;  // name is valid
 } // End of nameIsValid()
 
-
+/// @returns true if member variable _gender is a valid entry
 bool Cat::genderIsValid(const enum Gender testGender) const
 {
     // Gender must not be UNKNOWN_GENDER
@@ -173,6 +177,7 @@ bool Cat::genderIsValid(const enum Gender testGender) const
     return true; // gender is valid
 }
 
+/// @returns true if member variable _breed is a valid entry
 bool Cat::breedIsValid(const enum Breed testBreed) const
 {
     // Breed must not be UNKNOWN_BREED
@@ -184,6 +189,7 @@ bool Cat::breedIsValid(const enum Breed testBreed) const
     return true; // breed is valid
 }
 
+/// @returns true if member variable _weight is a valid entry
 bool Cat::weightIsValid(const Weight testWeight) const
 {
     if(testWeight == UNKNOWN_WEIGHT)
@@ -204,7 +210,7 @@ bool Cat::weightIsValid(const Weight testWeight) const
     return true; // weight is valid
 }
 
-
+/// @returns c style string literal of type enum Gender corresponding to parameter input
 const char *genderLiteral(const enum Gender gender)
 {
     switch (gender) {
@@ -219,6 +225,7 @@ const char *genderLiteral(const enum Gender gender)
     }
 } // End of genderLiteral()
 
+/// @returns c style string literal of type enum Breed corresponding to parameter input
 const char *breedLiteral(const enum Breed breed)
 {
     switch (breed) {

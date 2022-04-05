@@ -26,123 +26,142 @@
 #define MAX_NAME2 "DIFFERENT 123456789012345678901234567890123456789"
 #define ILLEGAL_NAME "12345678901234567890123456789012345678901234567890"
 
-int main(void)
-{
+int main(void) {
     std::cout << "Starting Animal Farm 2" << std::endl;
 
     // Test routine
 #ifdef DEBUG_ENABLE
     {
         using namespace std;
+
         cout << "Beginning Animal Farm Test Routine..." << endl;
 
-        // Constructing a cat with default constructor and checking for proper default member variable assignment
-        cout << "Test 1: ";
-        Cat defaultCat = Cat();
-        assert(strcmp(defaultCat.getName(), "") == 0);
-        assert(defaultCat.getName() != nullptr);
-        assert(defaultCat.getGender() == UNKNOWN_GENDER);
-        assert(defaultCat.getBreed() == UNKNOWN_BREED);
-        assert(defaultCat.isCatFixed() == false);
-        assert(defaultCat.validate() == false);
+        //
+        cout << "Test 1: \n\tConstructing a cat with default constructor and checking for\n\t"
+                "proper default member variable assignment...\n";
+        Cat *defaultCat = new Cat();
+        assert(strcmp(defaultCat->getName(), "") == 0);
+        assert(defaultCat->getName() != nullptr);
+        assert(defaultCat->getGender() == UNKNOWN_GENDER);
+        assert(defaultCat->getBreed() == UNKNOWN_BREED);
+        assert(defaultCat->isCatFixed() == false);
+        assert(defaultCat->validate() == false);
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  Name Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        // Attempting to set _name to nullptr
+        //
         try {
-        cout << "Test 2: ";
-            defaultCat.setName(nullptr);
+            cout << "Test 2: \n\tAttempting to set _name to nullptr...";
+            defaultCat->setName(nullptr);
             assert(false);
-        } catch(const std::exception &e){
+        } catch (const std::exception &e) {
             cout << e.what() << endl;
         }
 
-        // Attempting to set _name to empty string ("")
-        cout << "Test 3: ";
+        //
+        cout << "Test 3: \n\tAttempting to set _name to empty string (\"\")...";
         try {
-            defaultCat.setName("");
+            defaultCat->setName("");
             assert(false);
-        } catch(const std::exception &e){
+        } catch (const std::exception &e) {
             cout << e.what() << endl;
         }
 
-        // Attempting to set name to lower valid boundary condition
-        cout << "Test 4: ";
-        defaultCat.setName("D");
-        assert(strcmp(defaultCat.getName(), "D") == 0);
+        //
+        cout << "Test 4: \n\tAttempting to set name to lower valid boundary condition...";
+        defaultCat->setName("D");
+        assert(strcmp(defaultCat->getName(), "D") == 0);
         cout << "pass." << endl;
 
-        // Attempting to set name to upper valid boundary condition
-        cout << "Test 5: ";
-        defaultCat.setName(MAX_NAME1);
-        assert(strcmp(defaultCat.getName(), MAX_NAME1) == 0);
+        //
+        cout << "Test 5: \n\tAttempting to set name to a name with MAX_NAME_LEN...";
+        defaultCat->setName(MAX_NAME1);
+        assert(strcmp(defaultCat->getName(), MAX_NAME1) == 0);
         cout << "pass." << endl;
 
-        // Attempting to set name to too long of a name
-        cout << "Test 6: ";
+        //
+        cout << "Test 6: \n\tTesting setName() with too long of a name...";
         try {
-            defaultCat.setName(ILLEGAL_NAME);
-            assert(strcmp(defaultCat.getName(), ILLEGAL_NAME) != 0);
-        } catch(const std::exception &e){
+            defaultCat->setName(ILLEGAL_NAME);
+            assert(strcmp(defaultCat->getName(), ILLEGAL_NAME) != 0);
+        } catch (const std::exception &e) {
             cout << e.what() << endl;
         }
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setGender() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         // @todo Change test once administrative management object is implemented
-        cout << "Test 7: ";
-        enum Gender oldGender = defaultCat.getGender();
-        defaultCat.setGender(MALE);
-        assert(defaultCat.getGender() != oldGender);
+        cout << "Test 7: \n\tTesting setGender...";
+        enum Gender oldGender = defaultCat->getGender();
+        enum Gender newGender = MALE;
+        defaultCat->setGender(newGender);
+        assert(defaultCat->getGender() != oldGender);
+        assert(defaultCat->getGender() == newGender);
         cout << "pass." << endl;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setBreed() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         // @todo Change test once administrative management object is implemented
-        cout << "Test 8: ";
-        enum Breed oldBreed = defaultCat.getBreed();
-        defaultCat.setBreed(MANX);
-        assert(defaultCat.getBreed() != oldBreed);
+        cout << "Test 8: \n\tTesting setBreed()...";
+        enum Breed oldBreed = defaultCat->getBreed();
+        enum Breed newBreed = MANX;
+        defaultCat->setBreed(newBreed);
+        assert(defaultCat->getBreed() != oldBreed);
+        assert(defaultCat->getBreed() == newBreed);
         cout << "pass." << endl;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  fixCat() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        cout << "Test 9: ";
-        defaultCat.fixCat();
-        assert(defaultCat.isCatFixed() == true);
+        cout << "Test 9: \n\tTesting fixCat()...";
+        defaultCat->fixCat();
+        assert(defaultCat->isCatFixed() == true);
         cout << "pass." << endl;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setWeight Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        // Attempting to set _weight to an invalid value less than 0
-        cout << "Test 10: ";
-        try{
-            defaultCat.setWeight(-5);
-        }catch(const std::exception &e){
+
+        cout << "Test 10: \n\tAttempting to set _weight to an invalid value less than 0...";
+        try {
+            defaultCat->setWeight(-5.0);
+        } catch (const std::exception &e) {
             cout << e.what() << endl;
         }
 
-        // Attempting to set _weight to an invalid value of 0
-        cout << "Test 11: ";
-        try{
-            defaultCat.setWeight(0);
-        }catch(const std::exception &e){
+
+        cout << "Test 11: \n\tAttempting to set _weight to an invalid value of 0...";
+        try {
+            defaultCat->setWeight(0.0);
+        } catch (const std::exception &e) {
             cout << e.what() << endl;
         }
 
-        // Attempting to set _weight to an invalid value greater than MAX_CAT_WEIGHT
-        cout << "Test 12: ";
-        try{
-            defaultCat.setWeight(MAX_CAT_WEIGHT + 1);
-        }catch(const std::exception &e){
+
+        cout << "Test 12: \n\tAttempting to set _weight to an invalid value greater than MAX_CAT_WEIGHT...";
+        try {
+            defaultCat->setWeight(MAX_CAT_WEIGHT + 1.0);
+        } catch (const std::exception &e) {
             cout << e.what() << endl;
         }
 
-        // Attempting to set _weight to a valid fractional value
-        cout << "Test 13: ";
-        defaultCat.setWeight(22/7);
-        assert(defaultCat.getWeight() == 22/7);
-        cout << "pass." << endl;
+        cout << "Test 13: \n\tAttempting to set _weight to a valid decimal value...";
+        defaultCat->setWeight(3.14159);
+        assert(defaultCat->getWeight() == (Weight) 3.14159);
+        cout << " pass." << endl;
 
         // All member variables have been assigned valid entries
         // validate() should now yield success
-        assert(defaultCat.validate());
-        defaultCat.print();
+        cout << "Test 14: \n\tprint()";
+        assert(defaultCat->validate());
+        defaultCat->print();
+
+
+        cout << "\nTest 15: \n\tTesting destructor to see if parameter fields properly zeroize...";
+        defaultCat->zeroize();
+        char zeroName[MAX_NAME_LEN];
+        memset(zeroName, '0', MAX_NAME_LEN);
+        assert(strcmp(defaultCat->getName(), zeroName) == 0);
+        assert(defaultCat->getGender() == UNKNOWN_GENDER);
+        assert(defaultCat->getBreed() == UNKNOWN_BREED);
+        assert(defaultCat->isCatFixed() == false);
+        assert(defaultCat->getWeight() == UNKNOWN_WEIGHT);
+        cout << " pass." << endl;
+
+
 
 
 

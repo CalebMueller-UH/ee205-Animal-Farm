@@ -23,6 +23,8 @@
 
 using namespace std;
 
+#define EMPTY_NAME ""
+
 enum Gender {
     UNKNOWN_GENDER,
     MALE,
@@ -78,11 +80,15 @@ public: ////// @todo Once administrative setter object is implemented change the
         void setBreed(Breed breed); ///< Set cat breed
 
 public:            /////////////// Constructors & Destructors //////////////////
-        Cat(); ///< Creates a cat with default member values
+        ///< Creates a cat with user defined member values
+        Cat(const char *name, Gender gender = UNKNOWN_GENDER, Breed breed = UNKNOWN_BREED, Weight weight = UNKNOWN_WEIGHT);
 
-        Cat(const char *name, Gender gender = UNKNOWN_GENDER, Breed breed = UNKNOWN_BREED, Weight weight = UNKNOWN_WEIGHT);  ///< Creates a cat with user defined member values
+        ///< Creates a cat with default member values using delegated constructor
+        Cat();
 
-        virtual ~Cat();  ///< Destructor zeroizes member data prior to blipping
+        ///< Destructor zeroizes member data prior to deleting reference to object to prevent "sensitive"
+        ///< data from being present in memory
+        virtual ~Cat();
 
 public:            /////////////// Public Methods //////////////////
         bool print() const noexcept; ///< Prints cat information
