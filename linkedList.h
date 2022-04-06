@@ -36,7 +36,7 @@ bool deleteCat(Cat *deleteThisCat);
 
 /// @brief Deletes all cats within the linked list
 
-void deleteAllCats();
+bool deleteAllCats();
 
 /// @brief Prints all of the Cat objects found in the linked list
 bool printAllCats();

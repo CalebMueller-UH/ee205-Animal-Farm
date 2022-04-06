@@ -14,7 +14,10 @@
 /// @throws logic_error if newCat is already in database
 bool addCat(Cat* newCat)
 {
-    validateDatabase();
+    if(!validateDatabase())
+    {
+        return false;
+    }
 
     assert(newCat != nullptr);
     newCat ->validate();
@@ -27,7 +30,11 @@ bool addCat(Cat* newCat)
     newCat->_next = catListHead;
     catListHead = newCat;
 
-    validateDatabase();
+    if(!validateDatabase())
+    {
+        return false;
+    }
+
     return true;
 }
 
@@ -69,7 +76,8 @@ bool validateDatabase()
 /// @returns true if the cat was successfully found, removed, and deleted, else false
 bool deleteCat(Cat *deleteThisCat)
 {
-    if(!validateDatabase()){
+    if(!validateDatabase())
+    {
         return false;
     }
 
@@ -93,7 +101,8 @@ bool deleteCat(Cat *deleteThisCat)
             prevCat->_next = currCat->_next;
             delete currCat;
 
-            if(!validateDatabase()){
+            if(!validateDatabase())
+            {
                 return false;
             }
             return true;  // Target found and eliminated, rtb
@@ -106,9 +115,12 @@ bool deleteCat(Cat *deleteThisCat)
 } // End of deleteCat()
 
 /// @brief Removes all of the Cat objects from the linked list and deletes them
-void deleteAllCats()
+bool deleteAllCats()
 {
-    validateDatabase();
+    if(!validateDatabase())
+    {
+        return false;
+    }
     Cat *currCat = catListHead;
 
     while(catListHead != nullptr)
@@ -117,7 +129,11 @@ void deleteAllCats()
         catListHead = currCat->_next;
         delete currCat;
     }
-    validateDatabase();
+    if(!validateDatabase())
+    {
+        return false;
+    }
+    return true;
 } // End of deleteAllCats()
 
 /// @brief Prints member variable information for all Cat objects found in the linked list
