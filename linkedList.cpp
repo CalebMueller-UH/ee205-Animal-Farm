@@ -78,7 +78,7 @@ bool deleteCat(Cat *deleteThisCat)
         if(currCat == deleteThisCat)
         {
             // Check for special case where deleteThisCat is the head item in the list
-            if(currCat->_next == nullptr && prevCat == nullptr)
+            if( prevCat == nullptr)
             {
                 catListHead = currCat->_next;
                 delete currCat;

@@ -212,35 +212,66 @@ int main() {
         assert(!deleteCat(dynamo));
         cout << " pass." << endl;
 
-        // >>>>>>>>>>>>>>>>>>>>>>>>>  printAllCats() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>  deleteCat() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         testNum++;
-        cout << "\n>>Test " << testNum << ": \n\tTesting printAllCats(), by iterating over some added cats...\n";
-        {
+        cout << "\n>>Test " << testNum << ": \n\tTesting deleteCat...\n";
+        { // deleteCat() Test Scope
             Cat *a = new Cat("A", MALE, MAINE_COON, 5);
             Cat *b = new Cat("B", MALE, MAINE_COON, 5);
             Cat *c = new Cat("C", MALE, MAINE_COON, 5);
             addCat(a);
             addCat(b);
             addCat(c);
-        printAllCats();
+            // Delete Middle In List
+            assert(deleteCat(b));
+            assert(!deleteCat(b));
+            // Delete First In List
+            assert(deleteCat(c));
+            assert(!deleteCat(c));
+            // Delete Last In List
+            assert(deleteCat(a));
+            assert(!deleteCat(a));
+            cout << " pass." << endl;
+        } // End of deleteCat() Test Scope
+
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  printAllCats() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         testNum++;
-        cout << "\n>>Test " << testNum << ": \n\tTesting deleteCat again on the b object and verifying that it has been propertly removed...\n";
-        assert(deleteCat(b));
-        printAllCats();
+        cout << "\n>>Test " << testNum << ": \n\tTesting printAllCats(), by iterating over some added cats...\n";
+        { // printAllCats() Test Scope
+            Cat *a = new Cat("A", MALE, MAINE_COON, 5);
+            Cat *b = new Cat("B", MALE, MAINE_COON, 5);
+            Cat *c = new Cat("C", MALE, MAINE_COON, 5);
+            addCat(a);
+            addCat(b);
+            addCat(c);
+            printAllCats();
+
+        // >>>>>>>>>>>>>>>>>>>>>>>>>  printAllCats() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+            testNum++;
+            cout << "\n>>Test " << testNum << ": \n\tTesting deleteCat again on the b object and verifying that it has been propertly removed...\n";
+            assert(deleteCat(b));
+            printAllCats();
 
             // >>>>>>>>>>>>>>>>>>>>>>>>>  deleteAllCats() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        testNum++;
-        cout << "\n>>Test " << testNum << ": \n\tTesting deleteAllCats()...\n";
-        deleteAllCats();
-        printAllCats();
-        assert(catListHead == nullptr);
-        cout << " pass." << endl;
-        }
+            testNum++;
+            cout << "\n>>Test " << testNum << ": \n\tTesting deleteAllCats()...\n";
+            deleteAllCats();
+            printAllCats();
+            assert(catListHead == nullptr);
+            assert(findCatByName("A") == nullptr);
+            assert(findCatByName("B") == nullptr);
+            assert(findCatByName("C") == nullptr);
+            assert(!catIsInDatabase(a));
+            assert(!catIsInDatabase(b));
+            assert(!catIsInDatabase(c));
+            cout << " pass." << endl;
+        } // End of printAllCats() Test Scope
 
-        {
-            // >>>>>>>>>>>>>>>>>>>>>>>>>  findCatByName() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+        // >>>>>>>>>>>>>>>>>>>>>>>>>  findCatByName() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        { // findCatByName() Test Scope
             testNum++;
             cout << "\n>>Test " << testNum << ": \n\tTesting findCatByName...\n";
             Cat *z = new Cat("Z", MALE, MAINE_COON, 5);
@@ -249,7 +280,7 @@ int main() {
             assert(findCatByName("Mario") == nullptr);
             cout << " pass." << endl;
             deleteAllCats();
-        }
+        } // End of findCatByName() Test Scope
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  genderLiteral() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         testNum++;
@@ -271,9 +302,9 @@ int main() {
         cout << " pass." << endl;
 
         cout << "\nEnd of Testing Routine... All tests passed!" << endl;
-    }
+    } // End of Test routine
 #endif
-    // End of Test routine
+
 
     // Release Code
     {
