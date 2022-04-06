@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include "linkedList.h"
 
-/// @return True if successful, else False
+/// @returns True if successful, else False
 /// @throws logic_error if newCat is already in database
 bool addCat(Cat* newCat)
 {
@@ -31,6 +31,9 @@ bool addCat(Cat* newCat)
     return true;
 }
 
+/// @brief Determines whether a pointer address associated with a Cat already exists in the linked list
+/// @param Takes in a Cat pointer as an argument
+/// @returns true if the cat is already in the linked list, else false
 bool catIsInDatabase(Cat *tCat)
 {
     Cat* curCat = catListHead;
@@ -45,6 +48,8 @@ bool catIsInDatabase(Cat *tCat)
     return false;
 }
 
+/// @brief Checks the member variable values of all Cat objects found in the linked list for validity
+/// @returns true if all of the linked list Cat objects have valid member variable entries, else false
 bool validateDatabase()
 {
     Cat *currCat = catListHead;
@@ -59,6 +64,9 @@ bool validateDatabase()
     return true;
 }
 
+/// @brief Removes a Cat object from the linked list and deletes the object
+/// @param Takes in a Cat object pointer to delete
+/// @returns true if the cat was successfully found, removed, and deleted, else false
 bool deleteCat(Cat *deleteThisCat)
 {
     validateDatabase();
@@ -90,6 +98,7 @@ bool deleteCat(Cat *deleteThisCat)
     return false; // Was not able to find specified Cat object to delete
 } // End of deleteCat()
 
+/// @brief Removes all of the Cat objects from the linked list and deletes them
 void deleteAllCats()
 {
     validateDatabase();
@@ -104,6 +113,7 @@ void deleteAllCats()
     validateDatabase();
 } // End of deleteAllCats()
 
+/// @brief Prints member variable information for all Cat objects found in the linked list
 void printAllCats()
 {
     Cat *currCat = catListHead;
@@ -115,6 +125,9 @@ void printAllCats()
     }
 } // End of printAllCats()
 
+/// @brief Finds a specific Cat object by the _name variable value
+/// @param Takes in a char[] name of the Cat object being saught
+/// @returns a type Cat pointer to the first Cat object found matching the passed in argument name
 Cat* findCatByName(const char* testName)
 {
     Cat *currCat = catListHead;
