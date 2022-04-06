@@ -69,7 +69,10 @@ bool validateDatabase()
 /// @returns true if the cat was successfully found, removed, and deleted, else false
 bool deleteCat(Cat *deleteThisCat)
 {
-    validateDatabase();
+    if(!validateDatabase()){
+        return false;
+    }
+
     Cat *prevCat = nullptr;
     Cat *currCat = catListHead;
 
@@ -89,9 +92,13 @@ bool deleteCat(Cat *deleteThisCat)
             // Splice out and delete
             prevCat->_next = currCat->_next;
             delete currCat;
-            validateDatabase();
-            return true;
+
+            if(!validateDatabase()){
+                return false;
+            }
+            return true;  // Target found and eliminated, rtb
         }
+        // currCat is not the Cat we're looking for, iterate to next link in list
         prevCat = currCat;
         currCat = currCat->_next;
     }
@@ -114,15 +121,20 @@ void deleteAllCats()
 } // End of deleteAllCats()
 
 /// @brief Prints member variable information for all Cat objects found in the linked list
-void printAllCats()
+/// @returns true if all cat objects in linked list were able to be printed successfully
+bool printAllCats()
 {
     Cat *currCat = catListHead;
 
     while(currCat != nullptr)
     {
-        currCat->print();
+        if(!currCat->print())
+        {
+            return false;
+        }
         currCat = currCat->_next;
     }
+    return true;
 } // End of printAllCats()
 
 /// @brief Finds a specific Cat object by the _name variable value

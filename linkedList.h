@@ -39,7 +39,7 @@ bool deleteCat(Cat *deleteThisCat);
 void deleteAllCats();
 
 /// @brief Prints all of the Cat objects found in the linked list
-void printAllCats();
+bool printAllCats();
 
 Cat* findCatByName(const char* name);
 

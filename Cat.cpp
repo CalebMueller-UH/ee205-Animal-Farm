@@ -168,17 +168,17 @@ bool Cat::nameIsValid(const char* testName) const
 {
     if (testName == nullptr)
     {
-        throw invalid_argument(PROGRAM_NAME " Name Validation Error: name is set to NULL");
+        throw invalid_argument(PROGRAM_NAME " Name Validation Error: name is set to nullptr!");
     }
 
     if (strlen(testName) <= 0)
     {
-        throw length_error(PROGRAM_NAME " Name Validation Error: name is empty");
+        throw length_error(PROGRAM_NAME " Name Validation Error: name is empty!");
     }
 
     if (strlen(testName) > MAX_NAME_LEN)
     {
-        throw length_error(PROGRAM_NAME " Name Validation Error: name is too long");
+        throw length_error(PROGRAM_NAME " Name Validation Error: name is too long!");
     }
     return true;  // name is valid
 } // End of nameIsValid()
@@ -189,7 +189,7 @@ bool Cat::genderIsValid(const enum Gender testGender) const
     // Gender must not be UNKNOWN_GENDER
     if(testGender == UNKNOWN_GENDER)
     {
-        throw invalid_argument(PROGRAM_NAME " Gender Validation Error: Gender must not be set to UNKNOWN_GENDER");
+        throw invalid_argument(PROGRAM_NAME " Gender Validation Error: Gender must not be set to UNKNOWN_GENDER!");
     }
     return true; // gender is valid
 }
@@ -200,7 +200,7 @@ bool Cat::breedIsValid(const enum Breed testBreed) const
     // Breed must not be UNKNOWN_BREED
     if(testBreed == UNKNOWN_BREED)
     {
-        throw invalid_argument(PROGRAM_NAME " Breed Validation Error: Breed must not be set to UNKNOWN_BREED");
+        throw invalid_argument(PROGRAM_NAME " Breed Validation Error: Breed must not be set to UNKNOWN_BREED!");
     }
 
     return true; // breed is valid
@@ -211,17 +211,17 @@ bool Cat::weightIsValid(const Weight testWeight) const
 {
     if(testWeight == UNKNOWN_WEIGHT)
     {
-        throw invalid_argument( PROGRAM_NAME " Weight Validation Error: Weight is set to UNKNOWN_WEIGHT");
+        throw invalid_argument( PROGRAM_NAME " Weight Validation Error: Weight is set to UNKNOWN_WEIGHT!");
     }
 
     if(testWeight <=0)
     {
-        throw invalid_argument( PROGRAM_NAME " Weight Validation Error: Weight must be greater than 0");
+        throw invalid_argument( PROGRAM_NAME " Weight Validation Error: Weight must be greater than 0!");
     }
 
     if(testWeight > MAX_CAT_WEIGHT)
     {
-        throw invalid_argument( PROGRAM_NAME " Weight Validation Error: Weight must be less than MAX_CAT_WEIGHT");
+        throw invalid_argument( PROGRAM_NAME " Weight Validation Error: Weight must be less than MAX_CAT_WEIGHT!");
     }
 
     return true; // weight is valid
