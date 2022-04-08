@@ -10,13 +10,28 @@
 ###############################################################################
 
 cmake_minimum_required(VERSION 3.22)
-project(ee205_lab_08d_animal_farm_1_to_clion)
+project(ee205_animal_farm)
 
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_VERBOSE_MAKEFILE off)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDEBUG_ENABLE")
+
+
+# Debug Build
 add_executable(
-        ee205_lab_08d_animal_farm_1_to_clion
-        main.cpp
+        ee205_animal_farm_debug
+        main_debug.cpp
+        Cat.h Cat.cpp
+        catDatabase.h catDatabase.cpp
+        config.h
+        linkedList.h linkedList.cpp)
+
+# Release Build
+add_executable(
+        ee205_animal_farm_release
+        main_release.cpp
         Cat.h Cat.cpp
         catDatabase.h catDatabase.cpp
         config.h

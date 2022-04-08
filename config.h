@@ -11,7 +11,7 @@
 #ifndef EE205_ANIMAL_FARM_CONFIG_H
 #define EE205_ANIMAL_FARM_CONFIG_H
 
-#define DEBUG_ENABLE
+// #define DEBUG_ENABLE
 
 #define PROGRAM_NAME "Animal Farm 2"
 

@@ -274,33 +274,6 @@ int main() {
     }   // End of Test routine
 #endif
 
-
-    // Release Code
-    {
-        cout << "-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/" << endl;
-        cout << "\nBeginning Release Code..." << endl;
-        Cat *loki = new Cat("Loki", MALE, PERSIAN, 1.0);
-        Cat *milo = new Cat("Milo", FEMALE, MANX, 1.1);
-        Cat *bella = new Cat("Bella", FEMALE, MAINE_COON, 1.2);
-        Cat *kali = new Cat("Kali", FEMALE, SHORTHAIR, 1.3);
-        Cat *trin = new Cat("Trin", FEMALE, MANX, 1.4);
-        Cat *chili = new Cat("Chili", MALE, SHORTHAIR, 1.5);
-
-        addCat(loki);
-        addCat(milo);
-        addCat(bella);
-        addCat(kali);
-        addCat(trin);
-        addCat(chili);
-
-        printAllCats();
-        deleteAllCats();
-        printAllCats();
-
-        cout << "End of Release Code..." << endl;
-    }
-    // End of Release Code
-
     std::cout << "\n==================================================" << endl;
     std::cout << "Done with " << PROGRAM_NAME << std::endl;
 
