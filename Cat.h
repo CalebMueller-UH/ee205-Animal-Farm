@@ -95,7 +95,8 @@ public:            /////////////// Public Methods //////////////////
 
         bool validate() const noexcept; ///< Checks the validity of cat member data fields
 
-        void zeroize(); ///< Sets member data to zero
+private:            /////////////// Private Methods //////////////////
+    void zeroize(); ///< Sets member data to zero, used by destructor
 
 public:            /////////////// Validation Methods //////////////////
         bool nameIsValid(const char* testName) const;

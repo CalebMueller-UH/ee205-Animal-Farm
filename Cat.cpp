@@ -108,13 +108,16 @@ Cat::Cat() :
 
 Cat::~Cat()
 {
-    this->zeroize();
+    zeroize();
 } // End of destructor
 
 /// @returns true if everything worked correctly. false if something goes wrong
 bool Cat::print() const noexcept
 {
-    assert(validate());
+    if(!validate())
+    {
+        return false; // Don't print Cat objects with invalid member values
+    }
 
     using namespace std;
     cout << setw(80) << setfill('=') << "" << endl;
@@ -127,18 +130,18 @@ bool Cat::print() const noexcept
     FORMAT_LINE("Cat", "isFixed") << isCatFixed() << endl;
     FORMAT_LINE("Cat", "weight") << getWeight() << endl;
 
-return true;
+    return true; // Cat object was successfully printed
 } // End of print()
 
 void Cat::zeroize()
 {
     char zeroName[MAX_NAME_LEN];
     memset(zeroName, '0', MAX_NAME_LEN);
-    this->setName(zeroName);
-    this->_gender = UNKNOWN_GENDER;
-    this->_breed = UNKNOWN_BREED;
-    this->_catFixed = false;
-    this->_weight = UNKNOWN_WEIGHT;
+    setName(zeroName);
+    _gender = UNKNOWN_GENDER;
+    _breed = UNKNOWN_BREED;
+    _catFixed = false;
+    _weight = UNKNOWN_WEIGHT;
 } // End of zeroize()
 
 /// @returns true if all member variables are valid

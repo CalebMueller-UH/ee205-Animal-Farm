@@ -14,11 +14,13 @@
 /// @throws logic_error if newCat is already in database
 bool addCat(Cat* newCat)
 {
+    // No invalid Cat shall pass!
     if(!validateDatabase())
     {
         return false;
     }
 
+    // Critical error should end program
     assert(newCat != nullptr);
     newCat ->validate();
 
@@ -52,7 +54,7 @@ bool catIsInDatabase(Cat *tCat)
         }
         curCat = curCat->_next;
     }
-    return false;
+    return false; // tCat is a unique pointer address not found elsewhere in the linked list
 }
 
 /// @brief Checks the member variable values of all Cat objects found in the linked list for validity
@@ -64,11 +66,11 @@ bool validateDatabase()
     {
         if(!currCat->validate())
         {
-            return false;
+            return false; // Cat object containing invalid entry found!
         }
         currCat = currCat->_next;
     }
-    return true;
+    return true; // Everything checks out
 }
 
 /// @brief Removes a Cat object from the linked list and deletes the object
@@ -76,6 +78,7 @@ bool validateDatabase()
 /// @returns true if the cat was successfully found, removed, and deleted, else false
 bool deleteCat(Cat *deleteThisCat)
 {
+    // No invalid Cat shall pass!
     if(!validateDatabase())
     {
         return false;
@@ -101,6 +104,7 @@ bool deleteCat(Cat *deleteThisCat)
             prevCat->_next = currCat->_next;
             delete currCat;
 
+            // No invalid Cat shall pass!
             if(!validateDatabase())
             {
                 return false;
@@ -117,6 +121,7 @@ bool deleteCat(Cat *deleteThisCat)
 /// @brief Removes all of the Cat objects from the linked list and deletes them
 bool deleteAllCats()
 {
+    // No invalid Cat shall pass!
     if(!validateDatabase())
     {
         return false;
@@ -129,11 +134,13 @@ bool deleteAllCats()
         catListHead = currCat->_next;
         delete currCat;
     }
+
+    // No invalid Cat shall pass!
     if(!validateDatabase())
     {
         return false;
     }
-    return true;
+    return true; // All Cat objects within the linked list have successfully been removed
 } // End of deleteAllCats()
 
 /// @brief Prints member variable information for all Cat objects found in the linked list

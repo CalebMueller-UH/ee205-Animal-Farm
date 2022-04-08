@@ -21,17 +21,17 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
     std::cout << "Starting " << PROGRAM_NAME << std::endl;
     std::cout << "==================================================\n" << endl;
 
     // Test routine
-#ifdef DEBUG_ENABLE
     {
         int testNum = 0;
         // >>>>>>>>>>>>>>>>>>>>>>>>>  Default Constructor Value Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         cout << "\n>>Test " << testNum++ << ": \n\tConstructing a cat with default constructor and\n\t"
-                "checking for proper default member variable assignment...\n";
+                                            "checking for proper default member variable assignment...\n";
         Cat *defaultCat = new Cat();
         assert(strcmp(defaultCat->getName(), "") == 0);
         assert(defaultCat->getName() != nullptr);
@@ -76,7 +76,7 @@ int main() {
         cout << "\n>>Test " << testNum++ << ": \n\tTesting setName() with too long of a name...\n";
         try {
             char ILLEGAL_NAME[MAX_NAME_LEN + 1];
-            memset(ILLEGAL_NAME, 'A', MAX_NAME_LEN+1);
+            memset(ILLEGAL_NAME, 'A', MAX_NAME_LEN + 1);
             defaultCat->setName(ILLEGAL_NAME);
             assert(strcmp(defaultCat->getName(), ILLEGAL_NAME) != 0);
         } catch (const std::exception &e) {
@@ -125,7 +125,8 @@ int main() {
         }
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setWeight() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        cout << "\n>>Test " << testNum++ << ": \n\tAttempting to set _weight to an invalid value greater than MAX_CAT_WEIGHT...\n";
+        cout << "\n>>Test " << testNum++
+             << ": \n\tAttempting to set _weight to an invalid value greater than MAX_CAT_WEIGHT...\n";
         try {
             defaultCat->setWeight(MAX_CAT_WEIGHT + 1.0);
         } catch (const std::exception &e) {
@@ -134,26 +135,14 @@ int main() {
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setWeight() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         cout << "\n>>Test " << testNum++ << ": \n\tAttempting to set _weight to a valid decimal value...\n";
-        defaultCat->setWeight(1/(float)1024);
-        assert(defaultCat->getWeight() ==  1/(float)1024);
+        defaultCat->setWeight(1 / (float) 1024);
+        assert(defaultCat->getWeight() == 1 / (float) 1024);
         cout << " pass." << endl;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  validate() and print() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         cout << "\n>>Test " << testNum++ << ": \n\tTesting print() method of Cat class\n";
         assert(defaultCat->validate());
         assert(defaultCat->print());
-
-        // >>>>>>>>>>>>>>>>>>>>>>>>>  Destructor Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        cout << "\n>>Test " << testNum++ << ": \n\tTesting zeroize() for destructor to see if parameter fields properly set to specified values...\n";
-        defaultCat->zeroize();
-        char zeroName[MAX_NAME_LEN];
-        memset(zeroName, '0', MAX_NAME_LEN);
-        assert(strcmp(defaultCat->getName(), zeroName) == 0);
-        assert(defaultCat->getGender() == UNKNOWN_GENDER);
-        assert(defaultCat->getBreed() == UNKNOWN_BREED);
-        assert(!defaultCat->isCatFixed());
-        assert(defaultCat->getWeight() == UNKNOWN_WEIGHT);
-        cout << " pass." << endl;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  addCat() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         cout << "\n>>Test " << testNum++ << ": \n\tTesting implicit addCat by passing in an already existing dynamic Cat object...\n";
@@ -175,25 +164,6 @@ int main() {
         // >>>>>>>>>>>>>>>>>>>>>>>>>  validateDatabase() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         cout << "\n>>Test " << testNum++ << ": \n\tTesting validateDatabase()...\n";
         assert(validateDatabase());
-        cout << " pass." << endl;
-
-        // >>>>>>>>>>>>>>>>>>>>>>>>>  validateDatabase() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        cout << "\n>>Test " << testNum++ << ": \n\tAttempting to validateDatabase() after manually setting a parameter to an invalid value...\n";
-        dynamo->zeroize();
-        try {
-            assert(!validateDatabase());
-        }catch(const std::exception &e){
-            cout << e.what() << endl;
-        }
-
-        // >>>>>>>>>>>>>>>>>>>>>>>>>  deleteCat() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        cout << "\n>>Test " << testNum++ << ": \n\tTesting deleteCat...\n";
-        assert(!deleteCat(dynamo)); // Should fail because dynamo the cats members are not valid
-        dynamo->setGender(MALE);
-        dynamo->setBreed(MAINE_COON);
-        dynamo->setWeight(1.0);
-        assert(deleteCat(dynamo));
-        assert(!deleteCat(dynamo));  // Should fail because dynamo was already deleted
         cout << " pass." << endl;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  deleteCat() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -272,7 +242,6 @@ int main() {
 
         cout << "\nEnd of Testing Routine... All tests passed!" << endl;
     }   // End of Test routine
-#endif
 
     std::cout << "\n==================================================" << endl;
     std::cout << "Done with " << PROGRAM_NAME << std::endl;
