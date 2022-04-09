@@ -10,8 +10,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include "linkedList.h"
 
-/// @returns True if successful, else False
-/// @throws logic_error if newCat is already in database
 bool addCat(Cat* newCat)
 {
     // No invalid Cat shall pass!
@@ -39,9 +37,6 @@ bool addCat(Cat* newCat)
     return true;
 } // End of addCat()
 
-/// @brief Determines whether a pointer address associated with a Cat already exists in the linked list
-/// @param Takes in a Cat pointer as an argument
-/// @returns true if the cat is already in the linked list, else false
 bool catIsInDatabase(Cat *tCat)
 {
     Cat* curCat = catListHead;
@@ -56,8 +51,6 @@ bool catIsInDatabase(Cat *tCat)
     return false; // tCat is a pointer address not found elsewhere in the linked list
 } // End of catIsInDatabase()
 
-/// @brief Checks the member variable values of all Cat objects found in the linked list for validity
-/// @returns true if all of the linked list Cat objects have valid member variable entries, else false
 bool validateDatabase()
 {
     Cat *currCat = catListHead;
@@ -72,9 +65,6 @@ bool validateDatabase()
     return true; // Everything checks out
 } // End of validateDatabase()
 
-/// @brief Removes a Cat object from the linked list and deletes the object
-/// @param Takes in a Cat object pointer to delete
-/// @returns true if the cat was successfully found, removed, and deleted, else false
 bool deleteCat(Cat *deleteThisCat)
 {
     // No invalid Cat shall pass!
@@ -117,7 +107,6 @@ bool deleteCat(Cat *deleteThisCat)
     return false; // Was not able to find specified Cat object to delete
 } // End of deleteCat()
 
-/// @brief Removes all of the Cat objects from the linked list and deletes them
 bool deleteAllCats()
 {
     // No invalid Cat shall pass!
@@ -142,8 +131,6 @@ bool deleteAllCats()
     return true; // All Cat objects within the linked list have successfully been removed
 } // End of deleteAllCats()
 
-/// @brief Prints member variable information for all Cat objects found in the linked list
-/// @returns true if all cat objects in linked list were able to be printed successfully
 bool printAllCats()
 {
     Cat *currCat = catListHead;
@@ -159,10 +146,6 @@ bool printAllCats()
     return true;
 } // End of printAllCats()
 
-/// @brief Finds a specific Cat object by the _name variable value
-/// @param Takes in a char[] name of the Cat object being sought
-/// @returns a type Cat pointer to the first Cat object found matching the passed in argument name
-/// or nullptr if a Cat object in the linked list was not found with the name given by testName
 Cat* findCatByName(const char* testName)
 {
     Cat *currCat = catListHead;
