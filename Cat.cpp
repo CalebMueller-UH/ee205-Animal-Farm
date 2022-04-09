@@ -60,13 +60,13 @@ void Cat::setWeight(Weight weight)
         cout << e.what() << endl;
     }
 
-}
+} // End of Cat::setWeight
 
 void Cat::setGender(Gender gender)
 {
     try
     {
-        this->genderIsValid(gender);
+        genderIsValid(gender);
     } catch (const std::exception &e){
         cout << e.what() << endl;
         return;
@@ -75,13 +75,13 @@ void Cat::setGender(Gender gender)
     {
         _gender = gender;
     }
-}
+} // End of Cat::setGender()
 
 void Cat::setBreed(Breed breed)
 {
     try
     {
-        this->breedIsValid(breed);
+        breedIsValid(breed);
     }catch(const std::exception &e){
         cout << e.what() << endl;
         return;
@@ -90,7 +90,7 @@ void Cat::setBreed(Breed breed)
     {
         _breed = breed;
     }
-}
+} // End of Cat::setBreed()
 
 ///> Explicit Cat constructor initializes with user defined values
 /// If a specific field isn't given, will initialize to a default value
@@ -99,17 +99,17 @@ Cat::Cat(const char *name, Gender gender, Breed breed, Weight weight) :
 {
     strcpy(_name, name);
     _next = nullptr;
-} // End of explicit constructor
+} // End of Cat::Cat(explicit)
 
 /// Default Cat constructor initializes member variables to default values given in spec document
 Cat::Cat() :
         Cat{DEFAULT_NAME ,UNKNOWN_GENDER, UNKNOWN_BREED, UNKNOWN_WEIGHT}{
-} // End of default constructor
+} // End of Cat::Cat(default)
 
 Cat::~Cat()
 {
     zeroize();
-} // End of destructor
+} // End of Cat::~Cat()
 
 /// @returns true if everything worked correctly. false if something goes wrong
 bool Cat::print() const noexcept
@@ -131,7 +131,7 @@ bool Cat::print() const noexcept
     FORMAT_LINE("Cat", "weight") << getWeight() << endl;
 
     return true; // Cat object was successfully printed
-} // End of print()
+} // End of Cat::print()
 
 void Cat::zeroize()
 {
@@ -142,7 +142,7 @@ void Cat::zeroize()
     _breed = UNKNOWN_BREED;
     _catFixed = false;
     _weight = UNKNOWN_WEIGHT;
-} // End of zeroize()
+} // End of Cat::zeroize()
 
 /// @returns true if all member variables are valid
 bool Cat::validate() const noexcept
@@ -164,10 +164,10 @@ bool Cat::validate() const noexcept
         return false;
     }
     return true; // Cat member variables are valid
-} // End of validate()
+} // End of Cat::validate()
 
 /// @returns true if member variable _name is a valid entry
-bool Cat::nameIsValid(const char* testName) const
+bool Cat::nameIsValid(const char* testName)
 {
     if (testName == nullptr)
     {
@@ -184,10 +184,10 @@ bool Cat::nameIsValid(const char* testName) const
         throw length_error(PROGRAM_NAME " Name Validation Error: name is too long!");
     }
     return true;  // name is valid
-} // End of nameIsValid()
+} // End of Cat::nameIsValid()
 
 /// @returns true if member variable _gender is a valid entry
-bool Cat::genderIsValid(const enum Gender testGender) const
+bool Cat::genderIsValid(const enum Gender testGender)
 {
     // Gender must not be UNKNOWN_GENDER
     if(testGender == UNKNOWN_GENDER)
@@ -195,10 +195,10 @@ bool Cat::genderIsValid(const enum Gender testGender) const
         throw invalid_argument(PROGRAM_NAME " Gender Validation Error: Gender must not be set to UNKNOWN_GENDER!");
     }
     return true; // gender is valid
-}
+} // End of Cat::genderIsValid()
 
 /// @returns true if member variable _breed is a valid entry
-bool Cat::breedIsValid(const enum Breed testBreed) const
+bool Cat::breedIsValid(const enum Breed testBreed)
 {
     // Breed must not be UNKNOWN_BREED
     if(testBreed == UNKNOWN_BREED)
@@ -207,10 +207,10 @@ bool Cat::breedIsValid(const enum Breed testBreed) const
     }
 
     return true; // breed is valid
-}
+} // End of Cat::breedIsValid()
 
 /// @returns true if member variable _weight is a valid entry
-bool Cat::weightIsValid(const Weight testWeight) const
+bool Cat::weightIsValid(const Weight testWeight)
 {
     if(testWeight == UNKNOWN_WEIGHT)
     {
@@ -228,7 +228,7 @@ bool Cat::weightIsValid(const Weight testWeight) const
     }
 
     return true; // weight is valid
-}
+} // End of Cat::weightIsValid()
 
 /// @returns c style string literal of type enum Gender corresponding to parameter input
 const char *genderLiteral(const enum Gender gender)

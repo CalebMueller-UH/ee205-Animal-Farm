@@ -75,9 +75,9 @@ int main()
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setName() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         cout << "\n>>Test " << testNum++ << ": \n\tTesting setName() with too long of a name...\n";
+        char ILLEGAL_NAME[MAX_NAME_LEN + 1];
+        memset(ILLEGAL_NAME, 'A', MAX_NAME_LEN + 1);
         try {
-            char ILLEGAL_NAME[MAX_NAME_LEN + 1];
-            memset(ILLEGAL_NAME, 'A', MAX_NAME_LEN + 1);
             defaultCat->setName(ILLEGAL_NAME);
         } catch (const std::exception &e) {
             cout << e.what() << endl;
@@ -113,29 +113,29 @@ int main()
         cout << "\n>>Test " << testNum++ << ": \n\tAttempting to set _weight to an invalid value less than 0...\n";
         try {
             defaultCat->setWeight(-5.0);
-            assert(false);
         } catch (const std::exception &e) {
             cout << e.what() << endl;
         }
+        assert(defaultCat->getWeight() != -5.0);
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setWeight() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         cout << "\n>>Test " << testNum++ << ": \n\tAttempting to set _weight to an invalid value of 0...\n";
         try {
             defaultCat->setWeight(0.0);
-            assert(false);
         } catch (const std::exception &e) {
             cout << e.what() << endl;
         }
+        assert(defaultCat->getWeight() != 0.0);
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setWeight() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         cout << "\n>>Test " << testNum++
              << ": \n\tAttempting to set _weight to an invalid value greater than MAX_CAT_WEIGHT...\n";
         try {
             defaultCat->setWeight(MAX_CAT_WEIGHT + 1.0);
-            assert(false);
         } catch (const std::exception &e) {
             cout << e.what() << endl;
         }
+        assert(defaultCat->getWeight() != MAX_CAT_WEIGHT + .0);
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setWeight() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         cout << "\n>>Test " << testNum++ << ": \n\tAttempting to set _weight to a valid decimal value...\n";

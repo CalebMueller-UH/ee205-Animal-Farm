@@ -99,10 +99,10 @@ private:            /////////////// Private Methods //////////////////
     void zeroize(); ///< Sets member data to zero, used by destructor
 
 public:            /////////////// Validation Methods //////////////////
-        bool nameIsValid(const char* testName) const;
-        bool genderIsValid(const enum Gender testGender) const;
-        bool breedIsValid(const enum Breed testBreed) const;
-        bool weightIsValid(const Weight testWeight) const;
+        static bool nameIsValid(const char* testName);
+        static bool genderIsValid(const enum Gender testGender);
+        static bool breedIsValid(const enum Breed testBreed);
+        static bool weightIsValid(const Weight testWeight);
 
 
 }; // End of Cat class
