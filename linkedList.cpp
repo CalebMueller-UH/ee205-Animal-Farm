@@ -36,9 +36,8 @@ bool addCat(Cat* newCat)
     {
         return false;
     }
-
     return true;
-}
+} // End of addCat()
 
 /// @brief Determines whether a pointer address associated with a Cat already exists in the linked list
 /// @param Takes in a Cat pointer as an argument
@@ -50,12 +49,12 @@ bool catIsInDatabase(Cat *tCat)
     {
         if(tCat == curCat)
         {
-            return true; // Duplicate found, cat already exists in database
+            return true; // cat already exists in database
         }
         curCat = curCat->_next;
     }
-    return false; // tCat is a unique pointer address not found elsewhere in the linked list
-}
+    return false; // tCat is a pointer address not found elsewhere in the linked list
+} // End of catIsInDatabase()
 
 /// @brief Checks the member variable values of all Cat objects found in the linked list for validity
 /// @returns true if all of the linked list Cat objects have valid member variable entries, else false
@@ -71,7 +70,7 @@ bool validateDatabase()
         currCat = currCat->_next;
     }
     return true; // Everything checks out
-}
+} // End of validateDatabase()
 
 /// @brief Removes a Cat object from the linked list and deletes the object
 /// @param Takes in a Cat object pointer to delete
@@ -161,8 +160,9 @@ bool printAllCats()
 } // End of printAllCats()
 
 /// @brief Finds a specific Cat object by the _name variable value
-/// @param Takes in a char[] name of the Cat object being saught
+/// @param Takes in a char[] name of the Cat object being sought
 /// @returns a type Cat pointer to the first Cat object found matching the passed in argument name
+/// or nullptr if a Cat object in the linked list was not found with the name given by testName
 Cat* findCatByName(const char* testName)
 {
     Cat *currCat = catListHead;

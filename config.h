@@ -11,8 +11,6 @@
 #ifndef EE205_ANIMAL_FARM_CONFIG_H
 #define EE205_ANIMAL_FARM_CONFIG_H
 
-// #define DEBUG_ENABLE
-
 #define PROGRAM_NAME "Animal Farm 2"
 
 /// Default name given to a cat upon instantiation if not specified
@@ -26,7 +24,6 @@
 
 /// Default weight of a cat before being assigned
 #define UNKNOWN_WEIGHT -1
-
 
 /// Format a line for printing the members of a class
 #define FORMAT_LINE(className, member) cout << setw(8) << (className) << setw(10) << (member) << setw(52)

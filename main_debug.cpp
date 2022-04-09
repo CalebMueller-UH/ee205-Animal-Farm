@@ -62,6 +62,7 @@ int main()
         cout << "\n>>Test " << testNum++ << ": \n\tAttempting to set name to a single character...\n";
         defaultCat->setName("D");
         assert(strcmp(defaultCat->getName(), "D") == 0);
+        assert(strcmp(defaultCat->getName(), "") != 0);
         cout << " pass." << endl;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setName() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -78,22 +79,22 @@ int main()
             char ILLEGAL_NAME[MAX_NAME_LEN + 1];
             memset(ILLEGAL_NAME, 'A', MAX_NAME_LEN + 1);
             defaultCat->setName(ILLEGAL_NAME);
-            assert(strcmp(defaultCat->getName(), ILLEGAL_NAME) != 0);
         } catch (const std::exception &e) {
             cout << e.what() << endl;
         }
+        assert(strcmp(defaultCat->getName(), ILLEGAL_NAME) != 0);
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setGender() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        // @todo Change test once administrative management object is implemented
+        // @todo Change test once class enum Gender is implemented
         cout << "\n>>Test " << testNum++ << ": \n\tTesting setGender...\n";
         defaultCat->setGender(MALE);
         assert(defaultCat->getGender() == MALE);
+        // Once a valid gender is assigned, a different gender should not be able to be reassigned to a Cat object
         defaultCat->setGender(FEMALE);
         assert(defaultCat->getGender() != FEMALE);
         cout << " pass." << endl;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  setBreed() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        // @todo Change test once administrative management object is implemented
         cout << "\n>>Test " << testNum++ << ": \n\tTesting setBreed()...\n";
         defaultCat->setBreed(MANX);
         assert(defaultCat->getBreed() != UNKNOWN_BREED);
@@ -112,6 +113,7 @@ int main()
         cout << "\n>>Test " << testNum++ << ": \n\tAttempting to set _weight to an invalid value less than 0...\n";
         try {
             defaultCat->setWeight(-5.0);
+            assert(false);
         } catch (const std::exception &e) {
             cout << e.what() << endl;
         }
@@ -120,6 +122,7 @@ int main()
         cout << "\n>>Test " << testNum++ << ": \n\tAttempting to set _weight to an invalid value of 0...\n";
         try {
             defaultCat->setWeight(0.0);
+            assert(false);
         } catch (const std::exception &e) {
             cout << e.what() << endl;
         }
@@ -129,6 +132,7 @@ int main()
              << ": \n\tAttempting to set _weight to an invalid value greater than MAX_CAT_WEIGHT...\n";
         try {
             defaultCat->setWeight(MAX_CAT_WEIGHT + 1.0);
+            assert(false);
         } catch (const std::exception &e) {
             cout << e.what() << endl;
         }
@@ -155,6 +159,7 @@ int main()
         try
         {
             assert(!addCat(dynamo));
+            assert(false);
         }
         catch(const std::exception &e)
         {
@@ -189,7 +194,7 @@ int main()
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  printAllCats() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         cout << "\n>>Test " << testNum++ << ": \n\tTesting printAllCats(), by iterating over some added cats...\n";
-        { // printAllCats() Test Scope
+        { // printAllCats() and deleteAllCats() Test Scope
             Cat *a = new Cat("A", MALE, MAINE_COON, 5);
             Cat *b = new Cat("B", MALE, MAINE_COON, 5);
             Cat *c = new Cat("C", MALE, MAINE_COON, 5);
@@ -210,7 +215,7 @@ int main()
             assert(!catIsInDatabase(b));
             assert(!catIsInDatabase(c));
             cout << " pass." << endl;
-        } // End of printAllCats() Test Scope
+        } // End of printAllCats() and deleteAllCats() Test Scope
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  findCatByName() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         { // findCatByName() Test Scope
@@ -220,7 +225,6 @@ int main()
             assert(findCatByName("Z") == z);
             assert(findCatByName("Mario") == nullptr);
             cout << " pass." << endl;
-            deleteAllCats();
         } // End of findCatByName() Test Scope
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>  genderLiteral() Testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -239,6 +243,9 @@ int main()
         assert(strcmp(breedLiteral(PERSIAN), "PERSIAN") == 0);
         assert(strcmp(breedLiteral(SPHYNX), "SPHYNX") == 0);
         cout << " pass." << endl;
+
+        // Cleaning up
+        deleteAllCats();
 
         cout << "\nEnd of Testing Routine... All tests passed!" << endl;
     }   // End of Test routine
