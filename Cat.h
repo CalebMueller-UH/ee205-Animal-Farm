@@ -19,10 +19,15 @@
 #include <assert.h> // For assert
 #include <string.h> // For working with C style strings
 
+<<<<<<< HEAD
+=======
+#include "Mammal.h"
+>>>>>>> f9fc5e6 (Animal Farm 3.0 ~New Beginnings~  Fresh start: stubbing out header files from specification requirements.)
 #include "config.h"
 
 using namespace std;
 
+<<<<<<< HEAD
 
 
 enum Gender {
@@ -103,10 +108,50 @@ public:            /////////////// Validation Methods //////////////////
         static bool genderIsValid(const enum Gender testGender);
         static bool breedIsValid(const enum Breed testBreed);
         static bool weightIsValid(const Weight testWeight);
+=======
+class Cat : public Mammal
+{
+
+	/////////////////////////////////// Enumerations ///////////////////////////////////
+
+private: //////////////////////////////// Member Variables ////////////////////////////////
+	std::string name;
+	bool catIsFixed;
+
+public:  /////////////////////////////////// Constants ///////////////////////////////////
+	static const std::string SPECIES_NAME;
+	static const Weight MAX_WEIGHT;
+
+public:  /////////////////////////////////// Class Constructors ///////////////////////////////////
+	Cat( const std::string &newName );
+
+	Cat( const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const Weight newWeight );
+
+public:  /////////////////////////////////// Getters ///////////////////////////////////
+	std::string getName() const noexcept;
+
+	bool isFixed() const noexcept;
+
+public:  /////////////////////////////////// Setters ///////////////////////////////////
+	void setName( const std::string &newName );
+
+	void fixCat() noexcept;
+
+public:  /////////////////////////////////// Public Methods ///////////////////////////////////
+	std::string speak() const noexcept override;
+
+	void dump() const noexcept override;
+
+public:  /////////////////////////////////// Validation Methods ///////////////////////////////////
+	bool validate() const noexcept override;
+
+	static bool validateName( const std::string &newName );
+>>>>>>> f9fc5e6 (Animal Farm 3.0 ~New Beginnings~  Fresh start: stubbing out header files from specification requirements.)
 
 
 }; // End of Cat class
 
+<<<<<<< HEAD
 
 /// Returns a character literal for use in communicating the gender of a cat to the user
 const char *genderLiteral(const enum Gender gender);
@@ -114,4 +159,6 @@ const char *genderLiteral(const enum Gender gender);
 /// Returns a character literal for use in communicating the breed of a cat to the user
 const char *breedLiteral(const enum Breed breed);
 
+=======
+>>>>>>> f9fc5e6 (Animal Farm 3.0 ~New Beginnings~  Fresh start: stubbing out header files from specification requirements.)
 #endif //EE205_ANIMAL_FARM_CAT_H
