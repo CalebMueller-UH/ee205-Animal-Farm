@@ -11,35 +11,39 @@
 #ifndef EE205_ANIMAL_FARM_ANIMAL_H
 #define EE205_ANIMAL_FARM_ANIMAL_H
 
+#include <ostream>
+#include <string.h>
+
+#include "config.h"
 #include "Node.h"
 #include "Weight.h"
 
-
-/////////////////////////////////// Enumerations ///////////////////////////////////
 enum class Gender
 {
-	UNKNOWN_GENDER,
+	UNKNOWN_GENDER = 0,
 	MALE,
 	FEMALE
 };
+
+inline std::ostream& operator<<( std::ostream &lhs_stream, const Gender &rhs_Gender );
 
 
 class Animal : public Node
 {
 
-private: //////////////////////////////// Member Variables ////////////////////////////////
+protected: //////////////////////////////// Member Variables ////////////////////////////////
 	std::string _species;
 	std::string _classification;
 	Gender _gender;
 	Weight _weight;
 
 public:  /////////////////////////////////// Constants ///////////////////////////////////
-	static const std::string KINGDOM_NAME;
+	static const std::string _KINGDOM_NAME;
 
-public:  /////////////////////////////////// Class Constructors ///////////////////////////////////
-	Animal( const Weight newMaxWeight, const std::string &newClassification, const std::string &newSpecies );
+protected:  /////////////////////////////////// Class Constructors ///////////////////////////////////
+	Animal( const float newMaxWeight, const std::string &newClassification, const std::string &newSpecies );
 
-	Animal( const Gender newGender, const Weight newWeight, const Weight newMaxWeight, const std::string &newClassification, const std::string &newSpecies );
+	Animal( const Gender newGender, const float newWeight, const float newMaxWeight, const std::string &newClassification, const std::string &newSpecies );
 
 public:  /////////////////////////////////// Getters ///////////////////////////////////
 	std::string getKingdom() const noexcept;
@@ -52,13 +56,13 @@ public:  /////////////////////////////////// Getters ///////////////////////////
 
 	Weight getWeight() const noexcept;
 
-public:  /////////////////////////////////// Setters ///////////////////////////////////
+protected:  /////////////////////////////////// Setters ///////////////////////////////////
 
 	void setWeight( const Weight newWeight );
 
 	void setGender( const Gender newGender );
 
-public:  /////////////////////////////////// Public Methods ///////////////////////////////////
+protected:  /////////////////////////////////// Methods ///////////////////////////////////
 	virtual std::string speak() const noexcept = 0;
 
 	void dump() const noexcept override;
@@ -71,6 +75,5 @@ public:  /////////////////////////////////// Validation Methods ////////////////
 	static bool validateSpecies( const std::string &checkSpecies ) noexcept;
 
 };
-
 
 #endif //EE205_ANIMAL_FARM_ANIMAL_H

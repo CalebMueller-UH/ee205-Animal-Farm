@@ -11,7 +11,10 @@
 #ifndef EE205_ANIMAL_FARM_CONFIG_H
 #define EE205_ANIMAL_FARM_CONFIG_H
 
-#define PROGRAM_NAME "Animal Farm 2"
+#include <string>
+
+#define PROGRAM_NAME "Animal Farm 3"
+//const std::string PROGRAM_NAME = "Animal Farm 3";
 
 /// Default name given to a cat upon instantiation if not specified
 #define DEFAULT_NAME ""
@@ -22,10 +25,7 @@
 /// Maximum Weight that a cat is allowed to have
 #define MAX_CAT_WEIGHT 100.0
 
-/// Default weight of a cat before being assigned
-#define UNKNOWN_WEIGHT -1
-
 /// Format a line for printing the members of a class
-#define FORMAT_LINE(className, member) cout << setw(8) << (className) << setw(10) << (member) << setw(52)
+#define FORMAT_LINE( className, member ) cout << setw(8) << (className) << setw(10) << (member) << setw(52)
 
 #endif //EE205_ANIMAL_FARM_CONFIG_H

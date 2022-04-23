@@ -11,21 +11,24 @@
 #ifndef EE205_ANIMAL_FARM_NODE_H
 #define EE205_ANIMAL_FARM_NODE_H
 
+#include <string>
+
+#include "config.h"
+
 class Node
 {
-public: //////////////////////// Public Member Variables ////////////////////////
+protected: //////////////////////////////// Member Variables ////////////////////////////////
 	Node *next;
 
-public:    //////////////////////// Public Virtual Methods ////////////////////////
-	virtual void dump() const;
+public:  /////////////////////////////////// Virtual Methods ///////////////////////////////////
+	virtual void dump() const = 0;
 
-	virtual bool validate() const noexcept;
+	virtual bool validate() const noexcept = 0;
 
 	virtual bool operator>( const Node &rhs );
 
-public:    //////////////////////// Public Methods ////////////////////////
+public:  /////////////////////////////////// Public Methods ///////////////////////////////////
 	static bool compareByAddress( const Node *node1, const Node *node2 );
-
 };
 
 #endif //EE205_ANIMAL_FARM_NODE_H

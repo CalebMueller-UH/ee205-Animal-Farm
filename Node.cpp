@@ -1,0 +1,18 @@
+///////////////////////////////////////////////////////////////////////////////
+///         University of Hawaii, College of Engineering
+/// @brief  ee205_animal_farm - EE 205 - Spr 2022
+///
+/// @file Node.cpp
+/// @version 1.0
+///
+/// @author Caleb Mueller <mc61@hawaii.edu>
+/// @date   23_Apr_2022
+///////////////////////////////////////////////////////////////////////////////
+
+#include "Node.h"
+
+/////////////////////////////////// Public Methods ///////////////////////////////////
+bool Node::compareByAddress( const Node *node1, const Node *node2 )
+{
+	return node1 == node2;
+}

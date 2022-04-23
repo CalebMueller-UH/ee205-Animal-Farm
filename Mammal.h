@@ -25,21 +25,21 @@ enum class Color
 
 class Mammal : public Animal
 {
-private: //////////////////////////////// Member Variables ////////////////////////////////
-	Color _color;
+protected: //////////////////////////////// Member Variables ////////////////////////////////
+	Color _color{Color::UNKNOWN_COLOR};
 
 public:  /////////////////////////////////// Constants ///////////////////////////////////
 	static const std::string MAMMAL_NAME;
 
-public:  /////////////////////////////////// Class Constructors ///////////////////////////////////
-	Mammal( const Weight newMaxWeight, const std::string &newSpecies );
+protected:  /////////////////////////////////// Class Constructors ///////////////////////////////////
+	Mammal( const float newMaxWeight, const std::string &newSpecies );
 
-	Mammal( const Color newColor, const Gender newGender, const Weight newWeight, const Weight newMaxWeight, const std::string newSpecies );
+	Mammal( const Color newColor, const Gender newGender, const float newWeight, const float newMaxWeight, const std::string newSpecies );
 
 public:  /////////////////////////////////// Getters ///////////////////////////////////
 	Color getColor() const noexcept;
 
-public:  /////////////////////////////////// Setters ///////////////////////////////////
+protected:  /////////////////////////////////// Setters ///////////////////////////////////
 	void setColor( const Color newColor ) noexcept;
 
 

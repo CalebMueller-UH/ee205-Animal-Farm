@@ -24,6 +24,7 @@ using namespace std;
 
 int main()
 {
+	/*
     std::cout << "Starting " << PROGRAM_NAME << std::endl;
     std::cout << "==================================================\n" << endl;
 
@@ -255,4 +256,5 @@ int main()
     std::cout << "Done with " << PROGRAM_NAME << std::endl;
 
     return 0;
+    */
 }
