@@ -26,7 +26,7 @@ enum class Color
 class Mammal : public Animal
 {
 protected: //////////////////////////////// Member Variables ////////////////////////////////
-	Color _color{Color::UNKNOWN_COLOR};
+	Color _color{ Color::UNKNOWN_COLOR };
 
 public:  /////////////////////////////////// Constants ///////////////////////////////////
 	static const std::string MAMMAL_NAME;

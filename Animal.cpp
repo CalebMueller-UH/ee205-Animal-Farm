@@ -12,7 +12,7 @@
 #include "Animal.h"
 
 /////////////////////////////////// Constants ///////////////////////////////////
-const std::string _KINGDOM_NAME = "Animalia";
+const std::string Animal::KINGDOM_NAME = "Animalia";
 
 /////////////////////////////////// Class Constructors ///////////////////////////////////
 Animal::Animal( const float newMaxWeight, const std::string &newClassification, const std::string &newSpecies )
@@ -20,16 +20,16 @@ Animal::Animal( const float newMaxWeight, const std::string &newClassification, 
 		Animal( Gender::UNKNOWN_GENDER, Weight::UNKNOWN_WEIGHT, newMaxWeight, newClassification, newSpecies ) {}
 
 Animal::Animal( const Gender newGender, const float newWeight, const float newMaxWeight, const std::string &newClassification,
-                const std::string &newSpecies ) : _gender{newGender}, _classification{newClassification}
-				{
-					_weight.setMaxWeight(newMaxWeight);
-					_weight.setWeight(newWeight);
-				}
+                const std::string &newSpecies ) : _species{ newSpecies }, _classification{ newClassification },  _gender{ newGender }
+{
+	_weight.setMaxWeight( newMaxWeight );
+	_weight.setWeight( newWeight );
+}
 
 /////////////////////////////////// Getters ///////////////////////////////////
 std::string Animal::getKingdom() const noexcept
 {
-	return Animal::_KINGDOM_NAME;
+	return Animal::KINGDOM_NAME;
 }
 
 std::string Animal::getClassification() const noexcept
@@ -53,29 +53,33 @@ Weight Animal::getWeight() const noexcept
 }
 
 /////////////////////////////////// Setters ///////////////////////////////////
-void Animal::setWeight( const Weight newWeight )
+void Animal::setWeight( const float newWeight )
 {
-
+	_weight.setWeight( newWeight );
 }
 
 void Animal::setGender( const Gender newGender )
 {
-
+	_gender = newGender;
 }
 
 /////////////////////////////////// Public Methods ///////////////////////////////////
 void Animal::dump() const noexcept
 {
-
+	std::cout << "Animal::dump(): _species = " << _species << std::endl;
+	std::cout << "Animal::dump(): _classification = " << _classification << std::endl;
+	std::cout << "Animal::dump(): _gender = " << _gender << std::endl;
+	//std::cout << "Animal::dump(): _weight = " << _weight << std::endl;
 }
 
-bool Animal::validate() const noexcept
+/////////////////////////////////// Validation Methods ///////////////////////////////////
+//@todo implement validate functions
+bool Animal::validateClassifaction( const std::string &checkClassification ) noexcept
 {
 	return false;
 }
 
-/////////////////////////////////// Validation Methods ///////////////////////////////////
-bool Animal::validateClassifaction( const std::string &checkClassification ) noexcept
+bool Animal::validate() const noexcept
 {
 	return false;
 }

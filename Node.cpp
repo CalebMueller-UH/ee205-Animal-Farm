@@ -11,6 +11,12 @@
 
 #include "Node.h"
 
+/////////////////////////////////// Virtual Methods ///////////////////////////////////
+void Node::dump() const
+{
+	std::cout << "Node::dump(): _next = " << _next << " " << std::endl;
+}
+
 /////////////////////////////////// Public Methods ///////////////////////////////////
 bool Node::compareByAddress( const Node *node1, const Node *node2 )
 {

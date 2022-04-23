@@ -32,7 +32,8 @@ public:  /////////////////////////////////// Constants /////////////////////////
 public:  /////////////////////////////////// Class Constructors ///////////////////////////////////
 	Cat( const std::string &newName );
 
-	Cat( const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const float newWeight, const float newMaxWeight );
+	Cat( const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const float newWeight,
+	     const float newMaxWeight );
 
 public:  /////////////////////////////////// Getters ///////////////////////////////////
 	std::string getName() const noexcept;
@@ -52,7 +53,7 @@ public:  /////////////////////////////////// Public Methods ////////////////////
 public:  /////////////////////////////////// Validation Methods ///////////////////////////////////
 	bool validate() const noexcept override;
 
-	static bool validateName( const std::string &newName );
+	static bool nameIsValid( const std::string &newName );
 
 }; // End of Cat class
 

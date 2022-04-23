@@ -11,21 +11,30 @@
 #ifndef EE205_ANIMAL_FARM_CONFIG_H
 #define EE205_ANIMAL_FARM_CONFIG_H
 
+#include <iostream>
 #include <string>
 
 #define PROGRAM_NAME "Animal Farm 3"
-//const std::string PROGRAM_NAME = "Animal Farm 3";
 
-/// Default name given to a cat upon instantiation if not specified
-#define DEFAULT_NAME ""
+/////////////////////////////////// Formatting Macros ///////////////////////////////////
+/// Format the heading for dumping members of a class to the console
+///
+/// Print =====================
+#define PRINT_HEADING_FOR_DUMP \
+ /* Print =========================================================== */ \
+ std::cout << std::setw(80) << std::setfill( '=' ) << "" << std::endl
+
+/// Format a line for dumping the members of a class to the console.
+/// Setup the fields for printing (space pad, left justify, etc.)
+#define FORMAT_LINE_FOR_DUMP( className, member ) \
+ std::cout << std::setfill( ' ' ) /* Space pad */ \
+ << std::left /* Left justify */ \
+ << std::boolalpha /* Print `true` or `false` for `bool`s */ \
+ << std::setw(8) << (className) \
+ << std::setw(20) << (member) \
+ << std::setw(52) /* (data) */
 
 /// Maximum Name Length that a cat is allowed to have
 #define MAX_NAME_LEN 30
-
-/// Maximum Weight that a cat is allowed to have
-#define MAX_CAT_WEIGHT 100.0
-
-/// Format a line for printing the members of a class
-#define FORMAT_LINE( className, member ) cout << setw(8) << (className) << setw(10) << (member) << setw(52)
 
 #endif //EE205_ANIMAL_FARM_CONFIG_H

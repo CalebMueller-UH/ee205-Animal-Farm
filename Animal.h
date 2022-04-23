@@ -25,7 +25,7 @@ enum class Gender
 	FEMALE
 };
 
-inline std::ostream& operator<<( std::ostream &lhs_stream, const Gender &rhs_Gender );
+inline std::ostream &operator<<( std::ostream &lhs_stream, const Gender &rhs_Gender );
 
 
 class Animal : public Node
@@ -38,12 +38,13 @@ protected: //////////////////////////////// Member Variables ///////////////////
 	Weight _weight;
 
 public:  /////////////////////////////////// Constants ///////////////////////////////////
-	static const std::string _KINGDOM_NAME;
+	static const std::string KINGDOM_NAME;
 
 protected:  /////////////////////////////////// Class Constructors ///////////////////////////////////
 	Animal( const float newMaxWeight, const std::string &newClassification, const std::string &newSpecies );
 
-	Animal( const Gender newGender, const float newWeight, const float newMaxWeight, const std::string &newClassification, const std::string &newSpecies );
+	Animal( const Gender newGender, const float newWeight, const float newMaxWeight, const std::string &newClassification,
+	        const std::string &newSpecies );
 
 public:  /////////////////////////////////// Getters ///////////////////////////////////
 	std::string getKingdom() const noexcept;
@@ -58,7 +59,7 @@ public:  /////////////////////////////////// Getters ///////////////////////////
 
 protected:  /////////////////////////////////// Setters ///////////////////////////////////
 
-	void setWeight( const Weight newWeight );
+	void setWeight( const float newWeight );
 
 	void setGender( const Gender newGender );
 

@@ -12,7 +12,7 @@
 #include "Mammal.h"
 
 /////////////////////////////////// Constants ///////////////////////////////////
-static const std::string MAMMAL_NAME = "Mammalia";
+const std::string Mammal::MAMMAL_NAME = "Mammalia";
 
 /////////////////////////////////// Class Constructors ///////////////////////////////////
 Mammal::Mammal( const float newMaxWeight, const std::string &newSpecies )
@@ -21,7 +21,7 @@ Mammal::Mammal( const float newMaxWeight, const std::string &newSpecies )
 
 Mammal::Mammal( const Color newColor, const Gender newGender, const float newWeight, const float newMaxWeight, const std::string newSpecies )
 		:
-		Animal(newGender, newWeight, newMaxWeight, Mammal::MAMMAL_NAME, newSpecies ), _color{ newColor } {}
+		Animal( newGender, newWeight, newMaxWeight, Mammal::MAMMAL_NAME, newSpecies ), _color{ newColor } {}
 
 /////////////////////////////////// Getters ///////////////////////////////////
 Color Mammal::getColor() const noexcept

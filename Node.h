@@ -11,6 +11,7 @@
 #ifndef EE205_ANIMAL_FARM_NODE_H
 #define EE205_ANIMAL_FARM_NODE_H
 
+#include <iostream>
 #include <string>
 
 #include "config.h"
@@ -18,14 +19,14 @@
 class Node
 {
 protected: //////////////////////////////// Member Variables ////////////////////////////////
-	Node *next;
+	Node *_next;
 
 public:  /////////////////////////////////// Virtual Methods ///////////////////////////////////
-	virtual void dump() const = 0;
+	virtual void dump() const;
 
 	virtual bool validate() const noexcept = 0;
 
-	virtual bool operator>( const Node &rhs );
+	//virtual bool operator>( const Node &rhs );
 
 public:  /////////////////////////////////// Public Methods ///////////////////////////////////
 	static bool compareByAddress( const Node *node1, const Node *node2 );

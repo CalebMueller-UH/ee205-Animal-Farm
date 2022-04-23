@@ -11,7 +11,7 @@
 #include "Cat.h"
 
 /////////////////////////////////// Constants ///////////////////////////////////
-static const std::string SPECIES_NAME = "Felis catus";
+const std::string Cat::SPECIES_NAME = "Felis catus";
 
 /////////////////////////////////// Class Constructors ///////////////////////////////////
 Cat::Cat( const std::string &newName )
@@ -19,7 +19,9 @@ Cat::Cat( const std::string &newName )
 		Cat( newName, Color::UNKNOWN_COLOR, false, Gender::UNKNOWN_GENDER, Weight::UNKNOWN_WEIGHT, Weight::DEFAULT_MAX_WEIGHT ) {}
 
 Cat::Cat( const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const float newWeight,
-          const float newMaxWeight ) : Mammal( newColor, newGender, newWeight, newMaxWeight, Cat::SPECIES_NAME ), _name{ newName } {}
+          const float newMaxWeight )
+		:
+		Mammal( newColor, newGender, newWeight, newMaxWeight, Cat::SPECIES_NAME ), _name{ newName }, _catIsFixed{ newIsFixed } {}
 
 /////////////////////////////////// Getters ///////////////////////////////////
 std::string Cat::getName() const noexcept
@@ -29,18 +31,18 @@ std::string Cat::getName() const noexcept
 
 bool Cat::isFixed() const noexcept
 {
-	return false;
+	return _catIsFixed;
 }
 
 /////////////////////////////////// Setters ///////////////////////////////////
 void Cat::setName( const std::string &newName )
 {
-
+	nameIsValid( newName ) ? _name = newName : 0;
 }
 
 void Cat::fixCat() noexcept
 {
-
+	_catIsFixed = true;
 }
 
 /////////////////////////////////// Public Methods ///////////////////////////////////
@@ -57,12 +59,17 @@ void Cat::dump() const noexcept
 /////////////////////////////////// Validation Methods ///////////////////////////////////
 bool Cat::validate() const noexcept
 {
-	return Animal::validate();
+	return false;
 }
 
-bool Cat::validateName( const std::string &newName )
+bool Cat::nameIsValid( const std::string &newName )
 {
-	return false;
+	int nNamLen = newName.length();
+	if( nNamLen > 0 && nNamLen < MAX_NAME_LEN )
+	{
+		return true; // name is valid
+	}
+	return false; // name is invalid
 }
 
 
