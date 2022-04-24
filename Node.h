@@ -18,6 +18,10 @@
 
 class Node
 {
+	friend class Anaimal;
+
+	friend class LinkedList;
+
 protected: //////////////////////////////// Member Variables ////////////////////////////////
 	Node *_next;
 

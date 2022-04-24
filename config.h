@@ -12,6 +12,7 @@
 #define EE205_ANIMAL_FARM_CONFIG_H
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 
 #define PROGRAM_NAME "Animal Farm 3"

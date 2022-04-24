@@ -53,6 +53,7 @@ std::string Cat::speak() const noexcept
 
 void Cat::dump() const noexcept
 {
+	PRINT_HEADING_FOR_DUMP;
 	Mammal::dump();
 }
 

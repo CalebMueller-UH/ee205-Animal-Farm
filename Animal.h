@@ -46,6 +46,9 @@ protected:  /////////////////////////////////// Class Constructors /////////////
 	Animal( const Gender newGender, const float newWeight, const float newMaxWeight, const std::string &newClassification,
 	        const std::string &newSpecies );
 
+public:  /////////////////////////////////// Static Methods ///////////////////////////////////
+std::string gender_literal(const Gender& gender) const;
+
 public:  /////////////////////////////////// Getters ///////////////////////////////////
 	std::string getKingdom() const noexcept;
 

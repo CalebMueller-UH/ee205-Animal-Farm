@@ -14,7 +14,7 @@
 /////////////////////////////////// Virtual Methods ///////////////////////////////////
 void Node::dump() const
 {
-	std::cout << "Node::dump(): _next = " << _next << " " << std::endl;
+	FORMAT_LINE_FOR_DUMP( "Node", "_next" ) << _next;
 }
 
 /////////////////////////////////// Public Methods ///////////////////////////////////

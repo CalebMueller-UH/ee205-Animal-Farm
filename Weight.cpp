@@ -247,9 +247,9 @@ Weight &Weight::operator+=( const float &rhs_weight )
 }
 
 /////////////////////////////////// Externally Scoped Overloaded Operators ///////////////////////////////////
-std::ostream &operator<<( std::ostream &lhs_stream, const Weight::UnitOfWeight rhsUnit )
+std::ostream &operator<<( ostream &lhs_stream, const Weight::UnitOfWeight rhs_UnitOfWeight )
 {
-	switch( rhsUnit )
+	switch( rhs_UnitOfWeight )
 	{
 		case Weight::POUNDS:
 			return lhs_stream << Weight::POUND_LITERAL;
@@ -258,8 +258,43 @@ std::ostream &operator<<( std::ostream &lhs_stream, const Weight::UnitOfWeight r
 		case Weight::SLUGS:
 			return lhs_stream << Weight::SLUG_LITERAL;
 		default:
-			throw out_of_range( "The unit can’t be mapped to a string" );
+			throw out_of_range( "The unit can not be converted to a string" );
 	}
+}
+
+std::ostream &operator<<( std::ostream &lhs_stream, const Weight &rhs_Weight )
+{
+	stringstream stringBuffer;
+
+	if( !rhs_Weight.weightIsKnown() && !rhs_Weight.hasMaxWeight())
+	{
+		lhs_stream << "Unknown";
+		return lhs_stream;
+	}
+	else if( rhs_Weight.weightIsKnown())
+	{
+		stringBuffer << rhs_Weight.getWeight();
+	}
+	else
+	{
+		stringBuffer << "Unknown";
+	}
+
+	if( rhs_Weight.hasMaxWeight())
+	{
+		stringBuffer << " out of " << rhs_Weight.getMaxWeight();
+	}
+
+	stringBuffer << " " << rhs_Weight.getUnitOfWeight();
+
+	/// If the numeric weight is 1, use the singular form of the unit.
+	/// If the numeric weight is not 1, use the plural form of the unit.
+	if(( !rhs_Weight.hasMaxWeight() && rhs_Weight.getWeight() > 1 ) || ( rhs_Weight.hasMaxWeight() && rhs_Weight.getMaxWeight() > 1 ))
+	{
+		stringBuffer << "s";
+	}
+
+	return lhs_stream << stringBuffer.str();
 }
 
 

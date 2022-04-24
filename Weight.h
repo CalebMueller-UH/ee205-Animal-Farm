@@ -120,9 +120,12 @@ public:  /////////////////////////////////// Overloaded Operators //////////////
 	bool operator<( const Weight &rhs ) const;
 
 	Weight &operator+=( const float &rhs_weight );
+
 };
 
 /////////////////////////////////// Externally Scoped Overloaded Operators ///////////////////////////////////
 std::ostream &operator<<( std::ostream &lhs_stream, const Weight::UnitOfWeight rhsUnit );
+
+std::ostream &operator<<( std::ostream &lhs_stream, const Weight rhsWeight );
 
 #endif //EE205_LAB12A_FATCAT_WEIGHT_H

@@ -23,5 +23,10 @@ using namespace std;
 
 int main()
 {
-	cout << "Hello." << endl;
+	cout << "Beginning " << PROGRAM_NAME << " testing..." << endl;
+
+	//Constructing a new Cat and testing contents
+	{
+		Cat* newCat = new Cat("Newcat" , Color::ORANGE, false, Gender::FEMALE, 10.0F, 50.0F);
+	}
 }
