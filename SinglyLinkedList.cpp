@@ -41,6 +41,7 @@ bool SinglyLinkedList::insert_after( Node *insertAfterNode, Node *nodeToBeInsert
 	{
 		throw invalid_argument( PROGRAM_NAME "SinglyLinkedList Error: insert_after() was called with the an invalid nodeToBeInserted Node!" );
 	}
+	std::cout << "Squeek" << std::endl;
 
 	/////////////////// Empty List Checking /////////////////////////
 	if( _head == nullptr )
@@ -70,10 +71,33 @@ bool SinglyLinkedList::insert_after( Node *insertAfterNode, Node *nodeToBeInsert
 void SinglyLinkedList::dump() const noexcept
 {
 	PRINT_HEADING_FOR_DUMP;
-
+	std::cout << "SinglyLinkeList dump(): " << std::endl;
+	Node *currentNode = _head;
+	while( currentNode != nullptr )
+	{
+		currentNode->dump();
+	}
 }
 
 bool SinglyLinkedList::validate() const noexcept
 {
-	return false;
+	// Check for empty list
+	if( _count == 0 )
+	{
+		assert( this->empty());
+	}
+	// Check for single element list
+	if( _count == 1 )
+	{
+		assert( _head->_next == nullptr );
+		assert( this->size() == 1 );
+	}
+
+	if( _count > 1 )
+	{
+		assert( _count == this->size());
+	}
+	return true; // Valid list returns true
 }
+
+

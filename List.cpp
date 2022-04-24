@@ -10,6 +10,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include "List.h"
 
+using namespace std;
+
 bool List::empty() const noexcept
 {
 	return ( _head == nullptr );
@@ -27,14 +29,14 @@ bool List::isIn( Node *nodeOfInterest ) const
 		throw invalid_argument( PROGRAM_NAME " List Error: isIn() called with nullptr argument!" );
 	}
 
-	Node *currNode = head;
+	Node *currNode = _head;
 	while( currNode != nullptr )
 	{
 		if( currNode == nodeOfInterest )
 		{
 			return true; // nodeOfInterest was found
 		}
-		currNode == currNode->_next;
+		currNode = currNode->_next;
 	}
 	return false; // nodeOfInterest was not found
 }
@@ -51,7 +53,7 @@ Node *List::get_first() const noexcept
 
 Node *List::get_next( const Node *currentNode )
 {
-	if( head == nullptr )
+	if( _head == nullptr )
 	{
 		throw invalid_argument( PROGRAM_NAME " List Error: currentNode must not be nullptr" );
 	}
@@ -61,7 +63,7 @@ Node *List::get_next( const Node *currentNode )
 void List::deleteAllNodes() noexcept
 {
 	assert( validate());
-	while( head != nullptr )
+	while( _head != nullptr )
 	{
 		pop_front();
 	}

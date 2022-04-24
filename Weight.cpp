@@ -205,6 +205,11 @@ void Weight::dump() const noexcept
 	FORMAT_LINE_FOR_DUMP( "Weight", "maxWeight" ) << _maxWeight << std::endl;
 }
 
+void Weight::print() const noexcept
+{
+	std::cout << this << std::endl;
+}
+
 /////////////////////////////////// Validation Methods ///////////////////////////////////
 bool Weight::weightIsValid( const t_weight checkWeight, const t_weight checkMaxWeight ) noexcept
 {
@@ -222,7 +227,6 @@ bool Weight::validate() const noexcept
 }
 
 /////////////////////////////////// Overloaded Operators ///////////////////////////////////
-
 bool Weight::operator==( const Weight &rhs ) const
 {
 	t_weight lhs_weight = ( _bIsKnown ) ? getWeight( Weight::POUNDS ) : 0;
@@ -262,13 +266,13 @@ std::ostream &operator<<( ostream &lhs_stream, const Weight::UnitOfWeight rhs_Un
 		case Weight::SLUGS:
 			return lhs_stream << Weight::SLUG_LITERAL;
 		default:
-			throw out_of_range( "The unit can not be converted to a string" );
+			throw out_of_range( PROGRAM_NAME " Weight Error: The unit can not be converted to a string!" );
 	}
 }
 
 std::ostream &operator<<( std::ostream &lhs_stream, const Weight &rhs_Weight )
 {
-	stringstream stringBuffer;
+	std::stringstream stringBuffer;
 
 	if( !rhs_Weight.weightIsKnown() && !rhs_Weight.hasMaxWeight())
 	{

@@ -11,14 +11,19 @@
 #ifndef EE205_ANIMAL_FARM_SINGLYLINKEDLIST_H
 #define EE205_ANIMAL_FARM_SINGLYLINKEDLIST_H
 
+//#include <exception>
+//#include <iostream>
+
 #include "config.h"
 #include "List.h"
 #include "Node.h"
 
+using namespace std;
+
 class SinglyLinkedList : public List
 {
-protected:  /////////////////////////////////// Class Constructors ///////////////////////////////////
-	SinglyLinkedList();
+//public:  /////////////////////////////////// Class Constructors ///////////////////////////////////
+//	SinglyLinkedList();
 
 public:  /////////////////////////////////// Public Methods ///////////////////////////////////
 	void push_front( Node *newNode );

@@ -18,10 +18,20 @@ Cat::Cat( const std::string &newName )
 		:
 		Cat( newName, Color::UNKNOWN_COLOR, false, Gender::UNKNOWN_GENDER, Weight::UNKNOWN_WEIGHT, Weight::DEFAULT_MAX_WEIGHT ) {}
 
-Cat::Cat( const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight,
-          const t_weight newMaxWeight )
+Cat::Cat( const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight )
 		:
-		Mammal( newColor, newGender, newWeight, newMaxWeight, Cat::SPECIES_NAME ), _name{ newName }, _catIsFixed{ newIsFixed } {}
+		Cat( newName, newColor, newIsFixed, newGender, newWeight, Weight::DEFAULT_MAX_WEIGHT ) {}
+
+Cat::Cat(
+
+		const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight,
+		const t_weight newMaxWeight ) : Mammal( newColor, newGender, newWeight, newMaxWeight, Cat::SPECIES_NAME ), _name{
+		newName
+}, _catIsFixed{
+		newIsFixed
+}
+{
+}
 
 /////////////////////////////////// Getters ///////////////////////////////////
 std::string Cat::getName() const noexcept
@@ -57,7 +67,7 @@ void Cat::dump() const noexcept
 	Mammal::dump();
 	FORMAT_LINE_FOR_DUMP( "Cat", "this" ) << this << std::endl;
 	FORMAT_LINE_FOR_DUMP( "Cat", "name" ) << _name << std::endl;
-	FORMAT_LINE_FOR_DUMP( "Cat", "isFixed" ) << _catIsFixed << std::endl;
+	FORMAT_LINE_FOR_DUMP( "Cat", "isFixed" ) << std::boolalpha << _catIsFixed << std::endl;
 }
 
 /////////////////////////////////// Validation Methods ///////////////////////////////////

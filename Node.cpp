@@ -33,10 +33,11 @@ bool Node::compareByAddress( const Node *node1, const Node *node2 )
 /////////////////////////////////// Validation Methods ///////////////////////////////////
 bool Node::validate() const noexcept
 {
-	if( _next != _next->_next )
+	if( _next == _next->_next )
 	{
 		std::cout << PROGRAM_NAME "Node Error: Recursive Loop!" << std::endl;
 		return false;
 	}
+	std::cout << "Pop!" << std::endl;
 	return true; // Node is valid
 }

@@ -59,11 +59,17 @@ std::ostream &operator<<( std::ostream &lhs, const Color &rhs )
 		case ( Color::BROWN ):
 			lhs << "BROWN";
 			break;
-		case ( Color::TAN ):
-			lhs << "TAN";
+		case ( Color::CREAM ):
+			lhs << "CREAM";
 			break;
-		case ( Color::ORANGE ):
-			lhs << "ORANGE";
+		case ( Color::CALICO ):
+			lhs << "CALICO";
+			break;
+		case ( Color::WHITE ):
+			lhs << "WHITE";
+			break;
+		case ( Color::GINGER ):
+			lhs << "GINGER";
 			break;
 		default:
 			throw std::out_of_range( PROGRAM_NAME

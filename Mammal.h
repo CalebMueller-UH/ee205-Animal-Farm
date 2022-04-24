@@ -20,8 +20,10 @@ enum class Color
 	BLACK,
 	GREY,
 	BROWN,
-	TAN,
-	ORANGE
+	CREAM,
+	CALICO,
+	WHITE,
+	GINGER
 };
 
 class Mammal : public Animal

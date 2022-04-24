@@ -11,8 +11,15 @@
 #ifndef EE205_ANIMAL_FARM_LIST_H
 #define EE205_ANIMAL_FARM_LIST_H
 
+
+#include <exception>
+#include <iostream>
+#include <cassert>
+
 #include "config.h"
 #include "Node.h"
+
+using namespace std;
 
 class List
 {
