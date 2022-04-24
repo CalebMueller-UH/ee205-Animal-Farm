@@ -22,17 +22,18 @@ class Node
 	friend class List;
 
 protected: //////////////////////////////// Member Variables ////////////////////////////////
-	Node *_next;
+	Node *_next{ nullptr};
 
 public:  /////////////////////////////////// Virtual Methods ///////////////////////////////////
 	virtual void dump() const;
-
-	virtual bool validate() const noexcept = 0;
 
 	virtual bool operator>( const Node &rhs );
 
 public:  /////////////////////////////////// Public Methods ///////////////////////////////////
 	static bool compareByAddress( const Node *node1, const Node *node2 );
+
+public:  /////////////////////////////////// Validation Methods ///////////////////////////////////
+	virtual bool validate() const noexcept;
 };
 
 #endif //EE205_ANIMAL_FARM_NODE_H

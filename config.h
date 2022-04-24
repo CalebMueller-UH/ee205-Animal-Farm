@@ -35,7 +35,4 @@
  << std::setw(20) << (member) \
  << std::setw(52) /* (data) */
 
-/// Maximum Name Length that a cat is allowed to have
-#define MAX_NAME_LEN 30
-
 #endif //EE205_ANIMAL_FARM_CONFIG_H

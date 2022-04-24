@@ -15,11 +15,11 @@
 const std::string Animal::KINGDOM_NAME = "Animalia";
 
 /////////////////////////////////// Class Constructors ///////////////////////////////////
-Animal::Animal( const float newMaxWeight, const std::string &newClassification, const std::string &newSpecies )
+Animal::Animal( const t_weight newMaxWeight, const std::string &newClassification, const std::string &newSpecies )
 		:
 		Animal( Gender::UNKNOWN_GENDER, Weight::UNKNOWN_WEIGHT, newMaxWeight, newClassification, newSpecies ) {}
 
-Animal::Animal( const Gender newGender, const float newWeight, const float newMaxWeight, const std::string &newClassification,
+Animal::Animal( const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight, const std::string &newClassification,
                 const std::string &newSpecies ) : _species{ newSpecies }, _classification{ newClassification }, _gender{ newGender }
 {
 	_weight.setMaxWeight( newMaxWeight );
@@ -27,7 +27,7 @@ Animal::Animal( const Gender newGender, const float newWeight, const float newMa
 }
 
 /////////////////////////////////// Static Methods ///////////////////////////////////
-std::string Animal::gender_literal( const Gender &gender ) const
+std::string Animal::getGenderLiteral( const Gender &gender ) const
 {
 	std::string retStr;
 
@@ -76,17 +76,24 @@ Weight Animal::getWeight() const noexcept
 }
 
 /////////////////////////////////// Setters ///////////////////////////////////
-void Animal::setWeight( const float newWeight )
+void Animal::setWeight( const t_weight newWeight )
 {
-	_weight.setWeight( newWeight );
+	if( Weight::weightIsValid( newWeight, _weight.getMaxWeight()))
+	{
+		_weight.setWeight( newWeight );
+	}
 }
 
 void Animal::setGender( const Gender newGender )
 {
-	_gender = newGender;
+	if( newGender == Gender::UNKNOWN_GENDER )
+	{
+		_gender = newGender;
+	}
+	std::cout << PROGRAM_NAME "Animal Error: Gender is already assigned!" << std::endl;
 }
 
-/////////////////////////////////// Public Methods ///////////////////////////////////
+/////////////////////////////////// Methods ///////////////////////////////////
 void Animal::dump() const noexcept
 {
 	Node::dump();
@@ -102,17 +109,31 @@ void Animal::dump() const noexcept
 //@todo implement validate functions
 bool Animal::validateClassifaction( const std::string &checkClassification ) noexcept
 {
-	return false;
-}
-
-bool Animal::validate() const noexcept
-{
-	return false;
+	if( checkClassification.empty())
+	{
+		std::cout << PROGRAM_NAME " Animal Validation Error: Classification is empty!" << std::endl;
+		return false;
+	}
+	return true; // classification is valid
 }
 
 bool Animal::validateSpecies( const std::string &checkSpecies ) noexcept
 {
-	return false;
+	if( checkSpecies.empty())
+	{
+		std::cout << PROGRAM_NAME " Animal Validation Error: Species is empty!" << std::endl;
+		return false;
+	}
+	return true; // species is valid}
+}
+
+bool Animal::validate() const noexcept
+{
+	Node::validate();
+	assert( validateClassifaction( getClassification()));
+	assert( validateSpecies( getSpecies()));
+	assert( _weight.validate());
+	return true; // everything checks out
 }
 
 /////////////////////////////////// Operator Overloading ///////////////////////////////////
@@ -130,7 +151,6 @@ inline std::ostream &operator<<( std::ostream &lhs_stream, const Gender &rhs_Gen
 			lhs_stream << "Female";
 			break;
 		default:
-			/// @throw out_of_range If the enum is not mapped to a string.
 			throw std::out_of_range( PROGRAM_NAME
 			                         ": Gender not mapped to a string!" );
 	}

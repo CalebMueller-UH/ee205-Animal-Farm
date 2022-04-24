@@ -32,8 +32,8 @@ public:  /////////////////////////////////// Constants /////////////////////////
 public:  /////////////////////////////////// Class Constructors ///////////////////////////////////
 	Cat( const std::string &newName );
 
-	Cat( const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const float newWeight,
-	     const float newMaxWeight );
+	Cat( const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight,
+	     const t_weight newMaxWeight );
 
 public:  /////////////////////////////////// Getters ///////////////////////////////////
 	std::string getName() const noexcept;

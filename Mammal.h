@@ -33,9 +33,9 @@ public:  /////////////////////////////////// Constants /////////////////////////
 	static const std::string MAMMAL_NAME;
 
 protected:  /////////////////////////////////// Class Constructors ///////////////////////////////////
-	Mammal( const float newMaxWeight, const std::string &newSpecies );
+	Mammal( const t_weight newMaxWeight, const std::string &newSpecies );
 
-	Mammal( const Color newColor, const Gender newGender, const float newWeight, const float newMaxWeight, const std::string newSpecies );
+	Mammal( const Color newColor, const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight, const std::string newSpecies );
 
 public:  /////////////////////////////////// Getters ///////////////////////////////////
 	Color getColor() const noexcept;
@@ -46,8 +46,6 @@ protected:  /////////////////////////////////// Setters ////////////////////////
 
 public:  /////////////////////////////////// Public Methods ///////////////////////////////////
 	void dump() const noexcept override;
-
-	friend std::ostream &operator<<( std::ostream &os, const Mammal &mammal );
 
 };
 

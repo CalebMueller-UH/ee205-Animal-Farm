@@ -12,14 +12,14 @@
 #include "Mammal.h"
 
 /////////////////////////////////// Constants ///////////////////////////////////
-const std::string Mammal::MAMMAL_NAME = "Mammalia";
+const std::string Mammal::MAMMAL_NAME = "Mammilian";
 
 /////////////////////////////////// Class Constructors ///////////////////////////////////
-Mammal::Mammal( const float newMaxWeight, const std::string &newSpecies )
+Mammal::Mammal( const t_weight newMaxWeight, const std::string &newSpecies )
 		:
 		Mammal( Color::UNKNOWN_COLOR, Gender::UNKNOWN_GENDER, Weight::UNKNOWN_WEIGHT, newMaxWeight, newSpecies ) {}
 
-Mammal::Mammal( const Color newColor, const Gender newGender, const float newWeight, const float newMaxWeight, const std::string newSpecies )
+Mammal::Mammal( const Color newColor, const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight, const std::string newSpecies )
 		:
 		Animal( newGender, newWeight, newMaxWeight, Mammal::MAMMAL_NAME, newSpecies ), _color{ newColor } {}
 
@@ -66,8 +66,8 @@ std::ostream &operator<<( std::ostream &lhs, const Color &rhs )
 			lhs << "ORANGE";
 			break;
 		default:
-			lhs << "Color is ineffable!";
-			break;
+			throw std::out_of_range( PROGRAM_NAME
+			                         ": Color not mapped to a string!" );
 	}
 	return lhs;
 }

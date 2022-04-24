@@ -14,6 +14,7 @@
 /////////////////////////////////// Virtual Methods ///////////////////////////////////
 void Node::dump() const
 {
+	PRINT_HEADING_FOR_DUMP;
 	FORMAT_LINE_FOR_DUMP( "Node", "this" ) << this << std::endl;
 	FORMAT_LINE_FOR_DUMP( "Node", "next" ) << _next << std::endl;
 }
@@ -27,4 +28,15 @@ bool Node::operator>( const Node &rhs )
 bool Node::compareByAddress( const Node *node1, const Node *node2 )
 {
 	return node1 == node2;
+}
+
+/////////////////////////////////// Validation Methods ///////////////////////////////////
+bool Node::validate() const noexcept
+{
+	if( _next != _next->_next )
+	{
+		std::cout << PROGRAM_NAME "Node Error: Recursive Loop!" << std::endl;
+		return false;
+	}
+	return true; // Node is valid
 }

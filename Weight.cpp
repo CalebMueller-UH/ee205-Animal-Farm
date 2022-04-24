@@ -11,11 +11,11 @@
 #include "Weight.h"
 
 /////////////////////////////////// Constants //////////////////////////////////////
-const float Weight::UNKNOWN_WEIGHT = 0;
-const float Weight::KILOS_IN_A_POUND = 0.453592;
-const float Weight::SLUGS_IN_A_POUND = 0.031081;
+const t_weight Weight::UNKNOWN_WEIGHT = 0;
+const t_weight Weight::KILOS_IN_A_POUND = 0.453592;
+const t_weight Weight::SLUGS_IN_A_POUND = 0.031081;
 const Weight::UnitOfWeight Weight::DEFAULT_UNIT_OF_WEIGHT = POUNDS;
-const float Weight::DEFAULT_MAX_WEIGHT = 50;
+const t_weight Weight::DEFAULT_MAX_WEIGHT = 40;
 const std::string Weight::POUND_LITERAL = "lbs";
 const std::string Weight::SLUG_LITERAL = "slugs";
 const std::string Weight::KILO_LITERAL = "kgs";
@@ -25,22 +25,22 @@ const std::string Weight::KILO_LITERAL = "kgs";
 Weight::Weight() noexcept : Weight( UNKNOWN_WEIGHT, DEFAULT_UNIT_OF_WEIGHT, UNKNOWN_WEIGHT ) {}
 
 // ↓ #2 only newWeight parameter provided: delegates to #7 with default values for _unitOfWeight and _maxWeight
-Weight::Weight( float newWeight ) : Weight( newWeight, DEFAULT_UNIT_OF_WEIGHT, UNKNOWN_WEIGHT ) {}
+Weight::Weight( t_weight newWeight ) : Weight( newWeight, DEFAULT_UNIT_OF_WEIGHT, UNKNOWN_WEIGHT ) {}
 
 // ↓ #3 Only newUnitOfWeight parameter provided: delegates to #7 with default values for _weight and _unitOfWeight
 Weight::Weight( Weight::UnitOfWeight newUnitOfWeight ) noexcept : Weight( UNKNOWN_WEIGHT, newUnitOfWeight, UNKNOWN_WEIGHT ) {}
 
 // ↓ #4 newWeight and newUnitOfWeight parameters provided: delegates to #7 with default value for _maxWeight
-Weight::Weight( float newWeight, Weight::UnitOfWeight newUnitOfWeight ) noexcept : Weight( newWeight, newUnitOfWeight, UNKNOWN_WEIGHT ) {}
+Weight::Weight( t_weight newWeight, Weight::UnitOfWeight newUnitOfWeight ) noexcept : Weight( newWeight, newUnitOfWeight, UNKNOWN_WEIGHT ) {}
 
 // ↓ #5  newWeight and newMaxWeight provided: delegates to #7 with default value for _unitOfWeight
-Weight::Weight( float newWeight, float newMaxWeight ) noexcept : Weight( newWeight, DEFAULT_UNIT_OF_WEIGHT, newMaxWeight ) {}
+Weight::Weight( t_weight newWeight, t_weight newMaxWeight ) noexcept : Weight( newWeight, DEFAULT_UNIT_OF_WEIGHT, newMaxWeight ) {}
 
 // ↓ #6  newUnitOfWeight and newMaxWeight provided: delegates to #7 with default value for _weight
-Weight::Weight( UnitOfWeight newUnitOfWeight, float newMaxWeight ) noexcept : Weight( UNKNOWN_WEIGHT, newUnitOfWeight, newMaxWeight ) {}
+Weight::Weight( UnitOfWeight newUnitOfWeight, t_weight newMaxWeight ) noexcept : Weight( UNKNOWN_WEIGHT, newUnitOfWeight, newMaxWeight ) {}
 
 // ↓ #7  all member variables provided as parameters
-Weight::Weight( float newWeight, Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight ) noexcept : _unitOfWeight{ newUnitOfWeight }
+Weight::Weight( t_weight newWeight, Weight::UnitOfWeight newUnitOfWeight, t_weight newMaxWeight ) noexcept : _unitOfWeight{ newUnitOfWeight }
 {
 	if( maxWeightIsValid( newMaxWeight ))
 	{
@@ -52,7 +52,7 @@ Weight::Weight( float newWeight, Weight::UnitOfWeight newUnitOfWeight, float new
 		_maxWeight = DEFAULT_MAX_WEIGHT;
 	}
 
-	if( weightIsValid( newWeight ))
+	if( weightIsValid( newWeight, _maxWeight ))
 	{
 		_weight = newWeight;
 		_bIsKnown = true;
@@ -64,27 +64,27 @@ Weight::Weight( float newWeight, Weight::UnitOfWeight newUnitOfWeight, float new
 }
 
 /////////////////////////////////// Static Methods //////////////////////////////////////
-float Weight::fromKilogramsToPounds( const float weightInKilos ) noexcept
+t_weight Weight::fromKilogramsToPounds( const t_weight weightInKilos ) noexcept
 {
 	return weightInKilos / KILOS_IN_A_POUND;
 }
 
-float Weight::fromPoundsToKilograms( const float weightInPounds ) noexcept
+t_weight Weight::fromPoundsToKilograms( const t_weight weightInPounds ) noexcept
 {
 	return weightInPounds * KILOS_IN_A_POUND;
 }
 
-float Weight::fromSlugsToPounds( const float weightInSlugs ) noexcept
+t_weight Weight::fromSlugsToPounds( const t_weight weightInSlugs ) noexcept
 {
 	return weightInSlugs / SLUGS_IN_A_POUND;
 }
 
-float Weight::fromPoundsToSlugs( const float weightInPounds ) noexcept
+t_weight Weight::fromPoundsToSlugs( const t_weight weightInPounds ) noexcept
 {
 	return weightInPounds * SLUGS_IN_A_POUND;
 }
 
-float Weight::convertWeight( const float fromWeight, const Weight::UnitOfWeight fromUnit, const Weight::UnitOfWeight toUnit ) noexcept
+t_weight Weight::convertWeight( const t_weight fromWeight, const Weight::UnitOfWeight fromUnit, const Weight::UnitOfWeight toUnit ) noexcept
 {
 	switch( fromUnit )
 	{
@@ -132,12 +132,12 @@ float Weight::convertWeight( const float fromWeight, const Weight::UnitOfWeight 
 }
 
 /////////////////////////////////// Getters ///////////////////////////////////
-float Weight::getWeight() const noexcept
+t_weight Weight::getWeight() const noexcept
 {
 	return _bIsKnown ? _weight : 0;
 }
 
-float Weight::getWeight( const Weight::UnitOfWeight weightUnits ) const noexcept
+t_weight Weight::getWeight( const Weight::UnitOfWeight weightUnits ) const noexcept
 {
 	if( _bIsKnown )
 	{
@@ -146,7 +146,7 @@ float Weight::getWeight( const Weight::UnitOfWeight weightUnits ) const noexcept
 	return 0; // (!_bisKnown)
 }
 
-float Weight::getMaxWeight() const noexcept
+t_weight Weight::getMaxWeight() const noexcept
 {
 	return _maxWeight;
 }
@@ -157,24 +157,24 @@ Weight::UnitOfWeight Weight::getUnitOfWeight() const noexcept
 }
 
 /////////////////////////////////// Setters ///////////////////////////////////
-void Weight::setWeight( const float newWeight )
+void Weight::setWeight( const t_weight newWeight )
 {
-	if( weightIsValid( newWeight ))
+	if( weightIsValid( newWeight, _maxWeight ))
 	{
 		_bIsKnown = true;
 		_weight = newWeight;
 	}
 }
 
-void Weight::setWeight( const float newWeight, Weight::UnitOfWeight weightUnits )
+void Weight::setWeight( const t_weight newWeight, Weight::UnitOfWeight weightUnits )
 {
-	if( weightIsValid( newWeight ))
+	if( weightIsValid( newWeight, _maxWeight ))
 	{
 		_weight = convertWeight( newWeight, _unitOfWeight, weightUnits );
 	}
 }
 
-void Weight::setMaxWeight( const float newMaxWeight )
+void Weight::setMaxWeight( const t_weight newMaxWeight )
 {
 	// Can only set _maxWeight if it isn't already set    ↓
 	if( maxWeightIsValid( newMaxWeight ) && !_bHasMax )
@@ -206,12 +206,12 @@ void Weight::dump() const noexcept
 }
 
 /////////////////////////////////// Validation Methods ///////////////////////////////////
-bool Weight::weightIsValid( const float checkWeight ) const noexcept
+bool Weight::weightIsValid( const t_weight checkWeight, const t_weight checkMaxWeight ) noexcept
 {
-	return ( checkWeight > 0 && checkWeight != UNKNOWN_WEIGHT && checkWeight <= _maxWeight );
+	return ( checkWeight > 0 && checkWeight != UNKNOWN_WEIGHT && checkWeight <= checkMaxWeight );
 }
 
-bool Weight::maxWeightIsValid( const float checkMaxWeight ) const noexcept
+bool Weight::maxWeightIsValid( const t_weight checkMaxWeight ) noexcept
 {
 	return ( checkMaxWeight > 0 && checkMaxWeight < DEFAULT_MAX_WEIGHT );
 }
@@ -225,23 +225,23 @@ bool Weight::validate() const noexcept
 
 bool Weight::operator==( const Weight &rhs ) const
 {
-	float lhs_weight = ( _bIsKnown ) ? getWeight( Weight::POUNDS ) : 0;
-	float rhs_weight = ( rhs._bIsKnown ) ? rhs.getWeight( Weight::POUNDS ) : 0;
+	t_weight lhs_weight = ( _bIsKnown ) ? getWeight( Weight::POUNDS ) : 0;
+	t_weight rhs_weight = ( rhs._bIsKnown ) ? rhs.getWeight( Weight::POUNDS ) : 0;
 	return lhs_weight == rhs_weight;
 }
 
 bool Weight::operator<( const Weight &rhs ) const
 {
-	float lhs_weight = ( _bIsKnown ) ? getWeight( Weight::POUNDS ) : 0;
-	float rhs_weight = ( rhs._bIsKnown ) ? rhs.getWeight( Weight::POUNDS ) : 0;
+	t_weight lhs_weight = ( _bIsKnown ) ? getWeight( Weight::POUNDS ) : 0;
+	t_weight rhs_weight = ( rhs._bIsKnown ) ? rhs.getWeight( Weight::POUNDS ) : 0;
 	return lhs_weight < rhs_weight;
 }
 
-Weight &Weight::operator+=( const float &rhs_weight )
+Weight &Weight::operator+=( const t_weight &rhs_weight )
 {
-	float lhs_weight = ( _bIsKnown ) ? getWeight( Weight::POUNDS ) : 0;
-	float sum = lhs_weight + rhs_weight;
-	if( !weightIsValid( sum ))
+	t_weight lhs_weight = ( _bIsKnown ) ? getWeight( Weight::POUNDS ) : 0;
+	t_weight sum = lhs_weight + rhs_weight;
+	if( !weightIsValid( sum, _maxWeight ))
 	{
 		throw invalid_argument( PROGRAM_NAME
 		                        " += operation results is an invalid weight!" );

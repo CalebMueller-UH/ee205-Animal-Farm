@@ -18,8 +18,8 @@ Cat::Cat( const std::string &newName )
 		:
 		Cat( newName, Color::UNKNOWN_COLOR, false, Gender::UNKNOWN_GENDER, Weight::UNKNOWN_WEIGHT, Weight::DEFAULT_MAX_WEIGHT ) {}
 
-Cat::Cat( const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const float newWeight,
-          const float newMaxWeight )
+Cat::Cat( const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight,
+          const t_weight newMaxWeight )
 		:
 		Mammal( newColor, newGender, newWeight, newMaxWeight, Cat::SPECIES_NAME ), _name{ newName }, _catIsFixed{ newIsFixed } {}
 
@@ -48,7 +48,7 @@ void Cat::fixCat() noexcept
 /////////////////////////////////// Public Methods ///////////////////////////////////
 std::string Cat::speak() const noexcept
 {
-	return nullptr;
+	return "\"meow\"";
 }
 
 void Cat::dump() const noexcept
@@ -71,7 +71,7 @@ bool Cat::validate() const noexcept
 bool Cat::nameIsValid( const std::string &newName )
 {
 	int nameLen = newName.length();
-	if( nameLen > 0 && nameLen < MAX_NAME_LEN )
+	if( nameLen > 0 )
 	{
 		return true; // name is valid
 	}

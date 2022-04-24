@@ -34,20 +34,20 @@ class Animal : public Node
 protected: //////////////////////////////// Member Variables ////////////////////////////////
 	std::string _species;
 	std::string _classification;
-	Gender _gender;
-	Weight _weight;
+	Gender _gender{Gender::UNKNOWN_GENDER};
+	Weight _weight{Weight::UNKNOWN_WEIGHT};
 
 public:  /////////////////////////////////// Constants ///////////////////////////////////
 	static const std::string KINGDOM_NAME;
 
 protected:  /////////////////////////////////// Class Constructors ///////////////////////////////////
-	Animal( const float newMaxWeight, const std::string &newClassification, const std::string &newSpecies );
+	Animal( const t_weight newMaxWeight, const std::string &newClassification, const std::string &newSpecies );
 
-	Animal( const Gender newGender, const float newWeight, const float newMaxWeight, const std::string &newClassification,
+	Animal( const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight, const std::string &newClassification,
 	        const std::string &newSpecies );
 
 public:  /////////////////////////////////// Static Methods ///////////////////////////////////
-std::string gender_literal(const Gender& gender) const;
+	std::string getGenderLiteral( const Gender &gender ) const;
 
 public:  /////////////////////////////////// Getters ///////////////////////////////////
 	std::string getKingdom() const noexcept;
@@ -62,7 +62,7 @@ public:  /////////////////////////////////// Getters ///////////////////////////
 
 protected:  /////////////////////////////////// Setters ///////////////////////////////////
 
-	void setWeight( const float newWeight );
+	void setWeight( const t_weight newWeight );
 
 	void setGender( const Gender newGender );
 
@@ -72,11 +72,11 @@ protected:  /////////////////////////////////// Methods ////////////////////////
 	void dump() const noexcept override;
 
 public:  /////////////////////////////////// Validation Methods ///////////////////////////////////
-	bool validate() const noexcept override;
-
 	static bool validateClassifaction( const std::string &checkClassification ) noexcept;
 
 	static bool validateSpecies( const std::string &checkSpecies ) noexcept;
+
+	bool validate() const noexcept override;
 
 };
 
