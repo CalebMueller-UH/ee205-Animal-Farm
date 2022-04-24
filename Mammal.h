@@ -11,6 +11,7 @@
 #ifndef EE205_ANIMAL_FARM_MAMMAL_H
 #define EE205_ANIMAL_FARM_MAMMAL_H
 
+#include <ostream>
 #include "Animal.h"
 
 enum class Color
@@ -46,7 +47,11 @@ protected:  /////////////////////////////////// Setters ////////////////////////
 public:  /////////////////////////////////// Public Methods ///////////////////////////////////
 	void dump() const noexcept override;
 
+	friend std::ostream &operator<<( std::ostream &os, const Mammal &mammal );
+
 };
+
+std::ostream &operator<<( std::ostream &lhs, const Color &rhs );
 
 
 #endif //EE205_ANIMAL_FARM_MAMMAL_H

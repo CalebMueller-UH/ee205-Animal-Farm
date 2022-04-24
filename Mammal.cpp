@@ -3,7 +3,7 @@
 /// @brief  ee205_animal_farm - EE 205 - Spr 2022
 ///
 /// @file Mammal.cpp
-/// @version 1.0
+/// @version 3.0
 ///
 /// @author Caleb Mueller <mc61@hawaii.edu>
 /// @date   23_Apr_2022
@@ -39,7 +39,37 @@ void Mammal::setColor( const Color newColor ) noexcept
 void Mammal::dump() const noexcept
 {
 	Animal::dump();
-	FORMAT_LINE_FOR_DUMP( "Mammal", "_color");
+	FORMAT_LINE_FOR_DUMP( "Mammal", "_color" ) << _color << std::endl;
+}
+
+/////////////////////////////////// Externally Scoped Overloaded Operators ///////////////////////////////////
+std::ostream &operator<<( std::ostream &lhs, const Color &rhs )
+{
+	switch( rhs )
+	{
+		case ( Color::UNKNOWN_COLOR ):
+			lhs << "UNKNOWN COLOR";
+			break;
+		case ( Color::BLACK ):
+			lhs << "BLACK";
+			break;
+		case ( Color::GREY ):
+			lhs << "GREY";
+			break;
+		case ( Color::BROWN ):
+			lhs << "BROWN";
+			break;
+		case ( Color::TAN ):
+			lhs << "TAN";
+			break;
+		case ( Color::ORANGE ):
+			lhs << "ORANGE";
+			break;
+		default:
+			lhs << "Color is ineffable!";
+			break;
+	}
+	return lhs;
 }
 
 

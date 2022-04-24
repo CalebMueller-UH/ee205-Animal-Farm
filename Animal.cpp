@@ -3,7 +3,7 @@
 /// @brief  ee205_animal_farm - EE 205 - Spr 2022
 ///
 /// @file Animal.cpp
-/// @version 1.0
+/// @version 3.0
 ///
 /// @author Caleb Mueller <mc61@hawaii.edu>
 /// @date   23_Apr_2022
@@ -89,16 +89,13 @@ void Animal::setGender( const Gender newGender )
 /////////////////////////////////// Public Methods ///////////////////////////////////
 void Animal::dump() const noexcept
 {
-	PRINT_HEADING_FOR_DUMP;
-
 	Node::dump();
-
 	FORMAT_LINE_FOR_DUMP( "Animal", "this" ) << this << std::endl;
 	FORMAT_LINE_FOR_DUMP( "Animal", "kingdom" ) << getKingdom() << std::endl;
 	FORMAT_LINE_FOR_DUMP( "Animal", "classification" ) << getClassification() << std::endl;
 	FORMAT_LINE_FOR_DUMP( "Animal", "species" ) << getSpecies() << std::endl;
 	FORMAT_LINE_FOR_DUMP( "Animal", "gender" ) << getGender() << std::endl;
-	FORMAT_LINE_FOR_DUMP( "Animal", "_weight" ) << _weight << std::endl;
+	_weight.dump();
 }
 
 /////////////////////////////////// Validation Methods ///////////////////////////////////

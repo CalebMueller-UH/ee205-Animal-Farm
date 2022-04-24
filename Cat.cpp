@@ -55,18 +55,23 @@ void Cat::dump() const noexcept
 {
 	PRINT_HEADING_FOR_DUMP;
 	Mammal::dump();
+	FORMAT_LINE_FOR_DUMP( "Cat", "this" ) << this << std::endl;
+	FORMAT_LINE_FOR_DUMP( "Cat", "name" ) << _name << std::endl;
+	FORMAT_LINE_FOR_DUMP( "Cat", "isFixed" ) << _catIsFixed << std::endl;
 }
 
 /////////////////////////////////// Validation Methods ///////////////////////////////////
 bool Cat::validate() const noexcept
 {
-	return false;
+	Mammal::validate();
+	assert( nameIsValid( _name ));
+	return true; // is Valid
 }
 
 bool Cat::nameIsValid( const std::string &newName )
 {
-	int nNamLen = newName.length();
-	if( nNamLen > 0 && nNamLen < MAX_NAME_LEN )
+	int nameLen = newName.length();
+	if( nameLen > 0 && nameLen < MAX_NAME_LEN )
 	{
 		return true; // name is valid
 	}

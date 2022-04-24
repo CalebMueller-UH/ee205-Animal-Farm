@@ -27,7 +27,7 @@ add_executable(
         Animal.h Animal.cpp
         Mammal.h Mammal.cpp
         Cat.h Cat.cpp
-        Weight.h Weight.cpp Mammal.cpp Node.cpp)
+        Weight.h Weight.cpp)
 
 # Debug Build
 add_executable(

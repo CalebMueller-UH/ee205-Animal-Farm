@@ -18,9 +18,8 @@
 
 class Node
 {
-	friend class Anaimal;
-
-	friend class LinkedList;
+	friend class SinglyLinkedList;
+	friend class List;
 
 protected: //////////////////////////////// Member Variables ////////////////////////////////
 	Node *_next;
@@ -30,7 +29,7 @@ public:  /////////////////////////////////// Virtual Methods ///////////////////
 
 	virtual bool validate() const noexcept = 0;
 
-	//virtual bool operator>( const Node &rhs );
+	virtual bool operator>( const Node &rhs );
 
 public:  /////////////////////////////////// Public Methods ///////////////////////////////////
 	static bool compareByAddress( const Node *node1, const Node *node2 );

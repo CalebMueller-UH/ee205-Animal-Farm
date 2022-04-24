@@ -3,7 +3,7 @@
 /// @brief  ee205_lab12a_fatCat - EE 205 - Spr 2022
 ///
 /// @file Weight.h
-/// @version 1.0
+/// @version 3.0
 ///
 /// @author Caleb Mueller <mc61@hawaii.edu>
 /// @date   11_Apr_2022

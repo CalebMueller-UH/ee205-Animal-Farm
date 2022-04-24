@@ -3,7 +3,7 @@
 /// @brief  ee205_animal_farm - EE 205 - Spr 2022
 ///
 /// @file Node.cpp
-/// @version 1.0
+/// @version 3.0
 ///
 /// @author Caleb Mueller <mc61@hawaii.edu>
 /// @date   23_Apr_2022
@@ -14,7 +14,13 @@
 /////////////////////////////////// Virtual Methods ///////////////////////////////////
 void Node::dump() const
 {
-	FORMAT_LINE_FOR_DUMP( "Node", "_next" ) << _next;
+	FORMAT_LINE_FOR_DUMP( "Node", "this" ) << this << std::endl;
+	FORMAT_LINE_FOR_DUMP( "Node", "next" ) << _next << std::endl;
+}
+
+bool Node::operator>( const Node &rhs )
+{
+	return compareByAddress( this, &( Node & ) rhs );
 }
 
 /////////////////////////////////// Public Methods ///////////////////////////////////

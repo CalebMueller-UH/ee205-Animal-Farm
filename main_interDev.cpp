@@ -3,7 +3,7 @@
 /// @brief  ee205_animal_farm - EE 205 - Spr 2022
 ///
 /// @file main_interDev.cpp
-/// @version 1.0
+/// @version 3.0
 ///
 /// @author Caleb Mueller <mc61@hawaii.edu>
 /// @date   23_Apr_2022
@@ -28,5 +28,6 @@ int main()
 	//Constructing a new Cat and testing contents
 	{
 		Cat* newCat = new Cat("Newcat" , Color::ORANGE, false, Gender::FEMALE, 10.0F, 50.0F);
+		newCat->dump();
 	}
 }

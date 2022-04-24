@@ -3,7 +3,7 @@
 /// @brief  ee205_lab12a_fatCat - EE 205 - Spr 2022
 ///
 /// @file Weight.cpp
-/// @version 1.0
+/// @version 3.0
 ///
 /// @author Caleb Mueller <mc61@hawaii.edu>
 /// @date   11_Apr_2022
@@ -197,8 +197,12 @@ bool Weight::hasMaxWeight() const noexcept
 
 void Weight::dump() const noexcept
 {
-	std::cout << "Weight: " << _weight << " " << _unitOfWeight << ", ";
-	std::cout << "Max Weight: " << _maxWeight << " " << _unitOfWeight << std::endl;
+	FORMAT_LINE_FOR_DUMP( "Weight", "this" ) << this << std::endl;
+	FORMAT_LINE_FOR_DUMP( "Weight", "isKnown" ) << _bIsKnown << std::endl;
+	FORMAT_LINE_FOR_DUMP( "Weight", "weight" ) << _weight << std::endl;
+	FORMAT_LINE_FOR_DUMP( "Weight", "unitOfWeight" ) << _unitOfWeight << std::endl;
+	FORMAT_LINE_FOR_DUMP( "Weight", "hasMax" ) << _bHasMax << std::endl;
+	FORMAT_LINE_FOR_DUMP( "Weight", "maxWeight" ) << _maxWeight << std::endl;
 }
 
 /////////////////////////////////// Validation Methods ///////////////////////////////////
@@ -286,14 +290,12 @@ std::ostream &operator<<( std::ostream &lhs_stream, const Weight &rhs_Weight )
 	}
 
 	stringBuffer << " " << rhs_Weight.getUnitOfWeight();
-
 	/// If the numeric weight is 1, use the singular form of the unit.
 	/// If the numeric weight is not 1, use the plural form of the unit.
 	if(( !rhs_Weight.hasMaxWeight() && rhs_Weight.getWeight() > 1 ) || ( rhs_Weight.hasMaxWeight() && rhs_Weight.getMaxWeight() > 1 ))
 	{
 		stringBuffer << "s";
 	}
-
 	return lhs_stream << stringBuffer.str();
 }
 
