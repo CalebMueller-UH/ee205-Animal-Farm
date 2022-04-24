@@ -11,11 +11,25 @@
 #ifndef EE205_ANIMAL_FARM_SINGLYLINKEDLIST_H
 #define EE205_ANIMAL_FARM_SINGLYLINKEDLIST_H
 
+#include "config.h"
 #include "List.h"
 #include "Node.h"
 
 class SinglyLinkedList : public List
 {
+protected:  /////////////////////////////////// Class Constructors ///////////////////////////////////
+	SinglyLinkedList();
+
+public:  /////////////////////////////////// Public Methods ///////////////////////////////////
+	void push_front( Node *newNode );
+
+	Node *pop_front() noexcept override;
+
+	bool insert_after( Node *insertAfterNode, Node *nodeToBeInserted );
+
+	void dump() const noexcept override;
+
+	bool validate() const noexcept override;
 };
 
 
