@@ -34,8 +34,8 @@ class Animal : public Node
 protected: //////////////////////////////// Member Variables ////////////////////////////////
 	std::string _species;
 	std::string _classification;
-	Gender _gender{Gender::UNKNOWN_GENDER};
-	Weight _weight{Weight::UNKNOWN_WEIGHT};
+	Gender _gender{ Gender::UNKNOWN_GENDER };
+	Weight _weight{ Weight::UNKNOWN_WEIGHT };
 
 public:  /////////////////////////////////// Constants ///////////////////////////////////
 	static const std::string KINGDOM_NAME;
@@ -66,7 +66,7 @@ protected:  /////////////////////////////////// Setters ////////////////////////
 
 	void setGender( const Gender newGender );
 
-protected:  /////////////////////////////////// Methods ///////////////////////////////////
+public:  /////////////////////////////////// Public Methods ///////////////////////////////////
 	virtual std::string speak() const noexcept = 0;
 
 	void dump() const noexcept override;

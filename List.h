@@ -38,7 +38,7 @@ public:  /////////////////////////////////// Public Methods ////////////////////
 
 	Node *get_first() const noexcept;
 
-	Node *get_next( const Node *currentNode );
+	static Node *get_next( const Node *currentNode );
 
 	void deleteAllNodes() noexcept;
 

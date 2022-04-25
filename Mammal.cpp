@@ -48,28 +48,28 @@ std::ostream &operator<<( std::ostream &lhs, const Color &rhs )
 	switch( rhs )
 	{
 		case ( Color::UNKNOWN_COLOR ):
-			lhs << "UNKNOWN COLOR";
+			lhs << "Unknown Color";
 			break;
 		case ( Color::BLACK ):
-			lhs << "BLACK";
+			lhs << "Black";
 			break;
-		case ( Color::GREY ):
-			lhs << "GREY";
+		case ( Color::GRAY ):
+			lhs << "Gray";
 			break;
 		case ( Color::BROWN ):
-			lhs << "BROWN";
+			lhs << "Brown";
 			break;
 		case ( Color::CREAM ):
-			lhs << "CREAM";
+			lhs << "Cream";
 			break;
 		case ( Color::CALICO ):
-			lhs << "CALICO";
+			lhs << "Calico";
 			break;
 		case ( Color::WHITE ):
-			lhs << "WHITE";
+			lhs << "White";
 			break;
 		case ( Color::GINGER ):
-			lhs << "GINGER";
+			lhs << "Ginger";
 			break;
 		default:
 			throw std::out_of_range( PROGRAM_NAME

@@ -18,7 +18,7 @@ enum class Color
 {
 	UNKNOWN_COLOR,
 	BLACK,
-	GREY,
+	GRAY,
 	BROWN,
 	CREAM,
 	CALICO,

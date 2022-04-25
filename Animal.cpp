@@ -102,7 +102,9 @@ void Animal::dump() const noexcept
 	FORMAT_LINE_FOR_DUMP( "Animal", "classification" ) << getClassification() << std::endl;
 	FORMAT_LINE_FOR_DUMP( "Animal", "species" ) << getSpecies() << std::endl;
 	FORMAT_LINE_FOR_DUMP( "Animal", "gender" ) << getGender() << std::endl;
-	FORMAT_LINE_FOR_DUMP( "Animal", "weight" ); _weight.print();
+	FORMAT_LINE_FOR_DUMP( "Animal", "weight" ) << _weight << std::endl;
+
+	//FORMAT_LINE_FOR_DUMP( "Animal", "weight" ); _weight.print();
 
 	//_weight.dump();
 }

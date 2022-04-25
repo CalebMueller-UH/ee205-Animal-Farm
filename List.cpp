@@ -53,7 +53,7 @@ Node *List::get_first() const noexcept
 
 Node *List::get_next( const Node *currentNode )
 {
-	if( _head == nullptr )
+	if( currentNode == nullptr )
 	{
 		throw invalid_argument( PROGRAM_NAME " List Error: currentNode must not be nullptr" );
 	}

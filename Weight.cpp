@@ -50,6 +50,13 @@ Weight::Weight( t_weight newWeight, Weight::UnitOfWeight newUnitOfWeight, t_weig
 	else
 	{
 		_maxWeight = DEFAULT_MAX_WEIGHT;
+
+		// Option, set at top of Weight.h, for default max weight to count as a validly set weight
+		// (useful for specified required behavior in Animal Farm 3)
+		if( AUTO_DEFAULT_MAX_WEIGHT )
+		{
+			_bHasMax = true;
+		}
 	}
 
 	if( weightIsValid( newWeight, _maxWeight ))
@@ -207,7 +214,7 @@ void Weight::dump() const noexcept
 
 void Weight::print() const noexcept
 {
-	std::cout << this << std::endl;
+	std::cout << *this << std::endl;
 }
 
 /////////////////////////////////// Validation Methods ///////////////////////////////////
@@ -223,7 +230,7 @@ bool Weight::maxWeightIsValid( const t_weight checkMaxWeight ) noexcept
 
 bool Weight::validate() const noexcept
 {
-	return ( _bIsKnown && _bHasMax );
+	return ( _bIsKnown && ( _weight <= _maxWeight ));
 }
 
 /////////////////////////////////// Overloaded Operators ///////////////////////////////////
@@ -270,7 +277,7 @@ std::ostream &operator<<( ostream &lhs_stream, const Weight::UnitOfWeight rhs_Un
 	}
 }
 
-std::ostream &operator<<( std::ostream &lhs_stream, const Weight &rhs_Weight )
+std::ostream &operator<<( std::ostream &lhs_stream, const Weight rhs_Weight )
 {
 	std::stringstream stringBuffer;
 
@@ -294,12 +301,7 @@ std::ostream &operator<<( std::ostream &lhs_stream, const Weight &rhs_Weight )
 	}
 
 	stringBuffer << " " << rhs_Weight.getUnitOfWeight();
-	/// If the numeric weight is 1, use the singular form of the unit.
-	/// If the numeric weight is not 1, use the plural form of the unit.
-	if(( !rhs_Weight.hasMaxWeight() && rhs_Weight.getWeight() > 1 ) || ( rhs_Weight.hasMaxWeight() && rhs_Weight.getMaxWeight() > 1 ))
-	{
-		stringBuffer << "s";
-	}
+
 	return lhs_stream << stringBuffer.str();
 }
 

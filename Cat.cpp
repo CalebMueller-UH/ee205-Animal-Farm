@@ -58,14 +58,13 @@ void Cat::fixCat() noexcept
 /////////////////////////////////// Public Methods ///////////////////////////////////
 std::string Cat::speak() const noexcept
 {
-	return "\"meow\"";
+	return "\"Meow!\"";
 }
 
 void Cat::dump() const noexcept
 {
 	PRINT_HEADING_FOR_DUMP;
 	Mammal::dump();
-	FORMAT_LINE_FOR_DUMP( "Cat", "this" ) << this << std::endl;
 	FORMAT_LINE_FOR_DUMP( "Cat", "name" ) << _name << std::endl;
 	FORMAT_LINE_FOR_DUMP( "Cat", "isFixed" ) << std::boolalpha << _catIsFixed << std::endl;
 }
