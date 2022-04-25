@@ -212,11 +212,6 @@ void Weight::dump() const noexcept
 	FORMAT_LINE_FOR_DUMP( "Weight", "maxWeight" ) << _maxWeight << std::endl;
 }
 
-void Weight::print() const noexcept
-{
-	std::cout << *this << std::endl;
-}
-
 /////////////////////////////////// Validation Methods ///////////////////////////////////
 bool Weight::weightIsValid( const t_weight checkWeight, const t_weight checkMaxWeight ) noexcept
 {

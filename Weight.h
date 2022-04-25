@@ -113,8 +113,6 @@ public:    /////////////////////////////////// Public Methods //////////////////
 
 	void setMaxWeight( const t_weight newMaxWeight );
 
-	void print() const noexcept;
-
 public:    /////////////////////////////////// Validation Methods ///////////////////////////////////
 	static bool weightIsValid( const t_weight checkWeight, const t_weight checkMaxWeight ) noexcept;
 
