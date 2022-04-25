@@ -3,7 +3,7 @@
 /// @brief  ee205-Animal-Farm - EE 205 - Spr 2022
 ///
 /// @file linkedList.h
-/// @version 2.0
+/// @version 3.0
 ///
 /// @author Caleb Mueller <mc61@hawaii.edu>
 /// @date   04_Apr_2022

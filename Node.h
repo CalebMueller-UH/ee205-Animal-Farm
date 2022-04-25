@@ -6,7 +6,7 @@
 /// @version 3.0
 ///
 /// @author Caleb Mueller <mc61@hawaii.edu>
-/// @date   19_Apr_2022
+/// @date 23_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 #ifndef EE205_ANIMAL_FARM_NODE_H
 #define EE205_ANIMAL_FARM_NODE_H

@@ -3,10 +3,10 @@
 ### @brief  ee205-Animal-Farm - EE 205 - Spr 2022
 ###
 ### @file CMakeLists.txt
-### @version 2.0
+### @version 3.0
 ###
 ### @author Caleb Mueller <mc61@hawaii.edu>
-### @date   02_Apr_2022
+### @date 23_Apr_2022
 ###############################################################################
 
 cmake_minimum_required(VERSION 3.22)
