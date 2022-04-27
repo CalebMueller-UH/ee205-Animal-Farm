@@ -14,44 +14,38 @@
 #include <ostream>
 #include "Animal.h"
 
+using std::string;
+using std::cout;
+
 enum class Color
 {
-	UNKNOWN_COLOR,
-	BLACK,
-	GRAY,
-	BROWN,
-	CREAM,
-	CALICO,
-	WHITE,
-	GINGER
+  UNKNOWN_COLOR = 0, BLACK, GRAY, BROWN, WHITE, CREAM, CALICO, GINGER
 };
 
 class Mammal : public Animal
 {
 protected: //////////////////////////////// Member Variables ////////////////////////////////
-	Color _color{ Color::UNKNOWN_COLOR };
+	Color _color{Color::UNKNOWN_COLOR};
 
 public:  /////////////////////////////////// Constants ///////////////////////////////////
 	static const string MAMMAL_NAME;
 
 protected:  /////////////////////////////////// Class Constructors ///////////////////////////////////
-	Mammal( const t_weight newMaxWeight, const string &newSpecies );
+	Mammal(const t_weight newMaxWeight, const string& newSpecies);
 
-	Mammal( const Color newColor, const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight, const string newSpecies );
+	Mammal(const Color newColor, const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight, const string newSpecies);
 
 public:  /////////////////////////////////// Getters ///////////////////////////////////
 	Color getColor() const noexcept;
 
 protected:  /////////////////////////////////// Setters ///////////////////////////////////
-	void setColor( const Color newColor ) noexcept;
-
+	void setColor(const Color newColor) noexcept;
 
 public:  /////////////////////////////////// Public Methods ///////////////////////////////////
 	void dump() const noexcept override;
 
 };
 
-std::ostream &operator<<( std::ostream &lhs, const Color &rhs );
-
+std::ostream& operator<<(std::ostream& lhs, const Color& rhs);
 
 #endif //EE205_ANIMAL_FARM_MAMMAL_H

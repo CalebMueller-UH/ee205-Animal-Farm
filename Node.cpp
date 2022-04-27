@@ -14,17 +14,17 @@
 /////////////////////////////////// Virtual Methods ///////////////////////////////////
 void Node::dump() const
 {
-	FORMAT_LINE_FOR_DUMP( "Node", "this" ) << this << std::endl;
-	FORMAT_LINE_FOR_DUMP( "Node", "next" ) << _next << std::endl;
+	FORMAT_LINE_FOR_DUMP("Node", "this") << this << std::endl;
+	FORMAT_LINE_FOR_DUMP("Node", "next") << _next << std::endl;
 }
 
-bool Node::operator>( const Node &rhs )
+bool Node::operator>(const Node& rhs)
 {
-	return compareByAddress( this, &( Node & ) rhs );
+	return compareByAddress(this, &( Node& ) rhs);
 }
 
 /////////////////////////////////// Public Methods ///////////////////////////////////
-bool Node::compareByAddress( const Node *node1, const Node *node2 )
+bool Node::compareByAddress(const Node* node1, const Node* node2)
 {
 	return node1 == node2;
 }
@@ -32,17 +32,16 @@ bool Node::compareByAddress( const Node *node1, const Node *node2 )
 /////////////////////////////////// Validation Methods ///////////////////////////////////
 bool Node::validate() const noexcept
 {
-	if(_next == nullptr)
+	if (_next == nullptr)
 	{
 		return true; // Single node
 	}
 
 	// Not a single node ↓
-	if( _next == _next->_next )
+	if (_next == _next->_next)
 	{
 		cout << PROGRAM_NAME "Node Error: Recursive Loop!" << std::endl;
 		return false;
 	}
-
 	return true; // Node is valid
 }

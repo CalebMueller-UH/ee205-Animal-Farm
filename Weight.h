@@ -23,7 +23,7 @@
 
 // Option for default max weight to count as a set weight
 // (useful for specified required behavior in Animal Farm 3)
-#define AUTO_DEFAULT_MAX_WEIGHT 1
+#define AUTO_DEFAULT_MAX_WEIGHT
 
 using namespace std;
 

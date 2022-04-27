@@ -29,7 +29,7 @@ using std::cout;
 
 /// Format a line for dumping the members of a class to the console.
 /// Setup the fields for printing (space pad, left justify, etc.)
-#define FORMAT_LINE_FOR_DUMP( className, member ) \
+#define FORMAT_LINE_FOR_DUMP(className, member) \
  cout << std::setfill( ' ' ) /* Space pad */ \
  << std::left /* Left justify */ \
  << std::boolalpha /* Print `true` or `false` for `bool`s */ \

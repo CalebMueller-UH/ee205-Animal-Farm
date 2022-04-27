@@ -22,8 +22,7 @@
 using std::string;
 using std::cout;
 
-class Cat : public Mammal
-{
+class Cat : public Mammal {
 private: //////////////////////////////// Member Variables ////////////////////////////////
 	string _name;
 	bool _catIsFixed;
@@ -33,12 +32,11 @@ public:  /////////////////////////////////// Constants /////////////////////////
 	static const Weight MAX_WEIGHT;
 
 public:  /////////////////////////////////// Class Constructors ///////////////////////////////////
-	Cat( const string &newName );
+	Cat(const string& newName);
 
-	Cat( const string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight );
+	Cat(const string& newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight);
 
-	Cat( const string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight,
-	     const t_weight newMaxWeight );
+	Cat(const string& newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight);
 
 public:  /////////////////////////////////// Getters ///////////////////////////////////
 	string getName() const noexcept;
@@ -46,7 +44,7 @@ public:  /////////////////////////////////// Getters ///////////////////////////
 	bool isFixed() const noexcept;
 
 public:  /////////////////////////////////// Setters ///////////////////////////////////
-	void setName( const string &newName );
+	void setName(const string& newName);
 
 	void fixCat() noexcept;
 
@@ -58,7 +56,7 @@ public:  /////////////////////////////////// Public Methods ////////////////////
 public:  /////////////////////////////////// Validation Methods ///////////////////////////////////
 	bool validate() const noexcept override;
 
-	static bool nameIsValid( const string &newName );
+	static bool nameIsValid(const string& newName);
 
 }; // End of Cat class
 
