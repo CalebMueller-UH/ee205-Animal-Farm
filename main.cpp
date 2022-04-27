@@ -17,7 +17,7 @@
 #include "Cat.h"
 #include "SinglyLinkedList.h"
 
-using namespace std;
+using std::cout;
 
 int main()
 {
