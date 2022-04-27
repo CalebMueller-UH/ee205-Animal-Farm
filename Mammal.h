@@ -32,12 +32,12 @@ protected: //////////////////////////////// Member Variables ///////////////////
 	Color _color{ Color::UNKNOWN_COLOR };
 
 public:  /////////////////////////////////// Constants ///////////////////////////////////
-	static const std::string MAMMAL_NAME;
+	static const string MAMMAL_NAME;
 
 protected:  /////////////////////////////////// Class Constructors ///////////////////////////////////
-	Mammal( const t_weight newMaxWeight, const std::string &newSpecies );
+	Mammal( const t_weight newMaxWeight, const string &newSpecies );
 
-	Mammal( const Color newColor, const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight, const std::string newSpecies );
+	Mammal( const Color newColor, const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight, const string newSpecies );
 
 public:  /////////////////////////////////// Getters ///////////////////////////////////
 	Color getColor() const noexcept;

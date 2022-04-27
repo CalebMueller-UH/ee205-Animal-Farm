@@ -11,20 +11,20 @@
 #include "Cat.h"
 
 /////////////////////////////////// Constants ///////////////////////////////////
-const std::string Cat::SPECIES_NAME = "Felis catus";
+const string Cat::SPECIES_NAME = "Felis catus";
 
 /////////////////////////////////// Class Constructors ///////////////////////////////////
-Cat::Cat( const std::string &newName )
+Cat::Cat( const string &newName )
 		:
 		Cat( newName, Color::UNKNOWN_COLOR, false, Gender::UNKNOWN_GENDER, Weight::UNKNOWN_WEIGHT, Weight::DEFAULT_MAX_WEIGHT ) {}
 
-Cat::Cat( const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight )
+Cat::Cat( const string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight )
 		:
 		Cat( newName, newColor, newIsFixed, newGender, newWeight, Weight::DEFAULT_MAX_WEIGHT ) {}
 
 Cat::Cat(
 
-		const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight,
+		const string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight,
 		const t_weight newMaxWeight ) : Mammal( newColor, newGender, newWeight, newMaxWeight, Cat::SPECIES_NAME ), _name{
 		newName
 }, _catIsFixed{
@@ -34,7 +34,7 @@ Cat::Cat(
 }
 
 /////////////////////////////////// Getters ///////////////////////////////////
-std::string Cat::getName() const noexcept
+string Cat::getName() const noexcept
 {
 	return _name;
 }
@@ -45,7 +45,7 @@ bool Cat::isFixed() const noexcept
 }
 
 /////////////////////////////////// Setters ///////////////////////////////////
-void Cat::setName( const std::string &newName )
+void Cat::setName( const string &newName )
 {
 	nameIsValid( newName ) ? _name = newName : 0;
 }
@@ -56,7 +56,7 @@ void Cat::fixCat() noexcept
 }
 
 /////////////////////////////////// Public Methods ///////////////////////////////////
-std::string Cat::speak() const noexcept
+string Cat::speak() const noexcept
 {
 	return "\"Meow!\"";
 }
@@ -77,7 +77,7 @@ bool Cat::validate() const noexcept
 	return true; // is Valid
 }
 
-bool Cat::nameIsValid( const std::string &newName )
+bool Cat::nameIsValid( const string &newName )
 {
 	int nameLen = newName.length();
 	if( nameLen > 0 )

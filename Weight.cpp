@@ -16,9 +16,9 @@ const t_weight Weight::KILOS_IN_A_POUND = 0.453592;
 const t_weight Weight::SLUGS_IN_A_POUND = 0.031081;
 const Weight::UnitOfWeight Weight::DEFAULT_UNIT_OF_WEIGHT = POUNDS;
 const t_weight Weight::DEFAULT_MAX_WEIGHT = 40;
-const std::string Weight::POUND_LITERAL = "lbs";
-const std::string Weight::SLUG_LITERAL = "slugs";
-const std::string Weight::KILO_LITERAL = "kgs";
+const string Weight::POUND_LITERAL = "lbs";
+const string Weight::SLUG_LITERAL = "slugs";
+const string Weight::KILO_LITERAL = "kgs";
 
 /////////////////////////////////// Class Constructors //////////////////////////////////////
 // ↓ #1 Default Constructor: delegates to #7 with all default values
@@ -274,7 +274,7 @@ std::ostream &operator<<( ostream &lhs_stream, const Weight::UnitOfWeight rhs_Un
 
 std::ostream &operator<<( std::ostream &lhs_stream, const Weight rhs_Weight )
 {
-	std::stringstream stringBuffer;
+	stringstream stringBuffer;
 
 	if( !rhs_Weight.weightIsKnown() && !rhs_Weight.hasMaxWeight())
 	{

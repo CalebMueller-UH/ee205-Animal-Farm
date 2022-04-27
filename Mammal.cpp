@@ -12,14 +12,14 @@
 #include "Mammal.h"
 
 /////////////////////////////////// Constants ///////////////////////////////////
-const std::string Mammal::MAMMAL_NAME = "Mammilian";
+const string Mammal::MAMMAL_NAME = "Mammilian";
 
 /////////////////////////////////// Class Constructors ///////////////////////////////////
-Mammal::Mammal( const t_weight newMaxWeight, const std::string &newSpecies )
+Mammal::Mammal( const t_weight newMaxWeight, const string &newSpecies )
 		:
 		Mammal( Color::UNKNOWN_COLOR, Gender::UNKNOWN_GENDER, Weight::UNKNOWN_WEIGHT, newMaxWeight, newSpecies ) {}
 
-Mammal::Mammal( const Color newColor, const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight, const std::string newSpecies )
+Mammal::Mammal( const Color newColor, const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight, const string newSpecies )
 		:
 		Animal( newGender, newWeight, newMaxWeight, Mammal::MAMMAL_NAME, newSpecies ), _color{ newColor } {}
 

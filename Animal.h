@@ -18,43 +18,43 @@
 #include "Node.h"
 #include "Weight.h"
 
-enum class Gender
-{
-	UNKNOWN_GENDER = 0,
-	MALE,
-	FEMALE
+using std::ostream;
+using std::string;
+using std::cout;
+
+enum class Gender {
+  UNKNOWN_GENDER = 0,
+  MALE,
+  FEMALE
 };
 
-inline std::ostream &operator<<( std::ostream &lhs_stream, const Gender &rhs_Gender );
+inline ostream& operator<<(ostream& lhs_stream, const Gender& rhs_Gender);
 
-
-class Animal : public Node
-{
-
+class Animal : public Node {
 protected: //////////////////////////////// Member Variables ////////////////////////////////
-	std::string _species;
-	std::string _classification;
-	Gender _gender{ Gender::UNKNOWN_GENDER };
-	Weight _weight{ Weight::UNKNOWN_WEIGHT };
+	string _species;
+	string _classification;
+	Gender _gender{Gender::UNKNOWN_GENDER};
+	Weight _weight{Weight::UNKNOWN_WEIGHT};
 
 public:  /////////////////////////////////// Constants ///////////////////////////////////
-	static const std::string KINGDOM_NAME;
+	static const string KINGDOM_NAME;
 
 protected:  /////////////////////////////////// Class Constructors ///////////////////////////////////
-	Animal( const t_weight newMaxWeight, const std::string &newClassification, const std::string &newSpecies );
+	Animal(const t_weight newMaxWeight, const string& newClassification, const string& newSpecies);
 
-	Animal( const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight, const std::string &newClassification,
-	        const std::string &newSpecies );
+	Animal(const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight, const string& newClassification,
+			const string& newSpecies);
 
 public:  /////////////////////////////////// Static Methods ///////////////////////////////////
-	std::string getGenderLiteral( const Gender &gender ) const;
+	string getGenderLiteral(const Gender& gender) const;
 
 public:  /////////////////////////////////// Getters ///////////////////////////////////
-	std::string getKingdom() const noexcept;
+	string getKingdom() const noexcept;
 
-	std::string getClassification() const noexcept;
+	string getClassification() const noexcept;
 
-	std::string getSpecies() const noexcept;
+	string getSpecies() const noexcept;
 
 	Gender getGender() const noexcept;
 
@@ -62,19 +62,20 @@ public:  /////////////////////////////////// Getters ///////////////////////////
 
 protected:  /////////////////////////////////// Setters ///////////////////////////////////
 
-	void setWeight( const t_weight newWeight );
+	void setWeight(const t_weight newWeight);
 
-	void setGender( const Gender newGender );
+	void setGender(const Gender newGender);
+
+public:  /////////////////////////////////// Public Virtual Methods ///////////////////////////////////
+	virtual string speak() const noexcept = 0;
 
 public:  /////////////////////////////////// Public Methods ///////////////////////////////////
-	virtual std::string speak() const noexcept = 0;
-
 	void dump() const noexcept override;
 
 public:  /////////////////////////////////// Validation Methods ///////////////////////////////////
-	static bool validateClassifaction( const std::string &checkClassification ) noexcept;
+	static bool validateClassifaction(const string& checkClassification) noexcept;
 
-	static bool validateSpecies( const std::string &checkSpecies ) noexcept;
+	static bool validateSpecies(const string& checkSpecies) noexcept;
 
 	bool validate() const noexcept override;
 

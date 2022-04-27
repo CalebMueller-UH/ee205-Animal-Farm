@@ -69,7 +69,7 @@ bool SinglyLinkedList::insert_after( Node *insertAfterNode, Node *nodeToBeInsert
 
 void SinglyLinkedList::dump() const noexcept
 {
-	std::cout << "SinglyLinkeList head=[ " << this->get_first() << " ]" << std::endl;
+	cout << "SinglyLinkeList head=[ " << this->get_first() << " ]" << std::endl;
 	Node *currentNode = _head;
 	while( currentNode != nullptr )
 	{

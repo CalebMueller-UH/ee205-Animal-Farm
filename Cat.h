@@ -19,43 +19,46 @@
 #include "Mammal.h"
 #include "config.h"
 
+using std::string;
+using std::cout;
+
 class Cat : public Mammal
 {
 private: //////////////////////////////// Member Variables ////////////////////////////////
-	std::string _name;
+	string _name;
 	bool _catIsFixed;
 
 public:  /////////////////////////////////// Constants ///////////////////////////////////
-	static const std::string SPECIES_NAME;
+	static const string SPECIES_NAME;
 	static const Weight MAX_WEIGHT;
 
 public:  /////////////////////////////////// Class Constructors ///////////////////////////////////
-	Cat( const std::string &newName );
+	Cat( const string &newName );
 
-	Cat( const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight );
+	Cat( const string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight );
 
-	Cat( const std::string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight,
+	Cat( const string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight,
 	     const t_weight newMaxWeight );
 
 public:  /////////////////////////////////// Getters ///////////////////////////////////
-	std::string getName() const noexcept;
+	string getName() const noexcept;
 
 	bool isFixed() const noexcept;
 
 public:  /////////////////////////////////// Setters ///////////////////////////////////
-	void setName( const std::string &newName );
+	void setName( const string &newName );
 
 	void fixCat() noexcept;
 
 public:  /////////////////////////////////// Public Methods ///////////////////////////////////
-	std::string speak() const noexcept override;
+	string speak() const noexcept override;
 
 	void dump() const noexcept override;
 
 public:  /////////////////////////////////// Validation Methods ///////////////////////////////////
 	bool validate() const noexcept override;
 
-	static bool nameIsValid( const std::string &newName );
+	static bool nameIsValid( const string &newName );
 
 }; // End of Cat class
 

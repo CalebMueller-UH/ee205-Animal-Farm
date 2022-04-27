@@ -52,9 +52,9 @@ public:  /////////////////////////////////// Constants /////////////////////////
 	static const t_weight SLUGS_IN_A_POUND;
 	static const UnitOfWeight DEFAULT_UNIT_OF_WEIGHT;
 	static const t_weight DEFAULT_MAX_WEIGHT;
-	static const std::string POUND_LITERAL;
-	static const std::string SLUG_LITERAL;
-	static const std::string KILO_LITERAL;
+	static const string POUND_LITERAL;
+	static const string SLUG_LITERAL;
+	static const string KILO_LITERAL;
 
 public:  /////////////////////////////////// Class Constructors ///////////////////////////////////
 	// ↓ #1 Default Constructor: delegates to #7 with all default values

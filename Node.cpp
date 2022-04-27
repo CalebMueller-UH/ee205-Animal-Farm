@@ -40,7 +40,7 @@ bool Node::validate() const noexcept
 	// Not a single node ↓
 	if( _next == _next->_next )
 	{
-		std::cout << PROGRAM_NAME "Node Error: Recursive Loop!" << std::endl;
+		cout << PROGRAM_NAME "Node Error: Recursive Loop!" << std::endl;
 		return false;
 	}
 
