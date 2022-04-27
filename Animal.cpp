@@ -18,23 +18,23 @@ const string Animal::KINGDOM_NAME = "Animalia";
 
 /////////////////////////////////// Class Constructors ///////////////////////////////////
 Animal::Animal( const t_weight newMaxWeight,
-				const string &newClassification,
-				const string &newSpecies )
-				:
-				Animal( Gender::UNKNOWN_GENDER, Weight::UNKNOWN_WEIGHT, newMaxWeight, newClassification, newSpecies)
-				{}
+                const string &newClassification,
+                const string &newSpecies )
+		:
+		Animal( Gender::UNKNOWN_GENDER, Weight::UNKNOWN_WEIGHT, newMaxWeight, newClassification, newSpecies )
+{}
 
 Animal::Animal( const Gender newGender,
-				const t_weight newWeight,
-				const t_weight newMaxWeight,
-				const string &newClassification,
-				const  string &newSpecies )
-				:
-				_species{ newSpecies }, _classification{ newClassification }, _gender{ newGender }
-				{
-				_weight.setMaxWeight( newMaxWeight );
-				_weight.setWeight( newWeight );
-				}
+                const t_weight newWeight,
+                const t_weight newMaxWeight,
+                const string &newClassification,
+                const string &newSpecies )
+		:
+		_species{newSpecies}, _classification{newClassification}, _gender{newGender}
+{
+	_weight.setMaxWeight( newMaxWeight );
+	_weight.setWeight( newWeight );
+}
 
 /////////////////////////////////// Static Methods ///////////////////////////////////
 string Animal::getGenderLiteral( const Gender &gender ) const
@@ -42,13 +42,13 @@ string Animal::getGenderLiteral( const Gender &gender ) const
 	string retStr;
 	switch( gender )
 	{
-		case ( Gender::UNKNOWN_GENDER ):
+		case (Gender::UNKNOWN_GENDER):
 			retStr = "Unknown Gender";
 			break;
-		case ( Gender::MALE ):
+		case (Gender::MALE):
 			retStr = "Male";
 			break;
-		case ( Gender::FEMALE ):
+		case (Gender::FEMALE):
 			retStr = "Female";
 			break;
 		default:
@@ -87,7 +87,7 @@ Weight Animal::getWeight() const noexcept
 /////////////////////////////////// Setters ///////////////////////////////////
 void Animal::setWeight( const t_weight newWeight )
 {
-	if( Weight::weightIsValid( newWeight, _weight.getMaxWeight()))
+	if( Weight::weightIsValid( newWeight, _weight.getMaxWeight() ) )
 	{
 		_weight.setWeight( newWeight );
 	}
@@ -117,10 +117,10 @@ void Animal::dump() const noexcept
 /////////////////////////////////// Validation Methods ///////////////////////////////////
 bool Animal::validateClassifaction( const string &checkClassification ) noexcept
 {
-	if( checkClassification.empty())
+	if( checkClassification.empty() )
 	{
 		cout << PROGRAM_NAME " Animal Validation Error: Classification is empty!" <<
-		std::endl;
+		     std::endl;
 		return false;
 	}
 	return true; // classification is valid
@@ -128,7 +128,7 @@ bool Animal::validateClassifaction( const string &checkClassification ) noexcept
 
 bool Animal::validateSpecies( const string &checkSpecies ) noexcept
 {
-	if( checkSpecies.empty())
+	if( checkSpecies.empty() )
 	{
 		cout << PROGRAM_NAME " Animal Validation Error: Species is empty!" << std::endl;
 		return false;
@@ -139,9 +139,9 @@ bool Animal::validateSpecies( const string &checkSpecies ) noexcept
 bool Animal::validate() const noexcept
 {
 	Node::validate();
-	assert( validateClassifaction( getClassification()));
-	assert( validateSpecies( getSpecies()));
-	assert( _weight.validate());
+	assert( validateClassifaction( getClassification() ) );
+	assert( validateSpecies( getSpecies() ) );
+	assert( _weight.validate() );
 	return true; // everything checks out
 }
 

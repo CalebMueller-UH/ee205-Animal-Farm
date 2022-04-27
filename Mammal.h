@@ -24,28 +24,27 @@ enum class Color
 
 class Mammal : public Animal
 {
-protected: //////////////////////////////// Member Variables ////////////////////////////////
-	Color _color{Color::UNKNOWN_COLOR};
+  protected: //////////////////////////////// Member Variables ////////////////////////////////
+  Color _color{Color::UNKNOWN_COLOR};
 
-public:  /////////////////////////////////// Constants ///////////////////////////////////
-	static const string MAMMAL_NAME;
+  public:  /////////////////////////////////// Constants ///////////////////////////////////
+  static const string MAMMAL_NAME;
 
-protected:  /////////////////////////////////// Class Constructors ///////////////////////////////////
-	Mammal(const t_weight newMaxWeight, const string& newSpecies);
+  protected:  /////////////////////////////////// Class Constructors ///////////////////////////////////
+  Mammal( const t_weight newMaxWeight, const string &newSpecies );
 
-	Mammal(const Color newColor, const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight, const string newSpecies);
+  Mammal( const Color newColor, const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight, const string newSpecies );
 
-public:  /////////////////////////////////// Getters ///////////////////////////////////
-	Color getColor() const noexcept;
+  public:  /////////////////////////////////// Getters ///////////////////////////////////
+  Color getColor() const noexcept;
 
-protected:  /////////////////////////////////// Setters ///////////////////////////////////
-	void setColor(const Color newColor) noexcept;
+  protected:  /////////////////////////////////// Setters ///////////////////////////////////
+  void setColor( const Color newColor ) noexcept;
 
-public:  /////////////////////////////////// Public Methods ///////////////////////////////////
-	void dump() const noexcept override;
-
+  public:  /////////////////////////////////// Public Methods ///////////////////////////////////
+  void dump() const noexcept override;
 };
 
-std::ostream& operator<<(std::ostream& lhs, const Color& rhs);
+std::ostream &operator<<( std::ostream &lhs, const Color &rhs );
 
 #endif //EE205_ANIMAL_FARM_MAMMAL_H

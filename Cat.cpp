@@ -14,16 +14,18 @@
 const string Cat::SPECIES_NAME = "Felis catus";
 
 /////////////////////////////////// Class Constructors ///////////////////////////////////
-Cat::Cat(const string& newName)
-		:Cat(newName, Color::UNKNOWN_COLOR, false, Gender::UNKNOWN_GENDER, Weight::UNKNOWN_WEIGHT, Weight::DEFAULT_MAX_WEIGHT) { }
+Cat::Cat( const string &newName )
+		: Cat( newName, Color::UNKNOWN_COLOR, false, Gender::UNKNOWN_GENDER, Weight::UNKNOWN_WEIGHT, Weight::DEFAULT_MAX_WEIGHT )
+{}
 
-Cat::Cat(const string& newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight)
-		:Cat(newName, newColor, newIsFixed, newGender, newWeight, Weight::DEFAULT_MAX_WEIGHT) { }
+Cat::Cat( const string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight )
+		: Cat( newName, newColor, newIsFixed, newGender, newWeight, Weight::DEFAULT_MAX_WEIGHT )
+{}
 
 Cat::Cat(
 
-		const string& newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight)
-		:Mammal(newColor, newGender, newWeight, newMaxWeight, Cat::SPECIES_NAME), _name{
+		const string &newName, const Color newColor, const bool newIsFixed, const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight )
+		: Mammal( newColor, newGender, newWeight, newMaxWeight, Cat::SPECIES_NAME ), _name{
 		newName
 }, _catIsFixed{
 		newIsFixed
@@ -43,9 +45,9 @@ bool Cat::isFixed() const noexcept
 }
 
 /////////////////////////////////// Setters ///////////////////////////////////
-void Cat::setName(const string& newName)
+void Cat::setName( const string &newName )
 {
-	nameIsValid(newName) ? _name = newName : 0;
+	nameIsValid( newName ) ? _name = newName : 0;
 }
 
 void Cat::fixCat() noexcept
@@ -63,22 +65,23 @@ void Cat::dump() const noexcept
 {
 	PRINT_HEADING_FOR_DUMP;
 	Mammal::dump();
-	FORMAT_LINE_FOR_DUMP("Cat", "name") << _name << std::endl;
-	FORMAT_LINE_FOR_DUMP("Cat", "isFixed") << std::boolalpha << _catIsFixed << std::endl;
+	FORMAT_LINE_FOR_DUMP( "Cat", "name" ) << _name << std::endl;
+	FORMAT_LINE_FOR_DUMP( "Cat", "isFixed" ) << std::boolalpha << _catIsFixed << std::endl;
 }
 
 /////////////////////////////////// Validation Methods ///////////////////////////////////
 bool Cat::validate() const noexcept
 {
 	Mammal::validate();
-	assert(nameIsValid(_name));
+	assert( nameIsValid( _name ) );
 	return true; // is Valid
 }
 
-bool Cat::nameIsValid(const string& newName)
+bool Cat::nameIsValid( const string &newName )
 {
 	int nameLen = newName.length();
-	if (nameLen>0) {
+	if( nameLen > 0 )
+	{
 		return true; // name is valid
 	}
 	return false; // name is invalid

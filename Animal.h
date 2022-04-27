@@ -22,63 +22,64 @@ using std::ostream;
 using std::string;
 using std::cout;
 
-enum class Gender {
+enum class Gender
+{
   UNKNOWN_GENDER = 0,
   MALE,
   FEMALE
 };
 
-inline ostream& operator<<(ostream& lhs_stream, const Gender& rhs_Gender);
+inline ostream &operator<<( ostream &lhs_stream, const Gender &rhs_Gender );
 
-class Animal : public Node {
-protected: //////////////////////////////// Member Variables ////////////////////////////////
-	string _species;
-	string _classification;
-	Gender _gender{Gender::UNKNOWN_GENDER};
-	Weight _weight{Weight::UNKNOWN_WEIGHT};
+class Animal : public Node
+{
+  protected: //////////////////////////////// Member Variables ////////////////////////////////
+  string _species;
+  string _classification;
+  Gender _gender{Gender::UNKNOWN_GENDER};
+  Weight _weight{Weight::UNKNOWN_WEIGHT};
 
-public:  /////////////////////////////////// Constants ///////////////////////////////////
-	static const string KINGDOM_NAME;
+  public:  /////////////////////////////////// Constants ///////////////////////////////////
+  static const string KINGDOM_NAME;
 
-protected:  /////////////////////////////////// Class Constructors ///////////////////////////////////
-	Animal(const t_weight newMaxWeight, const string& newClassification, const string& newSpecies);
+  protected:  /////////////////////////////////// Class Constructors ///////////////////////////////////
+  Animal( const t_weight newMaxWeight, const string &newClassification, const string &newSpecies );
 
-	Animal(const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight, const string& newClassification,
-			const string& newSpecies);
+  Animal( const Gender newGender, const t_weight newWeight, const t_weight newMaxWeight, const string &newClassification,
+          const string &newSpecies );
 
-public:  /////////////////////////////////// Static Methods ///////////////////////////////////
-	string getGenderLiteral(const Gender& gender) const;
+  public:  /////////////////////////////////// Static Methods ///////////////////////////////////
+  string getGenderLiteral( const Gender &gender ) const;
 
-public:  /////////////////////////////////// Getters ///////////////////////////////////
-	string getKingdom() const noexcept;
+  public:  /////////////////////////////////// Getters ///////////////////////////////////
+  string getKingdom() const noexcept;
 
-	string getClassification() const noexcept;
+  string getClassification() const noexcept;
 
-	string getSpecies() const noexcept;
+  string getSpecies() const noexcept;
 
-	Gender getGender() const noexcept;
+  Gender getGender() const noexcept;
 
-	Weight getWeight() const noexcept;
+  Weight getWeight() const noexcept;
 
-protected:  /////////////////////////////////// Setters ///////////////////////////////////
+  protected:  /////////////////////////////////// Setters ///////////////////////////////////
 
-	void setWeight(const t_weight newWeight);
+  void setWeight( const t_weight newWeight );
 
-	void setGender(const Gender newGender);
+  void setGender( const Gender newGender );
 
-public:  /////////////////////////////////// Public Virtual Methods ///////////////////////////////////
-	virtual string speak() const noexcept = 0;
+  public:  /////////////////////////////////// Public Virtual Methods ///////////////////////////////////
+  virtual string speak() const noexcept = 0;
 
-public:  /////////////////////////////////// Public Methods ///////////////////////////////////
-	void dump() const noexcept override;
+  public:  /////////////////////////////////// Public Methods ///////////////////////////////////
+  void dump() const noexcept override;
 
-public:  /////////////////////////////////// Validation Methods ///////////////////////////////////
-	static bool validateClassifaction(const string& checkClassification) noexcept;
+  public:  /////////////////////////////////// Validation Methods ///////////////////////////////////
+  static bool validateClassifaction( const string &checkClassification ) noexcept;
 
-	static bool validateSpecies(const string& checkSpecies) noexcept;
+  static bool validateSpecies( const string &checkSpecies ) noexcept;
 
-	bool validate() const noexcept override;
-
+  bool validate() const noexcept override;
 };
 
 #endif //EE205_ANIMAL_FARM_ANIMAL_H

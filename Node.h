@@ -18,22 +18,23 @@
 
 class Node
 {
-	friend class SinglyLinkedList;
-	friend class List;
+  friend class SinglyLinkedList;
 
-protected: //////////////////////////////// Member Variables ////////////////////////////////
-	Node* _next{nullptr};
+  friend class List;
 
-public:  /////////////////////////////////// Virtual Methods ///////////////////////////////////
-	virtual void dump() const;
+  protected: //////////////////////////////// Member Variables ////////////////////////////////
+  Node* _next{nullptr};
 
-	virtual bool operator>(const Node& rhs);
+  public:  /////////////////////////////////// Virtual Methods ///////////////////////////////////
+  virtual void dump() const;
 
-public:  /////////////////////////////////// Public Methods ///////////////////////////////////
-	static bool compareByAddress(const Node* node1, const Node* node2);
+  virtual bool operator>( const Node &rhs );
 
-public:  /////////////////////////////////// Validation Methods ///////////////////////////////////
-	virtual bool validate() const noexcept;
+  public:  /////////////////////////////////// Public Methods ///////////////////////////////////
+  static bool compareByAddress( const Node* node1, const Node* node2 );
+
+  public:  /////////////////////////////////// Validation Methods ///////////////////////////////////
+  virtual bool validate() const noexcept;
 };
 
 #endif //EE205_ANIMAL_FARM_NODE_H
