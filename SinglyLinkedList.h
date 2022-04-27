@@ -22,16 +22,16 @@ using namespace std;
 
 class SinglyLinkedList : public List
 {
-public:  /////////////////////////////////// Public Methods ///////////////////////////////////
-	void push_front(Node* newNode);
+  public:  /////////////////////////////////// Public Methods ///////////////////////////////////
+  void push_front( Node* newNode );
 
-	Node* pop_front() noexcept override;
+  Node* pop_front() noexcept override;
 
-	bool insert_after(Node* insertAfterNode, Node* nodeToBeInserted);
+  bool insert_after( Node* insertAfterNode, Node* nodeToBeInserted );
 
-	void dump() const noexcept override;
+  void dump() const noexcept override;
 
-	bool validate() const noexcept override;
+  bool validate() const noexcept override;
 };
 
 #endif //EE205_ANIMAL_FARM_SINGLYLINKEDLIST_H

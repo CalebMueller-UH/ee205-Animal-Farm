@@ -22,31 +22,31 @@ using namespace std;
 
 class List
 {
-protected: //////////////////////////////// Member Variables ////////////////////////////////
-	Node* _head{nullptr};
-	unsigned long _count{0};
+  protected: //////////////////////////////// Member Variables ////////////////////////////////
+  Node* _head{nullptr};
+  unsigned long _count{0};
 
-public:  /////////////////////////////////// Public Methods ///////////////////////////////////
-	bool empty() const noexcept;
+  public:  /////////////////////////////////// Public Methods ///////////////////////////////////
+  bool empty() const noexcept;
 
-	unsigned long size() const noexcept;
+  unsigned long size() const noexcept;
 
-	bool isIn(Node* nodeOfInterest) const;
+  bool isIn( Node* nodeOfInterest ) const;
 
-	bool isSorted() const noexcept;
+  bool isSorted() const noexcept;
 
-	Node* get_first() const noexcept;
+  Node* get_first() const noexcept;
 
-	static Node* get_next(const Node* currentNode);
+  static Node* get_next( const Node* currentNode );
 
-	void deleteAllNodes() noexcept;
+  void deleteAllNodes() noexcept;
 
-public:  /////////////////////////////////// Abstract Methods ///////////////////////////////////
-	virtual Node* pop_front() noexcept = 0;
+  public:  /////////////////////////////////// Abstract Methods ///////////////////////////////////
+  virtual Node* pop_front() noexcept = 0;
 
-	virtual void dump() const noexcept = 0;
+  virtual void dump() const noexcept = 0;
 
-	virtual bool validate() const noexcept = 0;
+  virtual bool validate() const noexcept = 0;
 };
 
 #endif //EE205_ANIMAL_FARM_LIST_H

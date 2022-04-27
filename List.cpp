@@ -22,17 +22,17 @@ unsigned long List::size() const noexcept
 	return _count;
 }
 
-bool List::isIn(Node* nodeOfInterest) const
+bool List::isIn( Node* nodeOfInterest ) const
 {
-	if (nodeOfInterest == nullptr)
+	if( nodeOfInterest == nullptr )
 	{
-		throw invalid_argument(PROGRAM_NAME " List Error: isIn() called with nullptr argument!");
+		throw invalid_argument( PROGRAM_NAME " List Error: isIn() called with nullptr argument!" );
 	}
 
 	Node* currNode = _head;
-	while (currNode != nullptr)
+	while( currNode != nullptr )
 	{
-		if (currNode == nodeOfInterest)
+		if( currNode == nodeOfInterest )
 		{
 			return true; // nodeOfInterest was found
 		}
@@ -51,24 +51,24 @@ Node* List::get_first() const noexcept
 	return _head;
 }
 
-Node* List::get_next(const Node* currentNode)
+Node* List::get_next( const Node* currentNode )
 {
-	if (currentNode == nullptr)
+	if( currentNode == nullptr )
 	{
-		throw invalid_argument(PROGRAM_NAME " List Error: currentNode must not be nullptr");
+		throw invalid_argument( PROGRAM_NAME " List Error: currentNode must not be nullptr" );
 	}
 	return currentNode->_next;
 }
 
 void List::deleteAllNodes() noexcept
 {
-	assert(validate());
-	while (_head != nullptr)
+	assert( validate() );
+	while( _head != nullptr )
 	{
 		pop_front();
 	}
 	#ifdef DEBUG
 	cout << PROGRAM_NAME << ": All Nodes have been deleted" << endl ;
 	#endif
-	assert(validate());
+	assert( validate() );
 }
