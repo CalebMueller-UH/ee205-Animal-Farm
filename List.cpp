@@ -17,11 +17,6 @@ bool List::empty() const noexcept
 	return (_head == nullptr);
 }
 
-unsigned long List::size() const noexcept
-{
-	return _count;
-}
-
 bool List::isIn( Node* nodeOfInterest ) const
 {
 	if( nodeOfInterest == nullptr )

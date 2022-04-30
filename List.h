@@ -29,8 +29,6 @@ class List
   public:  /////////////////////////////////// Public Methods ///////////////////////////////////
   bool empty() const noexcept;
 
-  unsigned long size() const noexcept;
-
   bool isIn( Node* nodeOfInterest ) const;
 
   bool isSorted() const noexcept;
@@ -42,9 +40,12 @@ class List
   void deleteAllNodes() noexcept;
 
   public:  /////////////////////////////////// Abstract Methods ///////////////////////////////////
+
   virtual Node* pop_front() noexcept = 0;
 
   virtual void dump() const noexcept = 0;
+
+  virtual unsigned long size() const noexcept = 0;
 
   virtual bool validate() const noexcept = 0;
 };

@@ -18,13 +18,26 @@ set(CMAKE_VERBOSE_MAKEFILE off)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDEBUG_ENABLE")
 
-#@todo remove this build before release of v3.0
 # Animal Farm 3.0 Build
 add_executable(
         ee205_animal_farm_3_0
         main.cpp
-        Node.h Node.cpp
         Animal.h Animal.cpp
-        Mammal.h Mammal.cpp
         Cat.h Cat.cpp
-        Weight.h Weight.cpp List.cpp List.h SinglyLinkedList.cpp SinglyLinkedList.h)
+        Node.h Node.cpp
+        List.cpp List.h
+        Mammal.h Mammal.cpp
+        SinglyLinkedList.cpp SinglyLinkedList.h
+        Weight.h Weight.cpp)
+
+# List Testing
+add_executable(
+        List_Testing
+        main_list_testing.cpp
+        Animal.h Animal.cpp
+        Cat.h Cat.cpp
+        Node.h Node.cpp
+        List.cpp List.h
+        Mammal.h Mammal.cpp
+        SinglyLinkedList.cpp SinglyLinkedList.h
+        Weight.h Weight.cpp)

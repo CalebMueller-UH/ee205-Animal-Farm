@@ -58,7 +58,7 @@ void Cat::fixCat() noexcept
 /////////////////////////////////// Public Methods ///////////////////////////////////
 string Cat::speak() const noexcept
 {
-	return "\"Meow!\"";
+	return "The Cat named " + getName() + " says \"Meow!\"";
 }
 
 void Cat::dump() const noexcept
