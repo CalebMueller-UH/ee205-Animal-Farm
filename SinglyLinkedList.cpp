@@ -111,21 +111,6 @@ noexcept
 	}
 }
 
-unsigned long SinglyLinkedList::size() const noexcept
-{
-	Node* currentNode = _head;
-	unsigned long size_count = 0;
-
-	do
-	{
-		size_count++;
-		currentNode = currentNode->_next;
-	}
-	while( currentNode != nullptr );
-
-	return size_count;
-}
-
 bool SinglyLinkedList::validate() const noexcept
 {
 // Check for empty list

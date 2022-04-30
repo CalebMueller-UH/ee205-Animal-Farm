@@ -31,8 +31,6 @@ class SinglyLinkedList : public List
 
   void dump() const noexcept override;
 
-  virtual unsigned long size() const noexcept;
-
   bool validate() const noexcept override;
 };
 

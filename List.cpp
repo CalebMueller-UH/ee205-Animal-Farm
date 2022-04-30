@@ -67,3 +67,20 @@ void List::deleteAllNodes() noexcept
 	#endif
 	assert( validate() );
 }
+
+unsigned long List::size() const noexcept
+{
+	if( _head == nullptr ) return 0;
+
+	Node* currentNode = _head;
+	unsigned long size_count = 0;
+
+	do
+	{
+		size_count++;
+		currentNode = currentNode->_next;
+	}
+	while( currentNode != nullptr );
+
+	return size_count;
+}

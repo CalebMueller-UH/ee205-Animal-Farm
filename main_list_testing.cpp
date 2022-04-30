@@ -25,36 +25,45 @@ int main()
 	cout << "Starting " << PROGRAM_NAME << " List Testing..." << endl;
 
 	// SinglyLinkedList Class Method Testing
+	// Creation of SinglyLinkedList
+	SinglyLinkedList tList;
+	assert( tList.empty() );
 
+	// push_front testing
+	auto t1 = new Cat( "t1", Color::BLACK, false, Gender::FEMALE, 1.1 );
+	tList.push_front( t1 );
+	assert( tList.size() == 1 );
+
+	tList.push_front( new Cat( "t4", Color::BROWN, false, Gender::MALE, 4.4 ) );
+	assert( tList.size() == 2 );
+
+	// insert_after testing
+	auto t2 = new Cat( "t2", Color::GINGER, false, Gender::MALE, 2.2 );
+	tList.insert_after( t1, t2 );
+	assert( tList.size() == 3 );
+
+	auto t3 = new Cat( "t3", Color::GINGER, false, Gender::MALE, 3.3 );
+	tList.insert_after( t2, t3 );
+	assert( tList.size() == 4 );
+
+	// Make all animals in list speak
+	for( Animal* pAnimal = (Animal*) tList.get_first(); pAnimal != nullptr; pAnimal = (Animal*) List::get_next( (Node*) pAnimal ) )
 	{
-		// Creation of SinglyLinkedList
-		SinglyLinkedList tList;
+		cout << pAnimal->speak() << endl;
+	}
 
-		// Pushing initial object into list
-		auto t1 = new Cat( "t1", Color::BLACK, false, Gender::FEMALE, 25 );
-		tList.push_front( t1 );
-		assert( tList.size() == 1 );
+	//All animals in list info dump()
+	cout << "dumping tList..." << endl;
+	tList.dump();
 
-		auto t2 = new Cat( "t2", Color::GINGER, false, Gender::MALE, 14 );
-		tList.insert_after( t1, t2 );
-		assert( tList.size() == 2 );
+	assert( tList.validate() );
 
-		assert( tList.pop_front() == t1 );
+	cout << "deleting all nodes" << endl;
+	tList.deleteAllNodes();
+	assert( tList.empty() );
+	cout << "dumping empty tList" << endl;
 
-		for( Animal* pAnimal = (Animal*) tList.get_first(); pAnimal != nullptr; pAnimal = (Animal*) List::get_next( (Node*) pAnimal ) )
-		{
-			cout << pAnimal->speak() << endl;
-		}
-	} // End of SinglyLinkedList Testing
+	cout << "End of " << PROGRAM_NAME << " List Testing..." << endl;
 
-	/*
-	catDB.validate();
-	catDB.dump();
-	catDB.deleteAllNodes();
-	catDB.dump();
-	cout << "Done with " << PROGRAM_NAME;
-	 */
 	return (EXIT_SUCCESS);
-
-	return 0;
 }

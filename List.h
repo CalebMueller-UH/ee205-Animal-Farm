@@ -39,13 +39,13 @@ class List
 
   void deleteAllNodes() noexcept;
 
-  public:  /////////////////////////////////// Abstract Methods ///////////////////////////////////
+  unsigned long size() const noexcept;
+
+  public:  /////////////////////////////////// Virtual Methods ///////////////////////////////////
 
   virtual Node* pop_front() noexcept = 0;
 
   virtual void dump() const noexcept = 0;
-
-  virtual unsigned long size() const noexcept = 0;
 
   virtual bool validate() const noexcept = 0;
 };
